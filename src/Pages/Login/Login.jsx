@@ -3,6 +3,8 @@ import { useHistory } from "react-router";
 import {useDispatch} from "react-redux"
 import {loginAction} from "../../store/Actions/user"
 import { Redirect } from "react-router-dom"
+import "../styles.css"
+import LoginCard from "../../components/LoginCard/LoginCard"
 export default function Login() {
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState("")
@@ -16,7 +18,10 @@ const handleSubmit = async(e) => {
 }
 
     return (
-        <form onSubmit={handleSubmit}>
+      <div className="login-page">
+        <LoginCard /> 
+        <form className="login-form" onSubmit={handleSubmit}>
+          <h1>Log in to your Llama account.</h1>
             <div className="reg-form mt-4">
             <input
               required
@@ -37,5 +42,6 @@ const handleSubmit = async(e) => {
             Log In
           </button>
         </form>
+        </div>
     )
 }
