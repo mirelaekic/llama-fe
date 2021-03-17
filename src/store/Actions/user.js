@@ -19,27 +19,23 @@ import {
   addPicture,
   register,
 } from "../../utils/users";
+
 export const getMe = () => {
-    return async (dispatch) => {
-        try {
-        const user = await me();
-        console.log(user, "current user");
-        dispatch({
-          type: USER_SUCCESS,
-          payload: user,
-        });
-        if (user === null) {
-           dispatch({
-                type:USER_ERROR
-            }) 
-        }
-        } catch (error) {
-            dispatch({
-                type:USER_ERROR
-            })
-        }
+  return async (dispatch) => {
+    try {
+      const user = await me();
+      dispatch({
+        type: USER_SUCCESS,
+        payload: user,
+      });
+    } catch (error) {
+      dispatch({
+        type: USER_ERROR,
+      });
     }
-}
+  };
+};
+
 export const logoutAction = () => {
   return async (dispatch) => {
     try {
@@ -48,6 +44,7 @@ export const logoutAction = () => {
         dispatch({
           type: LOGOUT_SUCCESS,
         });
+        window.location.replace("/login");
       } else {
         dispatch({ type: LOGOUT_ERROR });
       }
@@ -61,21 +58,20 @@ export const loginAction = (credentials) => {
   return async (dispatch) => {
     try {
       console.log("LOGGIN AT LOGIN ACTION");
-      //dispatch({type: LOGIN_LOADING})
-      console.log(credentials,"CREDENTIALS")
+      dispatch({ type: LOGIN_LOADING });
       const logged = await login(credentials);
-      console.log("LOGGIN AT LOGIN ACTION");
-      if (credentials) {
+      console.log(logged,"LOGGED")
+      if (logged) {
         dispatch({
           type: LOGIN_SUCCESS,
           payload: logged,
         });
         const user = await me();
-        console.log(user, "PROBLEM IS GETTING THE ME ROUTE");
         dispatch({
           type: USER_SUCCESS,
           payload: user,
         });
+        window.location.replace("/");
       } else {
         dispatch({
           type: LOGIN_ERROR,
@@ -91,9 +87,14 @@ export const loginAction = (credentials) => {
 export const registerAction = (credentials) => async (dispatch) => {
   try {
     dispatch({ type: REGISTER_LOADING });
-    const register = await register(credentials);
-    if (register) {
-      dispatch({ type: REGISTER_SUCCESS, payload: register });
+    const registerUser = await register(credentials);
+    console.log(registerUser,"USER")
+    if (registerUser === null) {
+      dispatch({
+        type: REGISTER_ERROR,
+      });
+    } else {
+      dispatch({ type: REGISTER_SUCCESS, payload: registerUser });
     }
   } catch (error) {
     dispatch({

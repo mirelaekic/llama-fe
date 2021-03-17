@@ -25,12 +25,14 @@ export default function (state=initialState,action) {
       return {
         ...state,
         authorized:false,
+        loading:false,
         error:"We apologize, please try again in few minutes"
       }
     case LOGOUT_SUCCESS:
       return {
         ...state,
         authorized:false,
+        loading:false,
         user:null,
         token:{}
       }
@@ -38,13 +40,15 @@ export default function (state=initialState,action) {
       return {
         ...state,
         authorized: false,
+        loading:false,
         error: "Please enter correct email or password",
       };
     case REGISTER_ERROR:
       return {
         ...state,
         authorized: false,
-        error: "Something went wrong, please try again later!",
+        error: "Please fill out all fields!",
+        loading:false,
       };
     case USER_ERROR:
         return {
@@ -73,15 +77,19 @@ export default function (state=initialState,action) {
         token:action.payload,
         authorized: true,
         user: action.payload,
+        loading:false,
       };
     case REGISTER_SUCCESS:
       return {
         ...state,
         authorized: true,
         user: action.payload,
+        loading:false,
+        notification:"Registration has been successful, please check your e-mail to confirm your account"
       };
     case USER_SUCCESS:
         return {
+          loading:false,
             ...state,
             authorized: true,
             user: action.payload

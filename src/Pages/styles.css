@@ -1,10 +1,13 @@
 .login-page {
-  background: rgb(131, 58, 180);
-  background: linear-gradient(
-    90deg,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(255, 142, 142, 1) 50%,
-    rgba(252, 176, 69, 1) 100%
-  );
   text-align: -webkit-center;
+  max-width: 100% !important; 
+  background-image:url(../icon/background3.png);
+  background-repeat: round;
 }
+.register-page {
+    height:auto;
+    max-width: 100% !important; 
+    background-image:url(../icon/chatgi.jpg);
+    background-repeat: round;
+  }
+

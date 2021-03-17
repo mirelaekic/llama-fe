@@ -1,0 +1,64 @@
+.login-form {
+  display: inline-table;
+}
+.login-logo {
+  width: 35%;
+  margin-top: 1rem;
+}
+.google-login {
+  width: 13%;
+  margin-right: 7px;
+}
+.google-button {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+  border-radius: 15rem !important;
+  -webkit-box-shadow: 0px 10px 31px 0px rgba(0, 0, 0, 0.72) !important;
+  box-shadow: 0px 10px 31px 0px rgb(214 214 214 / 52%) !important;
+  width: 57% !important;
+  font-size: 0.6rem !important;
+}
+.google-button:hover {
+  background-color: white !important ;
+}
+.breakline-login{
+    margin-top: 3rem !important;
+    border-color: #9292923d;
+}
+.MuiInput-underline:after{
+    border-bottom: 2px solid #0EC6CF !important;
+}
+.MuiFormLabel-root.Mui-focused{
+    color: #0EC6CF !important;
+}
+.register-detail{
+    background-image: url(../icon/chatgi.gif);
+    background-position: right;
+}
+.login-from .MuiFormControl-root{
+    width: 100% !important;
+}
+.MuiTypography-root{
+    font-family: auto !important;
+}
+.sidebar-link span{
+    font-family:  -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", Helvetica, Arial, sans-serif !important;
+    font-size: 1.3rem !important;
+    color: rgb(33 34 35) !important;
+    font-weight: bold !important;
+}
+.sidebar-icon svg{
+    color: rgb(33 34 35) !important;
+    font-size: 2rem !important;
+}
+.sidebar-icon{
+    min-width: 47px !important;
+}
+.sidebar-item{
+    padding: 10px !important;
+    transition: none !important;
+}
+.sidebar-item:hover{
+    width: min-content !important;
+    border-radius: 70px !important;
+}

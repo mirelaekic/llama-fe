@@ -19,7 +19,7 @@ export const register = async (credentials) => {
 export const login = async (credentials) => {
     try {
         const login = await backend.post(`${LLAMA_API}users/login`,credentials)
-        console.log(login,"LOGIN")
+        console.log(login,"LOGIN    ")
         return login.data
     } catch (error) {
         return null
@@ -39,7 +39,7 @@ export const me = async () => {
     try {
         const response = await backend.get(`${LLAMA_API}users/me`,{ withCredentials:true})
         const currentUser = await response.data
-        console.log(currentUser)
+         console.log(currentUser)
         return currentUser
     } catch (error) {
         console.log(error)

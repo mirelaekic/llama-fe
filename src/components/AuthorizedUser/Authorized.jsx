@@ -7,7 +7,6 @@ import Chat from "../../Pages/Chat/Chat";
 export default function Authorized() {
     return (
         <Switch>
-            
             <Route path="/" exact component={Home} />
             <Route path="/chat" component={Chat} />
         </Switch>

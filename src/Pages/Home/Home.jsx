@@ -1,25 +1,38 @@
-import React,{useEffect} from "react";
-import { useHistory } from "react-router";
-import { useDispatch , useSelector} from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getMe, logoutAction } from "../../store/Actions/user";
 import { Redirect } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import SideBar from "../../components/SideBar/SideBar";
+import { Col, Row,Container } from "react-bootstrap";
+import HomeNav from "../../components/HomeNav/HomeNav"
+import Search from "../../components/Search/Search"
 export default function Home() {
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getMe)
-  },[])
- 
-   const user = useSelector((state) => state.user.authorized)
-   console.log(user,"user auth")
-const handleLogout = (e) => {
-    e.preventDefault()
-     dispatch(logoutAction())
-  }
-  return  (
-    <div>
-        <h1>HOME</h1>
+     dispatch(getMe());
+  }, []);
+
+  const user = useSelector((state) => state.user.authorized);
+console.log(user,"is user auth")
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logoutAction());
+  };
+  return (
+    <Container>
+    <Row>
+      <Col lg={3}>
+      <SideBar />
+      </Col>
+      <Col lg={6}>
+        <HomeNav />
       <button onClick={handleLogout}>LOGOUT</button>
-    </div>
+      </Col>
+      <Col lg={3}                       >
+          <Search />
+      </Col>
+      </Row>
+      </Container>
   ) 
 }
