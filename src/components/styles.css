@@ -62,3 +62,41 @@
     width: min-content !important;
     border-radius: 70px !important;
 }
+.post-input{
+    width: -webkit-fill-available;
+    border: 10px #EFEFEF solid;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.modal-row{
+    align-items: flex-end !important;
+}
+.action-btn .MuiButtonBase-root{
+    padding: 10px !important;
+    font-size: 1rem !important;
+}
+.post-card .MuiCardContent-root:last-child{
+    padding-bottom: 3px !important ;
+}
+.action-btn button:hover{
+    border-radius: 0px !important;
+    transition: none !important;
+}
+.action-btn label span:hover{
+    border-radius: 0px !important;
+    transition: none !important;
+}
+.post-input .text-muted{
+    margin-bottom: 1px !important;
+    text-align: start !important;
+}
+.MuiBackdrop-root {
+    background-color: rgb(255 255 255 / 57%) !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+.makeStyles-paper-4 {
+    border: none !important;
+}
+#transition-modal-title{
+    text-align: center !important;
+}

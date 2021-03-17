@@ -6,6 +6,7 @@ import SideBar from "../../components/SideBar/SideBar";
 import { Col, Row,Container } from "react-bootstrap";
 import HomeNav from "../../components/HomeNav/HomeNav"
 import Search from "../../components/Search/Search"
+import AddPostCard from "../../components/AddPostCard/AddPostCard"
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -28,6 +29,7 @@ console.log(user,"is user auth")
       <Col lg={6}>
         <HomeNav />
       <button onClick={handleLogout}>LOGOUT</button>
+      <AddPostCard />
       </Col>
       <Col lg={3}                       >
           <Search />
