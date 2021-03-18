@@ -28,11 +28,9 @@ export const comment = async (id) => {
 export const postComment = async (id,data) => {
     try {
         console.log(id,"TO POST")
-        const comment = await fetch(`${LLAMA_API}comments/${id}`,{
-            method:"POST,"
-        })
+        const comment = await backend.post(`${LLAMA_API}comments/${id}`,{data},{ withCredentials:true})
         console.log(comment)
-        return comment
+        return comment.data
     } catch (error) {
         console.log(error)
         return null

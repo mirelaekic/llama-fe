@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMe,  } from "../../store/Actions/user";
+import { getMe } from "../../store/Actions/user";
 import { getAllPosts } from "../../store/Actions/post";
+import { Redirect } from "react-router-dom";
 import SideBar from "../../components/SideBar/SideBar";
 import { Col, Row, Container } from "react-bootstrap";
 import HomeNav from "../../components/HomeNav/HomeNav";

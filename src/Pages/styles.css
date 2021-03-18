@@ -1,0 +1,16 @@
+.login-page {
+  text-align: -webkit-center;
+  max-width: 100% !important; 
+  background-image:url(../icon/background3.png);
+  background-repeat: round;
+}
+.register-page {
+    height:auto;
+    max-width: 100% !important; 
+    background-image:url(../icon/chatgi.jpg);
+    background-repeat: round;
+  }
+.comment-like{
+    padding: 0px !important;
+    align-self: self-start !important;
+}
