@@ -12,13 +12,24 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import EmailIcon from '@material-ui/icons/Email';
 import PersonIcon from '@material-ui/icons/Person';
 import HomeIcon  from "@material-ui/icons/Home";
+import { useDispatch, useSelector } from "react-redux";
+import { Avatar } from "@material-ui/core";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { logoutAction } from "../../store/Actions/user";
 
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
  function SideBar() {
-  return (
+    const dispatch = useDispatch();
+    const handleLogout = (e) => {
+        e.preventDefault();
+        dispatch(logoutAction());
+      };
+    const user = useSelector((state) => state.user.user)
+    console.log(user,"Current user")
+  return user ? (
     <div className="sidebar">
       <List component="nav" aria-label="main mailbox folders">
         <ListItem className="sidebar-logo"> 
@@ -56,14 +67,14 @@ function ListItemLink(props) {
         </ListItem>
       </List>
       <Divider />
-      <ListItem button className=" sidebar-item">
+      <ListItem onClick={handleLogout} button className="sidebar-item">
           <ListItemIcon className="sidebar-icon">
-            <PersonIcon />
+              <Avatar alt={user.name} src={user.imgUrl} />
           </ListItemIcon>
-          <ListItemText className="sidebar-link" primary="User" />
+          <ListItemText className="sidebar-link" primary="Logout"  />
         </ListItem>
     </div>
-  );
+  ) : <CircularProgress />;
 }
 
 export default withRouter(SideBar)

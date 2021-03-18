@@ -1,15 +1,20 @@
-import { Avatar, Card, CardContent } from "@material-ui/core";
-import React from "react";
+import { Avatar, Card, CardContent, CircularProgress } from "@material-ui/core";
+import React,{useState} from "react";
+import { useSelector,useDispatch } from "react-redux";
 import { Col, Row } from "react-bootstrap";
 import "../styles.css";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import EventIcon from '@material-ui/icons/Event';
-import GifIcon from '@material-ui/icons/Gif';
 import PostModal from "../PostModal/PostModal"
+import {uploadPost, getAllPosts} from "../../store/Actions/post"
 
 const useStyles = makeStyles((theme) => ({
+    backdrop: {
+        zIndex: theme.zIndex.drawer + 1,
+        color: '#fff',
+      },
   root: {
     "& > *": {
       margin: theme.spacing(1),
@@ -21,14 +26,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AddPostCard() {
+    const [postImg, setPostImg] = useState()
+    const dispatch = useDispatch()
+    const addPost = (event,pic) => {
+        console.log(pic,"pic")
+        event.preventDefault()
+        dispatch(uploadPost(pic))
+        setPostImg()
+    }
+    //console.log(postImg,"img")
+    const url = postImg ? URL.createObjectURL(postImg) : ""
+   // console.log(url,"img url")
   const classes = useStyles();
-
-  return (
+  const user = useSelector((state) => state.user.user)
+  return user ? (
     <Card className="post-card">
       <CardContent>
         <Row className="modal-row">
           <Col lg={1}>
-            <Avatar src="current user" />
+            <Avatar alt={user.name} src={user.imgUrl} />
           </Col>
           <Col lg={11}>
             <PostModal
@@ -41,10 +57,11 @@ export default function AddPostCard() {
             {" "}
             <div className="action-btn">
               <input
-                accept="image/*"
+                accept="image/png, image/jpeg, image/jpg"
                 className={classes.input}
                 id="icon-button-file"
                 type="file"
+                onChange={(e) => setPostImg(e.target.files[0])}
               />
               <label htmlFor="icon-button-file">
                 <IconButton
@@ -55,6 +72,7 @@ export default function AddPostCard() {
                   <PhotoCamera /> Photo
                 </IconButton>
               </label>
+
             </div>
           </Col>
           <Col>
@@ -67,5 +85,5 @@ export default function AddPostCard() {
         </Row>
       </CardContent>
     </Card>
-  );
+  ) : <CircularProgress />
 }

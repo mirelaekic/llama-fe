@@ -96,7 +96,82 @@
 }
 .makeStyles-paper-4 {
     border: none !important;
+    padding: 16px 32px 10px !important;
 }
 #transition-modal-title{
     text-align: center !important;
+}
+.text-post{
+    height: 120px !important;
+    border:none !important;
+}
+.text-post:focus{
+    box-shadow: none !important;
+}
+.postbtn-area{
+    display: -webkit-inline-box !important;
+    float: right !important;
+}
+.upload-button{
+    color:#60bdff !important ;
+}
+.upload-button:hover{
+    background-color:#60bdff1c !important ;
+}
+.emoji-button{
+    color: orange !important;
+}
+.emoji-button:hover{
+    background-color: rgb(255 166 0 / 12%) !important;
+}
+.user-info{
+    background-color: white !important;
+    border-bottom: none !important;
+    display: -webkit-inline-box;
+}
+.preview-img{
+    width: 4rem;
+}
+.post-info{
+    text-align: initial;
+}
+.post-info p{
+    margin-bottom: 0px !important;
+}
+.description{
+    background-color: white !important;
+    text-align: initial;
+    padding: 0px !important;
+}
+.col-post-action{
+    display: flex !important;
+}
+.comment-like{
+    width: -webkit-fill-available !important;
+}
+.comment-action{
+    display:flex !important;
+    margin-bottom: 10px !important;
+}
+.comment-avatar{
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+}
+.comment-input{
+    border: 3px #EFEFEF solid;
+    border-radius: 20px;
+    width:  -webkit-fill-available;
+}
+.post-comment{
+    color: rgb(0, 102, 255);
+    background-color: white;
+    border: none;
+    font-weight: 600;
+    margin-right: 4px;
+}
+.post-comment:focus{
+    outline: -webkit-focus-ring-color auto 0px !important;
+    outline-color: -webkit-focus-ring-color !important;
+    outline-style: auto !important;
+    outline-width: 0px !important;
 }

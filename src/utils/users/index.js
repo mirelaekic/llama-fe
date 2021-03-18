@@ -49,8 +49,8 @@ export const me = async () => {
 // GET ALL USERS 
 export const users = async () => {
     try {
-        const users = await axios.get(`${LLAMA_API}users/me`,{ withCredentials:true})
-        console.log(users)
+        const users = await axios.get(`${LLAMA_API}users`,{ withCredentials:true})
+        console.log(users,"fetching users")
         return users.data
     } catch (error) {
         console.log(error)
@@ -58,7 +58,7 @@ export const users = async () => {
     }
 }   
 // GET USER BY ID 
-export const user = async (id) => {
+export const userById = async (id) => {
     try {
         const user = await axios.get(`${LLAMA_API}users/${id}`,{ withCredentials:true})
         console.log(user)

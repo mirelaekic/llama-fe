@@ -10,6 +10,10 @@ import {
   USER_SUCCESS,
   LOGOUT_SUCCESS,
   LOGOUT_ERROR,
+  GET_SINGLE_USER,
+  GET_SINGLE_USER_ERROR,
+  GET_USERS,
+  GET_USERS_ERROR
 } from "../types";
 import {
   login,
@@ -17,9 +21,27 @@ import {
   logout,
   updateProfile,
   addPicture,
+  userById,
   register,
+  users
 } from "../../utils/users";
 
+export const getUsers = () => {
+  return async (dispatch) => {
+    try {
+      const allUsers = await users();
+      dispatch({
+        type: GET_USERS,
+        payload: allUsers,
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_USERS_ERROR,
+        payload:error
+      });
+    }
+  };
+};
 export const getMe = () => {
   return async (dispatch) => {
     try {
@@ -31,6 +53,21 @@ export const getMe = () => {
     } catch (error) {
       dispatch({
         type: USER_ERROR,
+      });
+    }
+  };
+};
+export const getUserById = (id) => {
+  return async (dispatch) => {
+    try {
+      const user = await userById(id);
+      dispatch({
+        type: GET_SINGLE_USER,
+        payload: user,
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_SINGLE_USER_ERROR,
       });
     }
   };

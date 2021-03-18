@@ -9,7 +9,11 @@ import {
   USER_LOADING,
   USER_SUCCESS,
   LOGOUT_ERROR,
-  LOGOUT_SUCCESS
+  LOGOUT_SUCCESS,
+  GET_SINGLE_USER_ERROR,
+  GET_SINGLE_USER,
+  GET_USERS,
+  GET_USERS_ERROR
 } from "../types";
 
 const initialState = {
@@ -17,10 +21,24 @@ const initialState = {
   user: null,
   authorized: false,
   error: "",
-  token:{}
+  token:{},
+  getUserById:{},
+  allUsers:[],
 };
 export default function (state=initialState,action) {
   switch (action.type) {
+    case GET_USERS:
+      return{
+        ...state,
+        loading:false,
+        allUsers:action.payload
+      }
+    case GET_USERS_ERROR:
+      return{
+        ...state,
+        loading:false,
+        error:action.payload
+      }
     case LOGOUT_ERROR:
       return {
         ...state,
@@ -36,6 +54,12 @@ export default function (state=initialState,action) {
         user:null,
         token:{}
       }
+      case GET_SINGLE_USER_ERROR:
+        return {
+          ...state,
+          getUserById:{},
+          error:"User not found"
+        }
     case LOGIN_ERROR:
       return {
         ...state,
@@ -71,6 +95,11 @@ export default function (state=initialState,action) {
             ...state,
             loading: true
         }
+    case GET_SINGLE_USER:
+      return{
+        ...state,
+        getUserById:action.payload
+      }
     case LOGIN_SUCCESS:
       return {
         ...state,

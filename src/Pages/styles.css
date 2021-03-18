@@ -10,4 +10,7 @@
     background-image:url(../icon/chatgi.jpg);
     background-repeat: round;
   }
-
+.comment-like{
+    padding: 0px !important;
+    align-self: self-start !important;
+}

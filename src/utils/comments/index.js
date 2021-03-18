@@ -1,12 +1,12 @@
 import axios from "axios"
-
-const {LLAMA_API} = process.env
+import backend from "../token"
+const LLAMA_API = process.env.REACT_APP_LLAMA_API
 
 // GET COMMENTS BY POST ID  
 export const comments = async (id) => {
     try {
-        const comments = await axios.get(`${LLAMA_API}comments/${id}`,{ withCredentials:true})
-        console.log(comments)
+        const comments = await backend.get(`${LLAMA_API}comments/${id}`,{ withCredentials:true})
+        console.log(comments.data)
         return comments.data
     } catch (error) {
         console.log(error)
@@ -27,7 +27,8 @@ export const comment = async (id) => {
 // POST COMMENT
 export const postComment = async (id,data) => {
     try {
-        const comment = await axios.post(`${LLAMA_API}comments/${id}`,data,{ withCredentials:true})
+        console.log(id,"TO POST")
+        const comment = await backend.post(`${LLAMA_API}comments/${id}`,{data},{ withCredentials:true})
         console.log(comment)
         return comment.data
     } catch (error) {
