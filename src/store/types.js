@@ -29,8 +29,15 @@ export const COMMENT_SUCCESS = "COMMENT_SUCCESS";
 export const COMMENT_ERROR = "COMMENT_ERROR";
 export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
 export const ERROR_ALL_COMMENTS = "ERROR_ALL_COMMENTS";
+export const COMMENTS_BY_ID = "COMMENTS_BY_ID"
 
 export const FOLLOW_USER = "FOLLOW_USER";
 export const UNFOLLOW_USER = "UNFOLLOW_USER";
 
+export const GET_LIKES = "GET_LIKES";
 export const LIKE_POST = "LIKE_POST";
+export const UNLIKE_POST = "UNLIKE_POST";
+export const LIKE_POST_ERROR = "LIKE_POST_ERROR";
+
+export const LIKE_COMMENT = "LIKE_COMMENT";
+export const LIKE_COMMENT_ERROR = "LIKE_COMMENT_ERROR"

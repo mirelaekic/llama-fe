@@ -19,7 +19,7 @@ export const register = async (credentials) => {
 export const login = async (credentials) => {
     try {
         const login = await backend.post(`${LLAMA_API}users/login`,credentials)
-        console.log(login,"LOGIN    ")
+        console.log(login,"LOGIN")
         return login.data
     } catch (error) {
         return null

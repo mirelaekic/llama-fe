@@ -1,13 +1,12 @@
-import { Avatar, CircularProgress, IconButton } from "@material-ui/core";
+import { Avatar, CircularProgress } from "@material-ui/core";
 import React, { useEffect } from "react";
 import "../styles.css"
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../store/Actions/user";
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import Moment from "react-moment"
-import ChatBubbleOutlineRoundedIcon from '@material-ui/icons/ChatBubbleOutlineRounded';
 import AddComment from "../AddComment/AddComment"
+
 export default function FeedCard() {
   const dispatch = useDispatch();
 
@@ -48,16 +47,6 @@ export default function FeedCard() {
             {p.postImg ? <Card.Img variant="top" src={p.postImg} /> : " "}
             <Card.Body className="comment-like">
             {/**likes */}
-            <Row key={i}>
-                <Col className="col-post-action">
-             <IconButton>
-                    <FavoriteBorderIcon /> 
-             </IconButton><p className="text-muted amount mt-3">123</p>
-             <IconButton>
-             <ChatBubbleOutlineRoundedIcon /> 
-             </IconButton><p className="text-muted amount mt-3">13</p>
-             </Col>
-             </Row>
              <AddComment postId={p._id} />
             </Card.Body>
           </Card>
