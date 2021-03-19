@@ -9,7 +9,6 @@ import { addComment } from "../../store/Actions/comment";
 
 export default function AddComment({ postId }) {
   const dispatch = useDispatch();
-  const comments = useSelector((state) => state.comment.allComments);
   const currentUser = useSelector((state) => state.user.user);;
   const [comment, setComment] = useState("");
 

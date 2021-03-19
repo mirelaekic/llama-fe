@@ -44,20 +44,6 @@ export const publishPost = async (pic, description) => {
           body:formData
         });
         return posts.data;
-    // // } else {
-    // //     const post = await fetch(`${LLAMA_API}posts/me`, {
-    // //         method: "POST",
-    // //         credentials: "include",
-    // //         headers: {
-    // //             "Content-Type": "application/json" 
-    // //         },
-    // //         body:JSON.stringify({description})
-    // //       });
-    // //       if(post.ok){
-    // //          const newPost = await post.json();
-    // //         return newPost
-    // //       }
-    // // }
   } catch (error) {
     console.log(error);
     return null;
