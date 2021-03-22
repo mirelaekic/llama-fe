@@ -9,7 +9,8 @@ import {
 
 const initialState = {
     like:Boolean,
-    isLiked: []
+    isLiked: [],
+    likeLength:null,
 }
 
 export default function (state = initialState,action){

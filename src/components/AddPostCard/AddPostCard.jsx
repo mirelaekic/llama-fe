@@ -34,19 +34,17 @@ export default function AddPostCard() {
         dispatch(uploadPost(pic))
         setPostImg()
     }
-    //console.log(postImg,"img")
     const url = postImg ? URL.createObjectURL(postImg) : ""
-   // console.log(url,"img url")
   const classes = useStyles();
   const user = useSelector((state) => state.user.user)
   return user ? (
     <Card className="post-card">
       <CardContent>
         <Row className="modal-row">
-          <Col lg={1}>
+          <Col lg={1} md={2} sm={2} xs={2}>
             <Avatar alt={user.name} src={user.imgUrl} />
           </Col>
-          <Col lg={11}>
+          <Col lg={11} md={10} sm={10} xs={10}>
             <PostModal
             />
           </Col>

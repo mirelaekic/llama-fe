@@ -1,9 +1,10 @@
 import React from 'react'
-
-export default function HomeNav() {
+import { Card } from 'react-bootstrap'
+import "../styles.css"
+export default function HomeNav({title}) {
     return (
-        <div className="mt-4">
-            <h3>Home</h3>
-        </div>
+        <Card.Header className="sticky-top top-navbar">
+            <h6 className="title">{title}</h6>
+        </Card.Header>
     )
 }

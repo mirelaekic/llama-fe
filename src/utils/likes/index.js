@@ -16,6 +16,17 @@ export const likeForPost = async (id) => {
 export const getLikesForPost = async (id) => {
     try {
         const likes = await backend.get(`${LLAMA_API}like/${id}`,{ withCredentials:true})
+        console.log(likes, "GETTING LIKES DATA")
+        return likes.data
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+}
+//GET ALL LIKES
+export const getAllLikes = async () => {
+    try {
+        const likes = await backend.get(`${LLAMA_API}like/`,{ withCredentials:true})
         //console.log(likes, "GETTING LIKES DATA")
         return likes.data
     } catch (error) {

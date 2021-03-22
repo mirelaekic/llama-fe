@@ -44,11 +44,11 @@ export default function CommentList({ postID }) {
           <>
             {c.postId === postID ? (
               <ListItem key={i} alignItems="flex-start">
-                {users.map((u, i) => (
+                {users.map((u) => (
                   <>
                     {c.userId === u._id ? (
                       <>
-                        <ListItemAvatar key={i}>
+                        <ListItemAvatar>
                           <Avatar alt={u.name} src={u.imgUrl} />
                         </ListItemAvatar>
                         <ListItemText

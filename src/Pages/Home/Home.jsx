@@ -10,31 +10,38 @@ import Search from "../../components/Search/Search";
 import FeedCard from "../../components/FeedCard/FeedCard"
 import AddPostCard from "../../components/AddPostCard/AddPostCard";
 import { CircularProgress } from "@material-ui/core";
+import "../../App.css"
+import "../styles.css"
+import UserRecommendation from "../../components/UserRecommendation/UserRecommendation";
+import { getAllComments } from "../../store/Actions/comment";
 export default function Home() {
+  const [open, setOpen] = React.useState(false);
+  const node = React.useRef();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getMe());
     dispatch(getAllPosts());
+    dispatch(getAllComments())
   }, []);
 
   const user = useSelector((state) => state.user.user);
   const posts = useSelector((state) => state.post.allPosts);
-  console.log(user, "is user auth");
-  console.log(posts, "ALL POSTS");
+
   return user ? (
     <Container>
       <Row>
-        <Col lg={3}>
+         <Col className="sidebar-column" lg={3} md={4}>
           <SideBar />
-        </Col>
-        <Col lg={6}>
-          <HomeNav />
+        </Col> 
+        <Col className="home-column" lg={6} md={8}>
+          <HomeNav title="HOME"/>
           <AddPostCard />
           <FeedCard />
         </Col>
-        <Col lg={3}>
+        <Col lg={3} className="recommendation-column d-xs-none d-sm-none d-md-none d-lg-block" >
           <Search />
+          <UserRecommendation />
         </Col>
       </Row>
     </Container>
