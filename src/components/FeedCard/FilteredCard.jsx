@@ -12,7 +12,7 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatBubbleOutlineRoundedIcon from "@material-ui/icons/ChatBubbleOutlineRounded";
 import { Link } from "react-router-dom";
-export default function FeedCard() {
+export default function FilteredCard(params) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers());
@@ -24,7 +24,8 @@ export default function FeedCard() {
   const isLiked = useSelector((state) => state.like.isLiked);
   const posts = useSelector((state) => state.post.allPosts);
   const allUsers = useSelector((state) => state.user.allUsers);
-
+  const userByID = useSelector((state) => state.user.getUserById)
+  
   const ifUserLiked = (id) => {
    const filterByPost = isLiked.filter((c) => c.postId === id)
    const ifIncludesCU = filterByPost.find((user) => user.user === currentUser._id)
@@ -35,15 +36,23 @@ export default function FeedCard() {
    }
   }
   const [open, setOpen] = useState(false);
-  const locationPath = window.location.pathname
-  console.log(locationPath,"path of the current page")
   const handleOpen = () => {
     setOpen((prev) => !prev);
   };
+  const filterPosts = () =>{
+      if (params.params === "me") {
+        const myPosts =  posts.filter((user) => user.userId === currentUser._id)
+        return myPosts
+      } else {
+        const usersPosts = posts.filter((user) => user.userId === userByID._id)
+        return usersPosts
+      }
+    }
+
   return (
     <>
-      {posts ? (
-        posts.map((p, i) => (
+      {filterPosts() ? (
+        filterPosts().map((p, i) => (
           <>
             <Card key={i} className="post-card mb-2" style={{ width: "auto" }}>
               <Card.Header className="user-info ml-2">
@@ -56,11 +65,9 @@ export default function FeedCard() {
                           <div key={i} className="post-info">
                             <p className="ml-2">
                               {" "}
-                              <Link to={currentUser._id === p.userId ? "/profile/me" : "profile/" + user._id}>
                               <strong>
                                 {user.name} {user.surname}
                               </strong>{" "}
-                              </Link>
                             </p>
                             <p className="posted-at ml-2 text-muted">
                               <Moment fromNow>{p.createdAt}</Moment>
@@ -103,7 +110,7 @@ export default function FeedCard() {
               </Card.Body>
             </Card>
           </>
-        ))
+        )) 
       ) : (
         <CircularProgress />
       )}

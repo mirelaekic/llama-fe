@@ -7,7 +7,8 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import AddPostCard from '../AddPostCard/AddPostCard';
-import FeedCard from '../FeedCard/FeedCard';
+import FilteredCard from '../FeedCard/FilteredCard';
+import { useSelector } from 'react-redux';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,13 +63,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProfileTab() {
+export default function ProfileTab(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
+  const currentUser = useSelector((state) => state.user.user);
+  const posts = useSelector((state) => state.post.allPosts);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const filterPosts = posts.filter((user) => user.userId === currentUser._id)
+  const params = props.props.match.params.id
 
   return (
     <div className={classes.root}>
@@ -84,14 +88,14 @@ export default function ProfileTab() {
           <LinkTab label="Events" href="/spam" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        <AddPostCard />
-        <FeedCard />
+      <TabPanel className="tab-page" value={value} index={0}>
+      {params === "me" ? <AddPostCard /> : null}
+       <FilteredCard params={params}/>
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        Page Two
+      <TabPanel  className="tab-page" value={value} index={1}>
+        <h1>Album</h1>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel className="tab-page" value={value} index={2}>
         Page Three
       </TabPanel>
     </div>

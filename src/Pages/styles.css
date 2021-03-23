@@ -12,7 +12,7 @@
     background-repeat: round;
   }
 .home-column{
-  margin-left: 1rem !important;
+  margin-left: 2rem !important;
   margin-top: 4rem !important;
 }
 .home-header{
@@ -23,7 +23,7 @@
   font-size: 30px !important;
 }
 .profile-info{
-  margin-top: -3rem !important;
+  margin-top: -6rem !important;
 }
 .profile-username{
   font-weight: 100 !important;

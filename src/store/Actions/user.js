@@ -61,6 +61,7 @@ export const getUserById = (id) => {
   return async (dispatch) => {
     try {
       const user = await userById(id);
+      console.log(user,"fetched user")
       dispatch({
         type: GET_SINGLE_USER,
         payload: user,

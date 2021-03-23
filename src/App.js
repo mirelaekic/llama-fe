@@ -9,6 +9,7 @@ import Register from "./Pages/Register/Register";
 import Profile from "./Pages/Profile/Profile";
 import TestSidebar from "./components/TestSidebar/TestSidebar";
 import HomeNav from "./components/HomeNav/HomeNav";
+import ProfileHeader from "./components/ProfileHeader/ProfileHeader";
 function App() {
   return (
     <Router>

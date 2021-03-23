@@ -1,6 +1,7 @@
 .profile-jumbotron {
-  background-image: url(/src/icon/coverPic.jpg);
+  background-image: url(/src/icon/coverPic3.png);
   background-size: cover;
+  background-position: center !important;
   display: list-item;
   list-style-type: none;
   height: 15rem !important;
