@@ -154,6 +154,9 @@
 .post-info p {
   margin-bottom: 0px !important;
 }
+.post-info p a{
+  color: black !important;
+}
 .description {
   background-color: #ffffff !important;
   text-align: initial;
@@ -209,6 +212,9 @@
 }
 .PrivateTabIndicator-colorSecondary-6 {
   background-color: #425664 !important;
+}
+.MuiCardContent-root:last-child {
+   padding-bottom: 0px !important;
 }
 .PrivateTabIndicator-colorSecondary-4 {
   background-color: #425664 !important;
