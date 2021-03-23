@@ -1,0 +1,18 @@
+.profile-jumbotron {
+  background-image: url(/src/icon/coverPic.jpg);
+  background-size: cover;
+  display: list-item;
+  list-style-type: none;
+  height: 15rem !important;
+  margin-bottom: 7rem !important;
+}
+.jumbotron-avatar {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, 45%);
+  width: 10rem !important;
+  height: 10rem !important;
+  border: 2px solid black !important;
+}
+

@@ -22,3 +22,19 @@
   margin-top: 2rem;
   font-size: 30px !important;
 }
+.profile-info{
+  margin-top: -3rem !important;
+}
+.profile-username{
+  font-weight: 100 !important;
+  font-size: 2.8rem !important;
+  text-align: justify !important;
+}
+.profile-detail{
+  text-align: justify !important;
+  margin-bottom: 0px !important;
+}
+.profile-action-button{
+  margin-top: 1rem !important;
+  margin-left: 11rem !important;
+}
