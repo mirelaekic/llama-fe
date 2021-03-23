@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 .login-page {
   text-align: -webkit-center;
   max-width: 100% !important; 
@@ -10,8 +11,9 @@
     max-width: 100% !important; 
     background-image:url(../icon/chatgi.jpg);
     background-repeat: round;
-  }
+}
 .home-column{
+  font-family:  -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", Helvetica, Arial, sans-serif !important;
   margin-left: 2rem !important;
   margin-top: 4rem !important;
 }

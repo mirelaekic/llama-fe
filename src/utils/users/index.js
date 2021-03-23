@@ -104,7 +104,7 @@ export const deleteProfile = async () => {
 //FOLLOW USER 
 export const follow = async (id) => {
     try {
-        const follow = await axios.post(`${LLAMA_API}users/follow/${id}`,{ withCredentials:true})
+        const follow = await backend.post(`${LLAMA_API}users/follow/${id}`,{ withCredentials:true})
         console.log(follow)
         return follow.data
     } catch (error) {
@@ -115,8 +115,9 @@ export const follow = async (id) => {
 //UNFOLLOW USER
 export const unfollow = async (id) => {
     try {
-        const unfollow = await axios.post(`${LLAMA_API}users/unfollow/${id}`,{ withCredentials:true})
-        console.log(unfollow)
+        console.log(id,"the id of the user to UNfollow")
+        const unfollow = await backend.post(`${LLAMA_API}users/unfollow/${id}`,{ withCredentials:true})
+        console.log(unfollow,"the response")
         return unfollow.data
     } catch (error) {
         console.log(error)

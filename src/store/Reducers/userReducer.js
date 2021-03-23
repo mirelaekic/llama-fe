@@ -13,7 +13,9 @@ import {
   GET_SINGLE_USER_ERROR,
   GET_SINGLE_USER,
   GET_USERS,
-  GET_USERS_ERROR
+  GET_USERS_ERROR,
+  FOLLOW_USER,
+  UNFOLLOW_USER
 } from "../types";
 
 const initialState = {
@@ -24,9 +26,25 @@ const initialState = {
   token:{},
   getUserById:{},
   allUsers:[],
+  followUser:{},
+  followingArray:[],
+  successMsg:""
 };
 export default function (state=initialState,action) {
   switch (action.type) {
+    case FOLLOW_USER:
+      return {
+        ...state,
+        loading:false,
+        followUser:action.payload
+      }
+      case UNFOLLOW_USER:
+        return {
+          ...state,
+          loading:false,
+          followingArray:action.payload,
+          successMsg:"user has been unfollowed"
+        }
     case GET_USERS:
       return{
         ...state,

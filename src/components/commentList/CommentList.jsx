@@ -43,7 +43,7 @@ export default function CommentList({ postID }) {
         {comments.map((c, i) => (
           <>
             {c.postId === postID ? (
-              <ListItem key={i} alignItems="flex-start">
+              <ListItem className="comments" key={i} alignItems="flex-start">
                 {users.map((u) => (
                   <>
                     {c.userId === u._id ? (
@@ -52,11 +52,11 @@ export default function CommentList({ postID }) {
                           <Avatar alt={u.name} src={u.imgUrl} />
                         </ListItemAvatar>
                         <ListItemText
+                        className="comment-lists"
                           primary={
                             <React.Fragment>
                               <Typography
                                 component="span"
-                                variant="body2"
                                 className={classes.inline}
                                 color="textPrimary"
                               >
@@ -64,7 +64,6 @@ export default function CommentList({ postID }) {
                               </Typography>
                               <Typography
                                 component="span"
-                                variant="body2"
                                 className={classes.comment}
                                 color="textPrimary"
                               >

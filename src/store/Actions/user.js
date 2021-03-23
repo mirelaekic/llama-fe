@@ -7,6 +7,8 @@ import {
   REGISTER_ERROR,
   USER_ERROR,
   USER_LOADING,
+  FOLLOW_USER,
+  UNFOLLOW_USER,
   USER_SUCCESS,
   LOGOUT_SUCCESS,
   LOGOUT_ERROR,
@@ -21,6 +23,8 @@ import {
   logout,
   updateProfile,
   addPicture,
+  follow,
+  unfollow,
   userById,
   register,
   users
@@ -57,6 +61,36 @@ export const getMe = () => {
     }
   };
 };
+export const followUser = (id) => {
+  return async (dispatch) => {
+    try {
+      const req = await follow(id)
+      console.log(req,"my array of following")
+      dispatch({
+        type:FOLLOW_USER,
+        payload:req
+      })
+      dispatch(getMe())
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+export const unfollowUser = (id) => {
+  return async (dispatch) => {
+    try {
+      const req = await unfollow(id)
+      console.log(req,"getting updated current user")
+      dispatch({
+        type:UNFOLLOW_USER,
+        payload:req.following
+      })
+      dispatch(getMe())
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 export const getUserById = (id) => {
   return async (dispatch) => {
     try {

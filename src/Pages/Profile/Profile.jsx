@@ -8,12 +8,16 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import ProfileDetailCard from '../../components/ProfileDetailCard/ProfileDetailCard';
 import { getMe } from '../../store/Actions/user';
+import { getAllPosts } from '../../store/Actions/post';
+import { getAllComments } from '../../store/Actions/comment';
 export default function Profile(props) {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user.user);
 
     useEffect(() => {
       dispatch(getMe());
+      dispatch(getAllPosts())
+      dispatch(getAllComments())
     }, []);
 
     const userByID = useSelector((state) => state.user.getUserById)

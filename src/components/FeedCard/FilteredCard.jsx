@@ -12,9 +12,11 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatBubbleOutlineRoundedIcon from "@material-ui/icons/ChatBubbleOutlineRounded";
 import { Link } from "react-router-dom";
+import { getAllPosts } from "../../store/Actions/post";
 export default function FilteredCard(params) {
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(getAllPosts())
     dispatch(getUsers());
     dispatch(getLikes())
   }, []);
@@ -25,7 +27,7 @@ export default function FilteredCard(params) {
   const posts = useSelector((state) => state.post.allPosts);
   const allUsers = useSelector((state) => state.user.allUsers);
   const userByID = useSelector((state) => state.user.getUserById)
-  
+
   const ifUserLiked = (id) => {
    const filterByPost = isLiked.filter((c) => c.postId === id)
    const ifIncludesCU = filterByPost.find((user) => user.user === currentUser._id)
@@ -48,7 +50,6 @@ export default function FilteredCard(params) {
         return usersPosts
       }
     }
-
   return (
     <>
       {filterPosts() ? (

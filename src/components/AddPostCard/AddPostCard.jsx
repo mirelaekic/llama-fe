@@ -38,7 +38,7 @@ export default function AddPostCard() {
   const classes = useStyles();
   const user = useSelector((state) => state.user.user)
   return user ? (
-    <Card className="post-card">
+    <Card className="addNewPost ">
       <CardContent>
         {/* <Row className="modal-row">
           <Col lg={1} md={2} sm={2} xs={2}>

@@ -39,10 +39,11 @@
   width: 100% !important;
 }
 .MuiTypography-root {
-  font-family: auto !important;
+  font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
+    Helvetica, Arial, sans-serif !important;
 }
-.sidebar{
-    position: fixed;
+.sidebar {
+  position: fixed;
 }
 .sidebar-link span {
   font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
@@ -67,13 +68,13 @@
   border-radius: 70px !important;
 }
 .post-input {
-  background-color: white ;
+  background-color: white;
   border: none !important;
   cursor: pointer;
-  color:#FFCE54;
+  color: #ffce54;
   padding: 8px;
 }
-.post-input:hover{
+.post-input:hover {
   background-color: #ffcf5427;
 }
 .modal-row {
@@ -83,8 +84,11 @@
   padding: 10px !important;
   font-size: 1rem !important;
 }
-.post-card{
-    margin-top: 2px !important;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+.post-card {
+  font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
+    Helvetica, Arial, sans-serif !important;
+  margin-top: 2px !important;
 }
 .post-card .MuiCardContent-root:last-child {
   padding-bottom: 3px !important ;
@@ -176,12 +180,38 @@
   border-radius: 20px;
   width: -webkit-fill-available;
 }
+.comment-lists span {
+  font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
+    Helvetica, Arial, sans-serif !important;
+  font-size: 14px !important;
+}
 .post-comment {
   color: rgb(0, 102, 255);
   background-color: white;
   border: none;
   font-weight: 600;
   margin-right: 15px;
+}
+.addNewPost {
+  border-radius: 15px !important;
+  border: none !important;
+  box-shadow: 3px -1px 5px -3px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
+  background-color: #ffffff !important;
+}
+.MuiAppBar-colorPrimary {
+  color: #fff;
+  background-color: #C6AD8F !important;
+}
+.MuiTabs-root .MuiTabs-scroller div a:hover{
+  text-decoration: none;
+  color: rgb(228, 228, 228);
+}
+.PrivateTabIndicator-colorSecondary-6 {
+  background-color: #425664 !important;
+}
+.PrivateTabIndicator-colorSecondary-4 {
+  background-color: #425664 !important;
 }
 .post-comment:focus {
   outline: -webkit-focus-ring-color auto 0px !important;
@@ -205,62 +235,62 @@
 .post-card {
   background-color: #ffffff !important;
   border-radius: 15px !important;
-    border: none !important;
+  border: none !important;
   box-shadow: 3px -1px 5px -3px rgb(0 0 0 / 20%),
     0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
 }
-.search-field{
+.search-field {
   border-radius: 20px;
   padding-top: 7px;
   padding-bottom: 7px;
   margin-left: 5rem !important;
-    width: 20rem;
-    padding-left: 31px;
-    border: 1px solid #efefef;
-    background-color: #ececec;
+  width: 20rem;
+  padding-left: 31px;
+  border: 1px solid #efefef;
+  background-color: #ececec;
 }
-.input-icon{
+.input-icon {
   color: grey !important;
-left: 6.4rem !important;
-top: 14px ;
+  left: 6.4rem !important;
+  top: 14px;
   text-align: center;
   position: fixed;
 }
 *:focus {
-    outline: 0 !important;
-    border-color: grey 1px solid;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-.top-navbar .title{
-    text-align: -webkit-left;
-    margin-top: 34px;
+  outline: 0 !important;
+  border-color: grey 1px solid;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
-.homeSuggestionsList{
+.top-navbar .title {
+  text-align: -webkit-left;
+  margin-top: 34px;
+}
+.homeSuggestionsList {
   margin-top: 4rem !important;
   border-radius: 20px !important;
   position: fixed;
-  background-color: #f5f5f5 !important;
+  background-color: #F6F4F2 !important;
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
     0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
-    padding: 15px !important;
+  padding: 15px !important;
 }
-.trends-list{
+.trends-list {
   top: 20rem !important;
   margin-top: 5rem !important;
   border-radius: 20px !important;
   position: fixed;
-  background-color: #EFEFEF !important;
+  background-color: #efefef !important;
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
     0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
-    padding: 15px !important;
+  padding: 15px !important;
 }
 .MuiButton-containedSecondary {
   color: #fff !important;
   background-color: #0e3183 !important;
 }
 .MuiButton-containedSecondary:hover {
-  background-color: #051741  !important;
+  background-color: #051741 !important;
 }
 .trends-list .list-group-item {
   background-color: inherit !important;
@@ -313,7 +343,7 @@ top: 14px ;
   text-align: initial;
   border-bottom: 1px solid rgb(202, 202, 202);
 }
-.linkUser{
+.linkUser {
   font-size: 15px !important;
   line-height: 2.5rem !important;
   margin-left: 10px !important;
@@ -343,23 +373,32 @@ top: 14px ;
   margin-bottom: 0.5rem;
   padding: 0;
 }
-.sidebar{
-  border: 2px solid black;
+.sidebar {
+  border: 5px solid rgb(255, 255, 255);
   border-radius: 40px;
   margin-left: 4px;
   position: fixed !important;
-  background: black !important;
+  background: #425664 !important;
   /*box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
     0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;*/
 }
-.sidebar-logo{
+.sidebar-logo {
   width: 30px !important;
 }
-.sidebar-avatar{
+.sidebar-avatar {
   margin-top: 5px !important;
   margin-left: 10px !important;
 }
-.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo > *, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f > * {
+.sidenav---sidenav-nav---3tvij
+  > .sidenav---sidenav-navitem---uwIJ-
+  > .sidenav---navitem---9uL5T
+  .sidenav---navicon---3gCRo
+  > *,
+.sidenav---sidenav-nav---3tvij
+  > .sidenav---sidenav-navitem---uwIJ-
+  > .sidenav---navitem---9uL5T
+  .sidenav---navtext---1AE_f
+  > * {
   color: white !important;
 }
 .sidenav---sidenav-toggle---1KRjR .sidenav---icon-bar---u1f02 {
@@ -374,12 +413,12 @@ top: 14px ;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
   filter: alpha(opacity=70);
 }
-.sidenav---navtext---1AE_f{
+.sidenav---navtext---1AE_f {
   color: rgb(255, 255, 255) !important;
   font-weight: bold !important;
 }
-.sidebar-userIcon{
+.sidebar-userIcon {
   margin-left: 12px !important;
   margin-top: 5px !important;
 }
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");

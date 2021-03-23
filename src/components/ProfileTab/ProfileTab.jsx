@@ -9,7 +9,7 @@ import Box from '@material-ui/core/Box';
 import AddPostCard from '../AddPostCard/AddPostCard';
 import FilteredCard from '../FeedCard/FilteredCard';
 import { useSelector } from 'react-redux';
-
+import "../styles.css"
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -71,12 +71,11 @@ export default function ProfileTab(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const filterPosts = posts.filter((user) => user.userId === currentUser._id)
   const params = props.props.match.params.id
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className="profile-tab" position="static">
         <Tabs
           variant="fullWidth"
           value={value}
