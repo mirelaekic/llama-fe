@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 .login-page {
   text-align: -webkit-center;
   max-width: 100% !important; 
@@ -10,3 +11,14 @@
     background-image:url(../icon/chatgi.jpg);
     background-repeat: round;
   }
+.home-column{
+  margin-left: 1rem !important;
+  margin-top: 4rem !important;
+}
+.home-header{
+  font-family: 'Alfa Slab One', cursive;
+  text-align: initial;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  font-size: 30px !important;
+}

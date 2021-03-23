@@ -8,18 +8,15 @@ import UserRecommendation from '../../components/UserRecommendation/UserRecommen
 import { CircularProgress } from '@material-ui/core';
 import { useDispatch, useSelector } from "react-redux";
 import HomeNav from '../../components/HomeNav/HomeNav';
-import ProfileHeader from '../../ProfileHeader/ProfileHeader';
+import ProfileHeader from '../../components/ProfileHeader/ProfileHeader';
+import ProfileTab from '../../components/ProfileTab/ProfileTab';
 
 export default function Profile() {
     const user = useSelector((state) => state.user.user);
     return user ? (
         <Container>
           <Row>
-             <Col className="sidebar-column" lg={3} md={4}>
-              <SideBar />
-            </Col> 
-            <Col className="home-column" lg={9} md={8}>
-              <HomeNav title="PROFILE" />
+            <Col className="home-column" lg={12} md={8}>
               <ProfileHeader />
               <Row>
                   <Col lg={4}>
@@ -28,9 +25,7 @@ export default function Profile() {
 
                   </Col>
                   <Col lg={8}>
-              <AddPostCard />
-            {/**filter by the current user*/}
-              <FeedCard />
+                    <ProfileTab />
               </Col>
               </Row>
             </Col>
@@ -42,5 +37,5 @@ export default function Profile() {
         </Container>
       ) : (
         <CircularProgress />
-      );
+      );    
     }

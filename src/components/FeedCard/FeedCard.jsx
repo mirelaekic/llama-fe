@@ -43,7 +43,7 @@ export default function FeedCard() {
       {posts ? (
         posts.map((p, i) => (
           <>
-            <Card key={i} className="post-card" style={{ width: "auto" }}>
+            <Card key={i} className="post-card mb-2" style={{ width: "auto" }}>
               <Card.Header className="user-info ml-2">
                 {allUsers &&
                   allUsers.map((user, i) =>

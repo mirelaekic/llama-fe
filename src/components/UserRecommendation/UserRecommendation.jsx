@@ -23,22 +23,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function UserRecommendation() {
-
   const user = useSelector((state) => state.user.user);
   const allUsers = useSelector((state) => state.user.allUsers);
   
   const classes = useStyles();
-  return (
+  return allUsers && user ? (
     <div>
-      <ListGroup className="homeSuggestionsList">
-        <h3 className="suggestion-header mb-3">Suggestions For You</h3>
+      <ListGroup className="homeSuggestionsList mb-5">
+        <h2 className="suggestion-header mb-3">Suggestions For You</h2>
         {allUsers.slice(1, 5).map((user, i) => (
           <ListGroup.Item key={i}>
             <div className="profile-name">
               <Avatar src={user.imgUrl} className={classes.small} />
               <div className="suggInfo">
                 <Link className="linkUser" to={"profile/" + user._id}>
-                  <strong>{user.name} {user.surname} </strong>
+                  {user.name} {user.surname}
                 </Link>
                 <br />
                 {/* <p className="text-muted">followed by</p> */}
@@ -49,6 +48,25 @@ export default function UserRecommendation() {
           </ListGroup.Item>
         ))}
       </ListGroup>
+    {/* <  <ListGroup className="trends-list">
+        <h2 className="suggestion-header mb-3">Trends For You</h2>
+        {trends.slice(1, 5).map((user, i) => (
+          <ListGroup.Item key={i}>
+            <div className="profile-name">
+              <Avatar src={user.imgUrl} className={classes.small} />
+              <div className="suggInfo">
+                <Link className="linkUser" to={"profile/" + user._id}>
+                  {user.name} {user.surname}
+                </Link>
+                <br />
+                p className="text-muted">followed by</p> 
+              </div>
+            </div>
+            <button className="followButton">Follow
+            </button>
+          </ListGroup.Item>
+        ))}
+      </ListGroup>*/}
     </div>
-  );
+  ) : null;
 }

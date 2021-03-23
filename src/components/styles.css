@@ -43,7 +43,6 @@
 }
 .sidebar{
     position: fixed;
-    width: min-content !important;
 }
 .sidebar-link span {
   font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
@@ -68,10 +67,14 @@
   border-radius: 70px !important;
 }
 .post-input {
-  width: -webkit-fill-available;
-  border: 10px #efefef solid;
-  border-radius: 20px;
+  background-color: white ;
+  border: none !important;
   cursor: pointer;
+  color:#FFCE54;
+  padding: 8px;
+}
+.post-input:hover{
+  background-color: #ffcf5427;
 }
 .modal-row {
   align-items: flex-end !important;
@@ -133,7 +136,8 @@
   background-color: rgb(255 166 0 / 12%) !important;
 }
 .user-info {
-  background-color: white !important;
+  border-radius: 15px !important;
+  background-color: #ffffff !important;
   border-bottom: none !important;
   display: -webkit-inline-box;
 }
@@ -147,7 +151,7 @@
   margin-bottom: 0px !important;
 }
 .description {
-  background-color: white !important;
+  background-color: #ffffff !important;
   text-align: initial;
   padding: 0px !important;
 }
@@ -166,6 +170,7 @@
   margin-right: 10px !important;
 }
 .comment-input {
+  padding-left: 10px;
   margin-right: 10px;
   border: 3px #efefef solid;
   border-radius: 20px;
@@ -176,7 +181,7 @@
   background-color: white;
   border: none;
   font-weight: 600;
-  margin-right: 4px;
+  margin-right: 15px;
 }
 .post-comment:focus {
   outline: -webkit-focus-ring-color auto 0px !important;
@@ -198,19 +203,28 @@
   color: black !important;
 }
 .post-card {
-  border-radius: 0px !important;
+  background-color: #ffffff !important;
+  border-radius: 15px !important;
     border: none !important;
-  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+  box-shadow: 3px -1px 5px -3px rgb(0 0 0 / 20%),
     0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
 }
 .search-field{
-    width: 18rem;
-    padding: 0px;
-    border: 10px solid #efefef;
-    border-radius: 20px;
-    background-color: #efefef;
-    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
-    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
+  border-radius: 20px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-left: 5rem !important;
+    width: 20rem;
+    padding-left: 31px;
+    border: 1px solid #efefef;
+    background-color: #ececec;
+}
+.input-icon{
+  color: grey !important;
+left: 6.4rem !important;
+top: 14px ;
+  text-align: center;
+  position: fixed;
 }
 *:focus {
     outline: 0 !important;
@@ -218,19 +232,44 @@
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-.search{
-    position: fixed;
-}
-.top-navbar{
-    background-color: white !important;
-    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
-    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
-    height: 5rem !important;
-}
 .top-navbar .title{
     text-align: -webkit-left;
-    margin-top: 34px 
-    ;
+    margin-top: 34px;
+}
+.homeSuggestionsList{
+  margin-top: 4rem !important;
+  border-radius: 20px !important;
+  position: fixed;
+  background-color: #f5f5f5 !important;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
+    padding: 15px !important;
+}
+.trends-list{
+  top: 20rem !important;
+  margin-top: 5rem !important;
+  border-radius: 20px !important;
+  position: fixed;
+  background-color: #EFEFEF !important;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
+    padding: 15px !important;
+}
+.MuiButton-containedSecondary {
+  color: #fff !important;
+  background-color: #0e3183 !important;
+}
+.MuiButton-containedSecondary:hover {
+  background-color: #051741  !important;
+}
+.trends-list .list-group-item {
+  background-color: inherit !important;
+  border: none !important;
+  display: inline-flex;
+  justify-content: space-between;
+  padding: 7px !important;
+  width: 19rem;
+  margin-bottom: 6px;
 }
 .homeSuggestionsList .list-group-item {
   background-color: inherit !important;
@@ -241,10 +280,7 @@
   width: 19rem;
   margin-bottom: 6px;
 }
-.homeSuggestionsList{
-  position: fixed;
-  top: 5rem;
-}
+
 .profile-name {
   display: -webkit-box;
   font-size: 15px;
@@ -268,9 +304,19 @@
   margin-top: -6px !important;
 }
 .suggestion-header {
-  font-size: 14px;
-  color: rgba(var(--f52, 142, 142, 142), 1);
+  font-size: 18px;
+  color: rgb(43, 43, 43);
+  font-weight: bold;
   margin-left: 10px;
+  margin-bottom: 10px !important;
+  padding: 16px;
+  text-align: initial;
+  border-bottom: 1px solid rgb(202, 202, 202);
+}
+.linkUser{
+  font-size: 15px !important;
+  line-height: 2.5rem !important;
+  margin-left: 10px !important;
 }
 .myProfile-list {
   margin-bottom: 10px;
@@ -297,3 +343,43 @@
   margin-bottom: 0.5rem;
   padding: 0;
 }
+.sidebar{
+  border: 2px solid black;
+  border-radius: 40px;
+  margin-left: 4px;
+  position: fixed !important;
+  background: black !important;
+  /*box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;*/
+}
+.sidebar-logo{
+  width: 30px !important;
+}
+.sidebar-avatar{
+  margin-top: 5px !important;
+  margin-left: 10px !important;
+}
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo > *, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f > * {
+  color: white !important;
+}
+.sidenav---sidenav-toggle---1KRjR .sidenav---icon-bar---u1f02 {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 0 auto;
+  background-color: white !important;
+  border-radius: 1px;
+  transition: all 0.15s;
+  opacity: 0.7;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: alpha(opacity=70);
+}
+.sidenav---navtext---1AE_f{
+  color: rgb(255, 255, 255) !important;
+  font-weight: bold !important;
+}
+.sidebar-userIcon{
+  margin-left: 12px !important;
+  margin-top: 5px !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');

@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+.top-navbar {
+  z-index: 6 !important;
+  width: -webkit-fill-available;
+  height: 3.5rem !important;
+  position: fixed !important;
+  background-color: white !important;
+}
+.logo-navbar{
+    width: 3rem;
+    margin-left: 2rem !important;
+}
+.navbar-user{
+    display: flex !important;
+}
+.navbar-username{
+    line-height: 2.5 !important;
+    margin-bottom: 0px !important;
+    margin-right: 7px;
+}
+.navbar-avatar{
+    margin-top: 2px !important;
+}
+.logo{
+    font-size:20px !important;
+    font-family: 'Dancing Script', cursive !important;
+}
+.search-navbar{
+    margin-right: 12rem !important;
+}

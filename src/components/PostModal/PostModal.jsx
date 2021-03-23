@@ -12,7 +12,7 @@ import ImageIcon from "@material-ui/icons/Image";
 import MoodIcon from "@material-ui/icons/Mood";
 import { useDispatch, useSelector } from "react-redux";
 import {uploadPost, getAllPosts} from "../../store/Actions/post"
-
+import AddBoxIcon from '@material-ui/icons/AddBox';
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "16px 32px 10px",
     backgroundColor: theme.palette.background.paper,
     border: "2px strong #000",
+    borderRadius:"30px",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -38,7 +39,7 @@ export default function TransitionsModal() {
   const classes = useStyles();
   const dispatch = useDispatch()
   const [open, setOpen] = React.useState(false);
-  const [postImg, setPostImg] = useState()
+  const [postImg, setPostImg] = useState()  
   const [preview, setPreview] = useState()
   const [description, setDescription] = useState("")
   const handleOpen = () => {
@@ -56,11 +57,11 @@ export default function TransitionsModal() {
   }
   //console.log(postImg,"img")
   const url = postImg ? URL.createObjectURL(postImg) : ""
-  //console.log(url,"img url")
+  console.log(url,"img url")
   return user ? (
     <div>
       <button onClick={handleOpen} className="post-input">
-        <p className="text-muted">What's happening?</p>
+        <AddBoxIcon />New post
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -76,7 +77,7 @@ export default function TransitionsModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h5 id="transition-modal-title">
+            <h5 className="modal-title" id="transition-modal-title">
               <strong>Create a post</strong>
             </h5>
             <hr />
@@ -103,20 +104,20 @@ export default function TransitionsModal() {
             {url ? <img className="preview-img" src={url} /> : " "}
               <input
                 accept="image/png, image/jpeg, image/jpg"
-               //className={classes.input}
+                className={classes.input}
                 id="icon-button-file"
                 type="file"
                 id="postImg"
                 onChange={(e) => setPostImg(e.target.files[0])}
               />
               <label htmlFor="icon-button-file">
-                {/* <IconButton
+               <IconButton
                   className="upload-button"
                   aria-label="upload picture"
                   component="span"
                 >
                   <ImageIcon />
-                </IconButton> */}
+                </IconButton> 
               </label>
               <IconButton className="emoji-button" aria-label="add emoji">
                 <MoodIcon />

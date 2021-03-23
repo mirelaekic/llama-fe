@@ -14,6 +14,7 @@ import "../../App.css"
 import "../styles.css"
 import UserRecommendation from "../../components/UserRecommendation/UserRecommendation";
 import { getAllComments } from "../../store/Actions/comment";
+import TestSidebar from "../../components/TestSidebar/TestSidebar";
 export default function Home() {
   const [open, setOpen] = React.useState(false);
   const node = React.useRef();
@@ -29,18 +30,14 @@ export default function Home() {
   const posts = useSelector((state) => state.post.allPosts);
 
   return user ? (
-    <Container>
+    <Container className="home-container"> 
       <Row>
-         <Col className="sidebar-column" lg={3} md={4}>
-          <SideBar />
-        </Col> 
-        <Col className="home-column" lg={6} md={8}>
-          <HomeNav title="HOME"/>
+        <Col className="home-column" lg={8} md={12}>
           <AddPostCard />
+          <h1 className="home-header">Your feed</h1>
           <FeedCard />
         </Col>
         <Col lg={3} className="recommendation-column d-xs-none d-sm-none d-md-none d-lg-block" >
-          <Search />
           <UserRecommendation />
         </Col>
       </Row>
