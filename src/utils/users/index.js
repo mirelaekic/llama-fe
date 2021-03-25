@@ -71,7 +71,8 @@ export const userById = async (id) => {
 //UPDATE PROFILE
 export const updateProfile = async (update) => {
     try {
-        const response = await axios.put(`${LLAMA_API}users/me`,update,{ withCredentials:true})
+        console.log(update,"the update")
+        const response = await backend.put(`${LLAMA_API}users/me`,update,{ withCredentials:true})
         console.log(response)
         return response.data
     } catch (error) {

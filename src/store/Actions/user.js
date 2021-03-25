@@ -15,7 +15,10 @@ import {
   GET_SINGLE_USER,
   GET_SINGLE_USER_ERROR,
   GET_USERS,
-  GET_USERS_ERROR
+  GET_USERS_ERROR,
+  UPDATED_USER_SUCCESS,
+  UPDATED_USER_ERROR,
+  UPDATED_USER_LOADING
 } from "../types";
 import {
   login,
@@ -29,7 +32,28 @@ import {
   register,
   users
 } from "../../utils/users";
-
+export const changeProfile = (avatar,cover,data) => {
+  return async (dispatch) => {
+    dispatch({
+      type:UPDATED_USER_LOADING
+    })
+    try {
+      await updateProfile(data)
+      if(avatar){
+        await addPicture()
+      }
+      dispatch({
+        type:UPDATED_USER_SUCCESS
+      })
+      dispatch(getMe())
+    } catch (error) {
+      console.log(error)
+      dispatch({
+        type:UPDATED_USER_ERROR
+      })
+    }
+  }
+}
 export const getUsers = () => {
   return async (dispatch) => {
     try {

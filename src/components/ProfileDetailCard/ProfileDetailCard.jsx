@@ -5,7 +5,6 @@ import "./ProfileDetail.css";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { followUser, getMe, getUserById, unfollowUser } from "../../store/Actions/user";
-import ProfileSidebar from "../ProfileSidebar/ProfileSidebar";
 import PersonAddDisabledIcon from "@material-ui/icons/PersonAddDisabled";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import SettingsModal from "../SettingsModal/SettingsModal";
@@ -21,7 +20,6 @@ export default function ProfileDetailCard(props) {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.user);
   const userByID = useSelector((state) => state.user.getUserById);
-  console.log(userByID.followers," ------the user followers ---- id")
   const posts = useSelector((state) => state.post.allPosts);
 
   const followTheUser = async (id) => {
@@ -74,14 +72,19 @@ const filterUserFollowing = () => {
 }
   return currentUser && userByID ? (
     <div className="profile-details-column">
-      <p className="text-muted profile-location">
-        <LocationOnIcon /> location
-      </p>
+      {params === "me" ? 
+      (currentUser.city || currentUser.country ? <p className="text-muted profile-location">
+        <LocationOnIcon /> {currentUser.city},{currentUser.country}
+      </p> : null)
+      : 
+      (userByID.city || userByID.country ? <p className="text-muted profile-location">
+        <LocationOnIcon /> {userByID.city},{userByID.country}
+      </p> : null)}
 
       {params === "me" ? (
-        <p className="user-description">{currentUser.description}</p>
+        <p className="user-description">{currentUser.about}</p>
       ) : (
-        <p className="user-description">{userByID.description}</p>
+        <p className="user-description">{userByID.about}</p>
       )}
       <Row className="mt-2">
         <Col>

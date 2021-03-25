@@ -1,11 +1,9 @@
 import React,{useEffect} from 'react'
 import { Col, Row, Container } from "react-bootstrap";
-import { Button, CircularProgress, IconButton } from '@material-ui/core';
+import {  CircularProgress, IconButton } from '@material-ui/core';
 import { useDispatch, useSelector } from "react-redux";
 import ProfileHeader from '../../components/ProfileHeader/ProfileHeader';
 import ProfileTab from '../../components/ProfileTab/ProfileTab';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import ProfileDetailCard from '../../components/ProfileDetailCard/ProfileDetailCard';
 import { getMe } from '../../store/Actions/user';
 import { getAllPosts } from '../../store/Actions/post';
@@ -21,9 +19,8 @@ export default function Profile(props) {
     }, []);
 
     const userByID = useSelector((state) => state.user.getUserById)
-    console.log(userByID,"the user")
     const params = props.match.params.id
-    return user ? (
+    return user && userByID ? (
         <Container>
           <Row>
             <Col className="home-column" lg={12} md={8}>

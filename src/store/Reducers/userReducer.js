@@ -15,7 +15,10 @@ import {
   GET_USERS,
   GET_USERS_ERROR,
   FOLLOW_USER,
-  UNFOLLOW_USER
+  UNFOLLOW_USER,
+  UPDATED_USER_ERROR,
+  UPDATED_USER_SUCCESS,
+  UPDATED_USER_LOADING
 } from "../types";
 
 const initialState = {
@@ -32,6 +35,23 @@ const initialState = {
 };
 export default function (state=initialState,action) {
   switch (action.type) {
+    case UPDATED_USER_SUCCESS:
+      return {
+        ...state,
+        loading:false,
+        successMsg:"Profile successfully updated!"
+      }
+    case UPDATED_USER_ERROR:
+      return {
+        ...state,
+        loading:false,
+        error:"Something went wrong"
+      }
+    case UPDATED_USER_LOADING:
+      return {
+        ...state,
+        loading:true
+      }
     case FOLLOW_USER:
       return {
         ...state,
