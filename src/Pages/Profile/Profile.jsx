@@ -29,21 +29,15 @@ export default function Profile(props) {
             <Col className="home-column" lg={12} md={8}>
               <ProfileHeader props={props}/>
               <Row>
-                  <Col lg={4} className="d-xs-none d-sm-none d-md-block d-lg-block">
-                    <ProfileDetailCard props={props}/>
-                  </Col>
-                  <Col lg={8}>
+                  <Col lg={4} md={12} sm={12} className="d-xs-none d-sm-none d-md-block d-lg-block mt-3">
                       <div className="profile-info">
                         <Row>
-                            <Col ><h2 className="profile-username">{params === "me" ? user.name : userByID.name} {params === "me" ? user.surname : userByID.surname} </h2>
-                            <p className="text-muted profile-detail"><LocationOnIcon /> location</p></Col>
-                            <Col>
-                            <div className="profile-action-button">
-                              {params === "me" ? null : <Button><ChatBubbleIcon /> </Button>}
-                            </div>
-                            </Col>
+                            <Col ><h2 className="profile-username">{params === "me" ? user.name : userByID.name} {params === "me" ? user.surname : userByID.surname} </h2></Col>
                             </Row>
                       </div>
+                    <ProfileDetailCard props={props}/>
+                  </Col>
+                  <Col lg={8} md={12} sm={12}>
                     <ProfileTab props={props} />
               </Col>
               </Row>

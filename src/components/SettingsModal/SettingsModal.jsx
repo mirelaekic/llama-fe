@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, IconButton } from "@material-ui/core";
+import { Avatar,Button, IconButton } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -39,8 +39,8 @@ export default function SettingsModal() {
   };
 
   return (
-    <div>
-      <IconButton onClick={handleOpen}  type="button" className="settings-button"><SettingsIcon /></IconButton>
+    <>
+      <Button onClick={handleOpen}>Edit profile</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -55,11 +55,11 @@ export default function SettingsModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-              <IconButton className="close-settings-button" onClick={handleClose}><HighlightOffOutlinedIcon /></IconButton>
+              <IconButton  onClick={handleClose}><HighlightOffOutlinedIcon /></IconButton>
             <SettingsForm />
           </div>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }

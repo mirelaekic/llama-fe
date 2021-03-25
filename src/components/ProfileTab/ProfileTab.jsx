@@ -10,6 +10,7 @@ import AddPostCard from '../AddPostCard/AddPostCard';
 import FilteredCard from '../FeedCard/FilteredCard';
 import { useSelector } from 'react-redux';
 import "../styles.css"
+import ProfileAlbum from '../ProfileAlbum/ProfileAlbum';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -57,7 +58,7 @@ function LinkTab(props) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-      marginTop:"2rem",
+      marginTop:"-6rem",
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
@@ -88,11 +89,10 @@ export default function ProfileTab(props) {
         </Tabs>
       </AppBar>
       <TabPanel className="tab-page" value={value} index={0}>
-      {params === "me" ? <AddPostCard /> : null}
        <FilteredCard params={params}/>
       </TabPanel>
       <TabPanel  className="tab-page" value={value} index={1}>
-        <h1>Album</h1>
+        <ProfileAlbum parmas={params}/>
       </TabPanel>
       <TabPanel className="tab-page" value={value} index={2}>
         Page Three

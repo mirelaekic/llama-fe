@@ -2,3 +2,21 @@
     background-color: rgba(63, 102, 230, 0.507) !important;
     border: solid 3px blue;
 }
+.profile-buttons{
+    display: grid;
+}
+.profile-buttons button{
+    margin-top: 10px;
+    background-color: #42566479 !important;
+    color: white;
+    font-weight: bold;
+}
+.follow-button{
+    width: -webkit-fill-available;
+    color: white !important;
+    font-weight: bold !important;
+    background-color: rgb(66 86 100) !important;
+}
+.unfollow-button{
+    background-color: white !important;
+}

@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal() {
+export default function PostModal() {
 
   const user = useSelector((state) => state.user.user);
   const classes = useStyles();
@@ -55,14 +55,13 @@ export default function TransitionsModal() {
       setDescription("")
       setPostImg(null)
   }
-  //console.log(postImg,"img")
+
   const url = postImg ? URL.createObjectURL(postImg) : ""
-  console.log(url,"img url")
   return user ? (
-    <div>
-      <button onClick={handleOpen} className="post-input">
+    <>
+      {window.location.pathname === "/" ? <button onClick={handleOpen} className="post-input">
         <AddBoxIcon />New post
-      </button>
+      </button> : <Button onClick={handleOpen}>Add new post</Button>}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -84,7 +83,6 @@ export default function TransitionsModal() {
             <div>
               <div className="user-info">
                 <Avatar alt={user.name} src={user.imgUrl} />
-
                 <div className="user ml-2">
                   {user.name} {user.surname}
                 </div>
@@ -104,7 +102,7 @@ export default function TransitionsModal() {
             {url ? <img className="preview-img" src={url} /> : " "}
               <input
                 accept="image/png, image/jpeg, image/jpg"
-                className={classes.input}
+                //className={classes.input}
                 id="icon-button-file"
                 type="file"
                 id="postImg"
@@ -143,7 +141,7 @@ export default function TransitionsModal() {
           </div>
         </Fade>
       </Modal>
-    </div>
+    </>
   ) : (
     <CircularProgress />
   );

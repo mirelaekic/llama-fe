@@ -28,9 +28,9 @@
   margin-top: -6rem !important;
 }
 .profile-username{
-  font-weight: 100 !important;
-  font-size: 2.8rem !important;
-  text-align: justify !important;
+  font-weight: bold !important;
+  font-size: 1.8rem !important;
+  text-align: center !important;
 }
 .profile-detail{
   text-align: justify !important;

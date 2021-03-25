@@ -1,5 +1,4 @@
 .profile-jumbotron {
-  background-image: url(/src/icon/coverPic4.png);
   background-size: cover;
   background-position: center !important;
   display: list-item;
@@ -11,7 +10,7 @@
   position: absolute;
   top: 50%;
   left: 15%;
-  transform: translate(-50%, 45%);
+  transform: translate(-50%, 20%);
   width: 10rem !important;
   height: 10rem !important;
   border: 2px solid black !important;

@@ -41,7 +41,7 @@ export default function FilteredCard(params) {
   const handleOpen = () => {
     setOpen((prev) => !prev);
   };
-  const filterPosts = () =>{
+ const filterPosts = () =>{
       if (params.params === "me") {
         const myPosts =  posts.filter((user) => user.userId === currentUser._id)
         return myPosts
