@@ -21,7 +21,7 @@ export default function ProfileDetailCard(props) {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.user);
   const userByID = useSelector((state) => state.user.getUserById);
-  console.log(params,"the user by id")
+  console.log(userByID.followers," ------the user followers ---- id")
   const posts = useSelector((state) => state.post.allPosts);
 
   const followTheUser = async (id) => {
@@ -41,15 +41,37 @@ export default function ProfileDetailCard(props) {
 
   const filterMyFollowers = () => {
       if(currentUser){
-          const
-          return
+          const filter = currentUser.followers.length;
+          return filter
+      } 
+  }
+  const filterUserFollowers = () => {
+      const filter = userByID.followers;
+      if(filter){
+          const leng = filter.length;
+          return leng
+      } else {
+          return 0
       }
   }
-   currentUser && currentUser.followers.length;
-  const filterUserFollowers =userByID && userByID.followers.length;
-  const filterMyFollowing = currentUser && currentUser.following.length;
-  const filterUserFollowing = userByID && userByID.following.length;
-
+  const filterMyFollowing = () => {
+    const arr = currentUser.following;
+    if(arr){
+        const leng = arr.length;
+        return leng
+    } else {
+        return 0
+    }
+}
+const filterUserFollowing = () => {
+    const arr = userByID.following;
+    if(arr){
+        const leng = arr.length;
+        return leng
+    } else {
+        return 0
+    }
+}
   return currentUser && userByID ? (
     <div className="profile-details-column">
       <p className="text-muted profile-location">
@@ -64,17 +86,17 @@ export default function ProfileDetailCard(props) {
       <Row className="mt-2">
         <Col>
           {params === "me" ? (
-            <strong>{filterMyFollowing}</strong>
+            <strong>{filterMyFollowing()}</strong>
           ) : (
-            <strong>{filterUserFollowing}</strong>
+            <strong>{filterUserFollowing()}</strong>
           )}
           <p className="text-muted">Following</p>
         </Col>
         <Col>
           {params === "me" ? (
-            <strong>{filterMyFollowers}</strong>
+            <strong>{filterMyFollowers()}</strong>
           ) : (
-            <strong>{filterUserFollowers}</strong>
+            <strong>{filterUserFollowers()}</strong>
           )}{" "}
           <p className="text-muted">Followers</p>
         </Col>
