@@ -26,6 +26,7 @@ export const POST_ERROR = "POST_ERROR";
 export const MY_POSTS = "MY_POSTS";
 export const UPLOAD_POST = "UPLOAD_POST";
 export const SINGLE_POST = "SINGLE_POST"
+export const DELETE_POST = "DELETE_POST"
 
 export const COMMENT_LOADING = "COMMENT_LOADING";
 export const COMMENT_SUCCESS = "COMMENT_SUCCESS";
@@ -44,3 +45,7 @@ export const LIKE_POST_ERROR = "LIKE_POST_ERROR";
 
 export const LIKE_COMMENT = "LIKE_COMMENT";
 export const LIKE_COMMENT_ERROR = "LIKE_COMMENT_ERROR"
+
+export const GET_ROOMS = "GET_ROOMS"
+export const ERROR_ROOMS = "ERROR_ROOMS"
+export const GET_ROOM = "GET_ROOM"

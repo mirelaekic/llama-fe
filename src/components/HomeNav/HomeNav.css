@@ -28,3 +28,9 @@
 .search-navbar{
     margin-right: 12rem !important;
 }
+.profile-link{
+    color: #202020 !important;
+}
+.profile-link:hover{
+    text-decoration: none !important;
+}

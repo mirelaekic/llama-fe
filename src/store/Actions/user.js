@@ -32,16 +32,33 @@ import {
   register,
   users
 } from "../../utils/users";
-export const changeProfile = (avatar,cover,data) => {
+export const changeProfile = (data) => {
+  return async (dispatch) => {
+    dispatch({
+      type:UPDATED_USER_LOADING
+    })
+    console.log(data,"tp be updated")
+    try {
+      await updateProfile(data)
+      dispatch({
+        type:UPDATED_USER_SUCCESS
+      })
+      dispatch(getMe())
+    } catch (error) {
+      console.log(error)
+      dispatch({
+        type:UPDATED_USER_ERROR
+      })
+    }
+  }
+}
+export const changeProfilePicture = (avatar) => {
   return async (dispatch) => {
     dispatch({
       type:UPDATED_USER_LOADING
     })
     try {
-      await updateProfile(data)
-      if(avatar){
-        await addPicture()
-      }
+      await addPicture(avatar)
       dispatch({
         type:UPDATED_USER_SUCCESS
       })

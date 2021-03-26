@@ -1,14 +1,26 @@
 import React from "react";
-import { Card, Nav, Navbar, Form, FormControl, Button } from "react-bootstrap";
+import { Card, Nav, Navbar, Form } from "react-bootstrap";
 import Search from "../Search/Search";
 import "./HomeNav.css";
 import llamaLogo8 from "../../icon/llamaLogo8.jpg";
 import llamaLogoX from "../../icon/llamaLogoX.jpg";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { Avatar, IconButton } from "@material-ui/core";
-import { useSelector } from "react-redux";
+import { Avatar, IconButton, Button, Menu, MenuItem } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutAction } from "../../store/Actions/user";
+import { Link } from "react-router-dom";
 
 export default function HomeNav() {
+  const dispatch = useDispatch();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  }; 
   const user = useSelector((state) => state.user.user);
   return user ? (
     <Navbar className="top-navbar">
@@ -24,7 +36,29 @@ export default function HomeNav() {
           </IconButton>
         </Nav.Item>
         <Nav.Item className="navbar-user">
-          <Avatar className="navbar-avatar" src={user.imgUrl} alt={user.name} />
+          <Button
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
+            <Avatar
+              className="navbar-avatar"
+              src={user.imgUrl}
+              alt={user.name}
+            />
+          </Button>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <Link className="profile-link" to="profile/me">
+            <MenuItem>Profile</MenuItem>
+            </Link>
+            <MenuItem onClick={() => dispatch(logoutAction())}>Logout</MenuItem>
+          </Menu>
         </Nav.Item>
       </Nav>
     </Navbar>

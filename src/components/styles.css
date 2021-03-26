@@ -429,3 +429,11 @@
   margin-top: 5px !important;
 }
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
+.dropdown-btn{
+  background-color: white !important;
+  border-color: white !important;
+  padding: 0px !important;
+}
+.dropdown-btn:focus{
+  box-shadow: none !important;
+}

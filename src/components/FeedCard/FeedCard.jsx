@@ -12,11 +12,15 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatBubbleOutlineRoundedIcon from "@material-ui/icons/ChatBubbleOutlineRounded";
 import { Link } from "react-router-dom";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import { Dropdown } from "react-bootstrap";
+import { removePost } from "../../store/Actions/post";
+
 export default function FeedCard() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers());
-    dispatch(getLikes())
+    dispatch(getLikes());
   }, []);
 
   const currentUser = useSelector((state) => state.user.user);
@@ -26,17 +30,19 @@ export default function FeedCard() {
   const allUsers = useSelector((state) => state.user.allUsers);
 
   const ifUserLiked = (id) => {
-   const filterByPost = isLiked.filter((c) => c.postId === id)
-   const ifIncludesCU = filterByPost.find((user) => user.user === currentUser._id)
-   if(ifIncludesCU === undefined) {
-     return false
-   } else {
-     return true
-   }
-  }
+    const filterByPost = isLiked.filter((c) => c.postId === id);
+    const ifIncludesCU = filterByPost.find(
+      (user) => user.user === currentUser._id
+    );
+    if (ifIncludesCU === undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  };
   const [open, setOpen] = useState(false);
-  const locationPath = window.location.pathname
-  console.log(locationPath,"path of the current page")
+  const locationPath = window.location.pathname;
+  console.log(locationPath, "path of the current page");
   const handleOpen = () => {
     setOpen((prev) => !prev);
   };
@@ -56,10 +62,16 @@ export default function FeedCard() {
                           <div key={i} className="post-info">
                             <p className="ml-2">
                               {" "}
-                              <Link to={currentUser._id === p.userId ? "/profile/me" : "profile/" + user._id}>
-                              <strong>
-                                {user.name} {user.surname}
-                              </strong>{" "}
+                              <Link
+                                to={
+                                  currentUser._id === p.userId
+                                    ? "/profile/me"
+                                    : "profile/" + user._id
+                                }
+                              >
+                                <strong>
+                                  {user.name} {user.surname}
+                                </strong>{" "}
                               </Link>
                             </p>
                             <p className="posted-at ml-2 text-muted">
@@ -67,6 +79,27 @@ export default function FeedCard() {
                             </p>
                           </div>
                         </Row>
+
+                        <div className="ml-auto">
+                          <Dropdown>
+                            <Dropdown.Toggle className="dropdown-btn"> 
+                              <IconButton>
+                                <MoreHorizIcon />
+                              </IconButton>
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                             {currentUser._id === p.userId ? null : <Dropdown.Item>
+                                Unfollow {user.name} {user.surname}
+                              </Dropdown.Item>}
+                             {currentUser._id === p.userId ?
+                              ( <>
+                              <Dropdown.Item onClick={() => dispatch(removePost(p._id))}>
+                                Delete post
+                              </Dropdown.Item>
+                              </>) : null}
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </div>
                       </>
                     ) : (
                       " "
@@ -84,10 +117,20 @@ export default function FeedCard() {
               <Card.Body className="comment-like">
                 <Row>
                   <Col className="col-post-action">
-                    <IconButton className="like-button" key={p._id} onClick={() => dispatch(likePost(p._id))}>
-                      {ifUserLiked(p._id) ? <FavoriteIcon className="liked-button" /> : <FavoriteBorderIcon className="not-liked" />}
+                    <IconButton
+                      className="like-button"
+                      key={p._id}
+                      onClick={() => dispatch(likePost(p._id))}
+                    >
+                      {ifUserLiked(p._id) ? (
+                        <FavoriteIcon className="liked-button" />
+                      ) : (
+                        <FavoriteBorderIcon className="not-liked" />
+                      )}
                     </IconButton>
-                    <p className="text-muted amount mt-3">{isLiked.filter((l) => l.postId === p._id).length}</p>
+                    <p className="text-muted amount mt-3">
+                      {isLiked.filter((l) => l.postId === p._id).length}
+                    </p>
                     <IconButton onClick={handleOpen}>
                       <ChatBubbleOutlineRoundedIcon className="comment-button" />
                     </IconButton>
@@ -97,9 +140,7 @@ export default function FeedCard() {
                   </Col>
                 </Row>
                 {/**likes */}
-               {open ? 
-                (<AddComment postId={p._id} />) : null
-                }
+                {open ? <AddComment postId={p._id} /> : null}
               </Card.Body>
             </Card>
           </>

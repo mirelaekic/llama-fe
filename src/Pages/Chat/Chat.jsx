@@ -1,8 +1,9 @@
 import React from 'react'
 import MessageContainer from "../../components/MessageContainer/MessageContainer"
+import "../styles.css"
 export default function Chat() {
     return (
-        <div>
+        <div className="chat-page">
             <MessageContainer />
         </div>
     )

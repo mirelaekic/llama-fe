@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import createUID from 'create-unique-id';
-
+import { useDispatch, useSelector } from "react-redux";
+import { getAllRooms } from "../../store/Actions/rooms";
+import ChatList from "../ChatList/ChatList"
 let socket;
 const CONNECTION_PORT = "http://localhost:9010/";
 const connOpt = {
@@ -12,26 +14,17 @@ function MessageContainer() {
   // Before Login
   const [loggedIn, setLoggedIn] = useState(false);
   const [room, setRoom] = useState("");
-  const [username, setUsername] = useState("");
-
+  const rooms = useSelector((state) => state.rooms.allRooms)
+  const user = useSelector((state) => state.user.user)
   // After Login
   const [message, setMessage] = useState("");
-  const [userId, setUserId] = useState("");
+  const [userId] = useState(user._id);
   const [messageList, setMessageList] = useState([]);
-  const [fetchMessages, setFetchMessages] = useState([])
-  
-  // useEffect(() => {
-  //   socket.on("joinRoom", (data) => {
-  //     setMessageList(data);
-  //   });
-  // });
-  // 
-  // console.log(fetchMessages,"FETCHED MESSAGES")
+  const dispatch = useDispatch()
   useEffect(() => {
+    dispatch(getAllRooms())
     socket.on("message", (msg) => setMessageList((messages) => messages.concat(msg)));
-    //listening to any event of type "bmsg" and reacting by calling the function
-    //that will append a new message to the "messages" array
-    socket.on("connect", () => console.log(socket.id,"USER ID")); //check if socket is connected
+    socket.on("connect", () => console.log(socket.id,"USER ID")); 
 
     return () => socket.removeAllListeners(); //componentWillUnmount
   }, []);
@@ -42,9 +35,10 @@ function MessageContainer() {
     let newJoin = {
       room:room,
       userId,
-      username:username
+      username:user.name
     }
     //Messages(room)
+    console.log(newJoin,"the new user joined")
     socket.emit("joinRoom", newJoin);
   };
 
@@ -53,39 +47,26 @@ function MessageContainer() {
     let messageContent = {
       room: room,
       message:message,
-      sender:username,
+      sender:user.name,
       userId
     };
+    console.log(messageContent,"message")
     await socket.emit("sendMessage", messageContent);
-    //Messages(room)
-    //setMessageList([...messageList, messageContent.content]);
     setMessage("");
   };
   console.log(messageList, "MESSAGES")
+  console.log(userId,"the current user id")
   return (
     <div className="App">
+      <ChatList />
        {!loggedIn ? (
         <div className="logIn">
           <div className="inputs">
             <input
               type="text"
-              placeholder="Name..."
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-            />
-            <input
-              type="text"
               placeholder="Room..."
               onChange={(e) => {
                 setRoom(e.target.value);
-              }}
-            />
-            <input
-              type="text"
-              placeholder="userId..."
-              onChange={(e) => {
-                setUserId(e.target.value);
               }}
             />
           </div>
@@ -115,7 +96,7 @@ function MessageContainer() {
                 setMessage(e.target.value);
               }}
             />
-            <button onClick={sendMessage}>Send</button>
+            <button onClick={(e) => sendMessage(e)}>Send</button>
           </div> 
         </div>
       )} 

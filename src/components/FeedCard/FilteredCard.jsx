@@ -1,7 +1,7 @@
 import { Avatar, CircularProgress } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import "../styles.css";
-import { Card, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, Dropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../store/Actions/user";
 import Moment from "react-moment";
@@ -12,7 +12,8 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatBubbleOutlineRoundedIcon from "@material-ui/icons/ChatBubbleOutlineRounded";
 import { Link } from "react-router-dom";
-import { getAllPosts } from "../../store/Actions/post";
+import { getAllPosts, removePost } from "../../store/Actions/post";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 export default function FilteredCard(params) {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -75,6 +76,26 @@ export default function FilteredCard(params) {
                             </p>
                           </div>
                         </Row>
+                        <div className="ml-auto">
+                          <Dropdown>
+                            <Dropdown.Toggle className="dropdown-btn"> 
+                              <IconButton>
+                                <MoreHorizIcon />
+                              </IconButton>
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                             {currentUser._id === p.userId ? null : <Dropdown.Item>
+                                Unfollow {user.name} {user.surname}
+                              </Dropdown.Item>}
+                             {currentUser._id === p.userId ?
+                              ( <>
+                              <Dropdown.Item onClick={() => dispatch(removePost(p._id))}>
+                                Delete post
+                              </Dropdown.Item>
+                              </>) : null}
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </div>
                       </>
                     ) : (
                       " "

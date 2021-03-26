@@ -55,7 +55,7 @@ export default function SettingsModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-              <IconButton  onClick={handleClose}><HighlightOffOutlinedIcon /></IconButton>
+              <IconButton className="close-settings-button" onClick={handleClose}><HighlightOffOutlinedIcon /></IconButton>
             <SettingsForm open={open} setOpen={setOpen} />
           </div>
         </Fade>
