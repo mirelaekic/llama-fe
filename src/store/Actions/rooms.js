@@ -9,7 +9,6 @@ export const getAllRooms = () => {
                 type:GET_ROOMS,
                 payload:allRooms
             })
-            console.log(allRooms,"all fetched rooms")
         } catch (error) {
             console.log(error)
             dispatch({type:ERROR_ROOMS})
@@ -24,7 +23,6 @@ export const getOneRoom = (id) => {
                 type:GET_ROOM,
                 payload:room
             })
-            console.log(room,"one room")
         } catch (error) {
             console.log(error)
             dispatch({type:ERROR_ROOMS})

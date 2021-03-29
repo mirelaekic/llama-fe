@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import createUID from 'create-unique-id';
+import "./MessageContainer.css"
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRooms } from "../../store/Actions/rooms";
 import ChatList from "../ChatList/ChatList"
+import { Button } from "@material-ui/core";
 let socket;
 const CONNECTION_PORT = "http://localhost:9010/";
 const connOpt = {
   transports: ["websocket"], // socket connectin options
 };
 socket = io(CONNECTION_PORT,connOpt)
-function MessageContainer() {
+function MessageContainer({roomId}) {
+  console.log(roomId,"the room ID in message container")
   // Before Login
   const [loggedIn, setLoggedIn] = useState(false);
-  const [room, setRoom] = useState("");
+  const [room] = useState(roomId);
   const rooms = useSelector((state) => state.rooms.allRooms)
   const user = useSelector((state) => state.user.user)
   // After Login
@@ -57,18 +60,10 @@ function MessageContainer() {
   console.log(messageList, "MESSAGES")
   console.log(userId,"the current user id")
   return (
-    <div className="App">
-      <ChatList />
+    <div className="chat container">
        {!loggedIn ? (
         <div className="logIn">
           <div className="inputs">
-            <input
-              type="text"
-              placeholder="Room..."
-              onChange={(e) => {
-                setRoom(e.target.value);
-              }}
-            />
           </div>
           <button onClick={connectToRoom}>Enter Chat</button>
         </div>
@@ -79,7 +74,7 @@ function MessageContainer() {
                 <div
                 key={i}
                   className="messageContainer"
-                  //id={val.sender === username ? "You" : "Other"}
+                  id={val.sender === user.name ? "You" : "Other"}
                 >
                   <div className="messageIndividual">
                     {val.sender}: {val.text}
@@ -96,7 +91,7 @@ function MessageContainer() {
                 setMessage(e.target.value);
               }}
             />
-            <button onClick={(e) => sendMessage(e)}>Send</button>
+            <Button onClick={(e) => sendMessage(e)}>Send</Button>
           </div> 
         </div>
       )} 

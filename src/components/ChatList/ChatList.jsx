@@ -9,6 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { useDispatch, useSelector } from "react-redux";
 import { getOneRoom } from '../../store/Actions/rooms';
+import MessageContainer from '../MessageContainer/MessageContainer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,20 +33,22 @@ const getRoomID = (id) => {
 
 console.log(rooms,"all the rooms")
 console.log(room,"SINGLE room----------")
-const memb = rooms.map((room) => {
-    return room.members})
-console.log(memb.includes(user._id),"all the members")
+
 const classes = useStyles();
-  return (
+  return rooms ? (
     <List className={classes.root}>
         {rooms.map((m,i) => (
             <>
+        <MessageContainer roomId={m._id} />
         <ListItem key={i} onClick={() => getRoomID(m._id)} alignItems="flex-start">
         <ListItemAvatar>
-            {m.members._id === user._id ? null : <Avatar alt={m.members.username} src="/static/images/avatar/1.jpg" />}
+           
+            {/* {room.members.map((u,i) => (
+                <Avatar alt={u.username} src="/static/images/avatar/1.jpg" /> 
+            ))} */}
         </ListItemAvatar>
         <ListItemText
-          primary="Brunch this weekend?"
+          primary= {m.name}
           secondary={
             <React.Fragment>
               <Typography
@@ -65,5 +68,5 @@ const classes = useStyles();
             </>
         ))}
     </List>
-  );
+  ) : null;
 }
