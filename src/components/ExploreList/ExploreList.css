@@ -1,0 +1,11 @@
+.explore-button{
+    background-color: orange !important;
+    color: white !important;
+    font-weight: bold !important;
+    width: 22rem !important;
+    position: absolute !important;
+    top: 21rem !important;
+    left: 16rem !important;
+    padding: 12px !important;
+    border-radius: 30px !important;
+  }

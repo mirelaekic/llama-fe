@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import {getPlaces} from "../../store/Actions/explore"
 import "../styles.css"
 import background from "../../icon/travelers.png"
+import ExploreList from "../../components/ExploreList/ExploreList"
 export default function Explore() {
     const [lat, setLat] = useState();
     const [long, setLong] = useState();
@@ -33,9 +34,8 @@ export default function Explore() {
         <div className="explore-page">
             <img className="explore-background img-fluid" src={background} />
             <h1 className="explore-title">Find places around you and invite your friends to meet there!</h1>
-             <Button className="explore-button">EXPLORE PLACES</Button>
            {/* <button onClick={getLocation}>location</button> */}
-            
+            <ExploreList /> 
         </div>
     )
 }
