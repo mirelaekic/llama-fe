@@ -49,3 +49,7 @@ export const LIKE_COMMENT_ERROR = "LIKE_COMMENT_ERROR"
 export const GET_ROOMS = "GET_ROOMS"
 export const ERROR_ROOMS = "ERROR_ROOMS"
 export const GET_ROOM = "GET_ROOM"
+
+export const GET_PLACES = "GET_PLACES";
+export const GET_PLACES_LOADING = "GET_PLACES_LOADING"
+export const GET_PLACES_ERROR = "GET_PLACES_ERROR"

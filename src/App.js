@@ -10,6 +10,7 @@ import Profile from "./Pages/Profile/Profile";
 import TestSidebar from "./components/TestSidebar/TestSidebar";
 import HomeNav from "./components/HomeNav/HomeNav";
 import ProfileHeader from "./components/ProfileHeader/ProfileHeader";
+import Explore from "./Pages/Explore/Explore";
 function App() {
   return (
     <Router>
@@ -26,6 +27,7 @@ function App() {
               path="/profile/:id"
               render={(props) => <Profile {...props} />}
             />
+            <Route path="/explore"component={Explore} />
           </header>
         </div>
         <Route component={NotFound} />

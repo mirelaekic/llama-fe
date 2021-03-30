@@ -15,7 +15,6 @@ export default function Chat() {
     return user ? (
         <div className="chat-page">
             <ChatList />
-            
         </div>
     ) : null
 }
