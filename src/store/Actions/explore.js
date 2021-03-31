@@ -50,7 +50,7 @@ export const getPlacesPhoto = (refPhoto) => {
                 type:GET_PLACE_PHOTO,
                 payload:place
             })
-            console.log(place,"the place img")
+            console.log(place,"the response for img")
         } catch (error) {
             console.log(error)
             dispatch({

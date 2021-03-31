@@ -31,8 +31,8 @@ const getRoomID = (id) => {
     dispatch(getOneRoom(id))
 }
 
-console.log(rooms,"all the rooms")
-console.log(room,"SINGLE room----------")
+// console.log(rooms,"all the rooms")
+// console.log(room,"SINGLE room----------")
 
 const classes = useStyles();
   return rooms ? (
@@ -49,19 +49,19 @@ const classes = useStyles();
         </ListItemAvatar>
         <ListItemText
           primary= {m.name}
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                Ali Connors
-              </Typography>
-              {" — I'll be in your neighborhood doing errands this…"}
-            </React.Fragment>
-          }
+          // secondary={
+          //   <React.Fragment>
+          //     <Typography
+          //       component="span"
+          //       variant="body2"
+          //       className={classes.inline}
+          //       color="textPrimary"
+          //     >
+          //       Ali Connors
+          //     </Typography>
+          //     {" — I'll be in your neighborhood doing errands this…"}
+          //   </React.Fragment>
+          // }
         />
       </ListItem>
       <Divider variant="inset" component="li" />

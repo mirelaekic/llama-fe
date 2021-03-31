@@ -55,7 +55,9 @@ function MessageContainer({roomId}) {
     };
     console.log(messageContent,"message")
     await socket.emit("sendMessage", messageContent);
-    setMessage("");
+    // if(sentMsg){
+    //   setMessage("");
+    // }
   };
   console.log(messageList, "MESSAGES")
   console.log(userId,"the current user id")
@@ -86,6 +88,7 @@ function MessageContainer({roomId}) {
           <div className="messageInputs">
             <input
               type="text"
+              value={message}
               placeholder="Message..."
               onChange={(e) => {
                 setMessage(e.target.value);

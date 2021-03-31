@@ -4,7 +4,8 @@ const initialState = {
     places:[],
     loading:false,
     error:String,
-    photo:String,
+    allPhotos:[],
+    photo:{},
     singleResult:{}
 }
 

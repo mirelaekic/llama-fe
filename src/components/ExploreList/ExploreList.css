@@ -9,14 +9,11 @@
     padding: 12px !important;
     border-radius: 30px !important;
   }
-  .explore-button2{
-    background-color: orange !important;
-    color: white !important;
-    font-weight: bold !important;
-    width: 22rem !important;
-    position: absolute !important;
-    top: 19rem !important;
-    left: 16rem !important;
-    padding: 12px !important;
-    border-radius: 30px !important;
-  }
+  .MuiDrawer-paperAnchorBottom {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 52rem !important;
+    max-height: 100%;
+}
