@@ -4,6 +4,8 @@ import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import "./ExploreList.css";
 import ExploreCard from "../ExploreCard/ExploreCard";
+import ExploreModal from "../ExploreModal/ExploreModal";
+import { Col,Row } from "react-bootstrap";
 
 const useStyles = makeStyles({
   list: {
@@ -64,8 +66,15 @@ export default function ExploreList() {
             onClose={closeDrawer(anchor, false)}
           >
              {lat && long === undefined ? null : (
-              <ExploreCard lat={lat} long={long} />
-            )} 
+                 <Row>
+                 <Col lg={9}>
+                 <ExploreCard lat={lat} long={long} />
+                 </Col>
+                 <Col lg={3}>
+                 <h1>the filter</h1>
+                 </Col>
+                 </Row>
+                 )}
           </Drawer>
         </React.Fragment>
       ))}

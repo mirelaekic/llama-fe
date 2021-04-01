@@ -1,0 +1,8 @@
+.invite-btn{
+    z-index: 999;
+    background-color: rgb(255, 108, 206) !important;
+    color: white !important;
+    font-weight: bold !important;
+    width: 15rem !important;
+    border-radius: 30px !important;
+}

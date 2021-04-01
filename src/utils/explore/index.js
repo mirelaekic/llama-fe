@@ -5,7 +5,7 @@ const LLAMA_API = process.env.REACT_APP_LLAMA_API;
 // GET ALL PLACES
 export const places = async (lat,long) => {
   try {
-    const place = await backend.post(`${LLAMA_API}users/places`,{lat,long}, {
+    const place = await axios.post(`${LLAMA_API}users/places`,{lat,long}, {
       withCredentials: true,
     });
     console.log(place.data,"the places from fetch");
@@ -17,7 +17,7 @@ export const places = async (lat,long) => {
 };
 export const placePhoto = async (refPhoto) => {
     try {
-      const photo = await backend.get(`${LLAMA_API}users/place/photo/${refPhoto}`, {
+      const photo = await axios.get(`${LLAMA_API}users/place/photo/${refPhoto}`, {
         withCredentials: true,
       });
       return photo.data
@@ -28,7 +28,7 @@ export const placePhoto = async (refPhoto) => {
   };
   export const placeDetails = async (placeId) => {
     try {
-      const res = await backend.get(`${LLAMA_API}users/place/${placeId}`, {
+      const res = await axios.get(`${LLAMA_API}users/place/${placeId}`, {
         withCredentials: true,
       });
       return res.data

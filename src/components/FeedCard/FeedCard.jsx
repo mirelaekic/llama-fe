@@ -46,6 +46,13 @@ export default function FeedCard() {
   const handleOpen = () => {
     setOpen((prev) => !prev);
   };
+  // const filterByFollowing = currentUser.following.map((f) => f.user)
+
+  // console.log(filterByFollowing,"the users that current user is following")
+  // console.log(posts,"all the posts in the app")
+  // const allTheUsers = posts.filter((p) => p.userId)
+
+  // console.log(allTheUsers,"all the users that posted")
   return (
     <>
       {posts ? (

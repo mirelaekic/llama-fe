@@ -33,6 +33,7 @@ const useStyles = makeStyles({
   pos: {
     marginTop: 12,
     marginBottom: 12,
+    marginLeft:"9rem",
     fontSize: "13px",
   },
   error: {
@@ -41,6 +42,9 @@ const useStyles = makeStyles({
     marginTop: 12,
     marginBottom: 12,
     fontSize: "13px",
+  },
+  header:{
+    textAlign:"center"
   },
   success: {
     fontWeight: 600,
@@ -75,12 +79,12 @@ function RegisterCard() {
         <Row>
           <Col className="register-detail col" sm={12} md={6} lg={6}></Col>
           <Col className="col" xs={12} sm={12} md={6} lg={6}>
-            <img className="login-logo" src={llamaLogo8} />
+            <img className="login-logo-reg" src={llamaLogo8} />
             <CardContent>
-              <Typography variant="h5" gutterBottom>
+              <Typography className={classes.header} variant="h5" gutterBottom>
                 Adventure awaits you. <br /> Create your account here.
               </Typography>
-              <Button className="google-button mt-2 mb-2">
+              <Button className="google-button-reg mt-2 mb-2">
                 <img
                   className="google-login mr-1"
                   src="https://media-public.canva.com/uhAxM/MABr1suhAxM/2/s.svg"
