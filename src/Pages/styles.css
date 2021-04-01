@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 .login-page {
   padding-top: 5rem;
   padding-bottom: 7.4rem;
   text-align: -webkit-center;
   background-repeat: round;
-  background-image: url(../icon/background3.png);
+  background-image: url(../icon/coverProfile.png);
 }
 .register-page {
     height:auto;

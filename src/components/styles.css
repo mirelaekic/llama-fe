@@ -92,7 +92,7 @@
   border-radius: 70px !important;
 }
 .post-input {
-  background-color: white;
+  background-color: inherit !important;
   border: none !important;
   cursor: pointer;
   color: #ffce54;
@@ -112,10 +112,11 @@
 .post-card {
   font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
     Helvetica, Arial, sans-serif !important;
-  margin-top: 2px !important;
+  margin-top: 10px !important;
 }
 .post-card .MuiCardContent-root:last-child {
-  padding-bottom: 3px !important ;
+  background-color: #F6F4F2 !important;
+  padding-bottom: 3px !important;
 }
 .action-btn button:hover {
   border-radius: 0px !important;
@@ -405,13 +406,12 @@
   padding: 0;
 }
 .sidebar {
-  border: 5px solid rgb(255, 255, 255);
   border-radius: 40px;
   margin-left: 4px;
   position: fixed !important;
-  background: #425664  !important;
-  /*box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
-    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;*/
+  background: #6a1d47 !important;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
 }
 .sidebar-logo {
   width: 30px !important;
@@ -445,7 +445,7 @@
   filter: alpha(opacity=70);
 }
 .sidenav---navtext---1AE_f {
-  color: rgb(255, 255, 255) !important;
+  color: white !important;
   font-weight: bold !important;
 }
 .sidebar-userIcon {

@@ -81,6 +81,7 @@ export const updateProfile = async (update) => {
 export const addPicture = async (avatar) => {
     try {
         let formData = new FormData();
+        formData.append("avatar",avatar)
         const response = await backend.put(`${LLAMA_API}users/me/profilePic`,formData,{ withCredentials:true})
         console.log(response)
         return response.data

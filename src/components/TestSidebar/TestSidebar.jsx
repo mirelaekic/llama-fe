@@ -19,11 +19,7 @@ import { useHistory } from "react-router-dom";
 import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
 export default function TestSidebar() {
   const history = useHistory();
-  const dispatch = useDispatch();
-  const handleLogout = (e) => {
-    e.preventDefault();
-    dispatch(logoutAction());
-  };
+
   const user = useSelector((state) => state.user.user);
   return user ? (
     <div>
@@ -37,7 +33,6 @@ export default function TestSidebar() {
       >
         <SideNav.Toggle />
         <SideNav.Nav defaultSelected="">
-              {/* <img src={llamaLogo8} className="sidebar-logo"/>         */}
           <NavItem eventKey="">
             <NavIcon>
               <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />

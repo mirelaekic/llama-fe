@@ -5,6 +5,7 @@
   list-style-type: none;
   height: 15rem !important;
   margin-bottom: 7rem !important;
+  background-image: url(../../icon/Trianglify.png);
 }
 .jumbotron-avatar {
   position: absolute;

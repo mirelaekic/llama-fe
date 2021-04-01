@@ -22,7 +22,7 @@ export default function ProfileHeader(props) {
 
   return user ? (
     <div>
-      <Jumbotron fluid style={{backgroundImage:"url(https://www.incimages.com/uploaded_files/image/970x450/getty_509107562_2000133320009280346_351827.jpg)"}} className="profile-jumbotron ">
+      <Jumbotron fluid className="profile-jumbotron ">
         <Container>
           <div className="avatar-position">
             <Avatar

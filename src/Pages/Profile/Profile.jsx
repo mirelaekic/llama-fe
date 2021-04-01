@@ -8,7 +8,18 @@ import ProfileDetailCard from '../../components/ProfileDetailCard/ProfileDetailC
 import { getMe } from '../../store/Actions/user';
 import { getAllPosts } from '../../store/Actions/post';
 import { getAllComments } from '../../store/Actions/comment';
+import Backdrop from '@material-ui/core/Backdrop'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: 'black',
+  },
+}));
+
 export default function Profile(props) {
+  const classes = useStyles();
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user.user);
 
@@ -42,6 +53,8 @@ export default function Profile(props) {
           </Row>
         </Container>
       ) : (
-        <CircularProgress />
-      );    
+        <Backdrop className={classes.backdrop} open={true}>
+        <CircularProgress color="inherit" />
+        </Backdrop>
+      );   
     }

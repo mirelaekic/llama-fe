@@ -58,6 +58,7 @@ export const changeProfilePicture = (avatar) => {
       type:UPDATED_USER_LOADING
     })
     try {
+      console.log(avatar,"the avatar")
       await addPicture(avatar)
       dispatch({
         type:UPDATED_USER_SUCCESS
@@ -112,6 +113,7 @@ export const followUser = (id) => {
         payload:req
       })
       dispatch(getMe())
+      dispatch(getUserById(id))
     } catch (error) {
       console.log(error)
     }
@@ -127,6 +129,7 @@ export const unfollowUser = (id) => {
         payload:req.following
       })
       dispatch(getMe())
+      dispatch(getUserById(id))
     } catch (error) {
       console.log(error)
     }
