@@ -27,11 +27,20 @@ export default function UserRecommendation() {
   const allUsers = useSelector((state) => state.user.allUsers);
   
   const classes = useStyles();
+  //console.log(user.following,"array of following ----")
+  const filteredAry = allUsers.filter((e) => { return e._id !== user._id })
+  //console.log(filteredAry, "array without the current user")
+  const removeFollowing = filteredAry.filter((e) => {
+    return user.following.filter((u) => {
+      return u.user !== e._id
+    })
+  })
+  //console.log(removeFollowing,"the array of the users current user is not followingx")
   return allUsers && user ? (
     <div>
       <ListGroup className="homeSuggestionsList mb-5">
         <h2 className="suggestion-header mb-3">Suggestions For You</h2>
-        {allUsers.slice(1, 5).map((user, i) => (
+        {removeFollowing.map((user, i) => (
           <ListGroup.Item key={i}>
             <div className="profile-name">
               <Avatar src={user.imgUrl} className={classes.small} />

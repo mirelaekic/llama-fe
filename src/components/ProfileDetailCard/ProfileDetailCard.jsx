@@ -29,9 +29,16 @@ export default function ProfileDetailCard(props) {
     dispatch(unfollowUser(unfollowid));
   };
   const filterFollowing = (id) => {
+    console.log(currentUser.following, "💕💕the array of users I am following")
+    console.log(id,"the id of the user")
     const ifFollowing = currentUser.following.find((user) => user.user === id);
-    return ifFollowing;
+    if(ifFollowing === undefined){
+      return false
+    } else{
+      return true
+    }
   };
+
   const filterMyPosts =
     posts && posts.filter((p) => p.userId === currentUser._id).length;
   const filterUserPosts =
@@ -112,19 +119,19 @@ const filterUserFollowing = () => {
           <p className="text-muted">Posts</p>
         </Col>
       </Row>
-      {params === "me" ? null : filterFollowing(userByID._id) === undefined ? (
-        <Button
-          className="follow-button"
-          onClick={() => followTheUser(userByID._id)}
-        >
-          <PersonAddIcon /> follow
-        </Button>
-      ) : (
+      {params === "me" ? null : filterFollowing(userByID._id) ? (
         <Button
           className="unfollow-button"
           onClick={() => unfollowTheUser(userByID._id)}
         >
           <PersonAddDisabledIcon /> unfollow
+        </Button>
+      ) : (
+        <Button
+          className="follow-button"
+          onClick={() => followTheUser(userByID._id)}
+        >
+          <PersonAddIcon /> follow
         </Button>
       )}
       <div className="profile-buttons">

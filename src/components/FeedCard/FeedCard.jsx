@@ -29,6 +29,7 @@ export default function FeedCard() {
   const posts = useSelector((state) => state.post.allPosts);
   const allUsers = useSelector((state) => state.user.allUsers);
 
+  //if user liked the post
   const ifUserLiked = (id) => {
     const filterByPost = isLiked.filter((c) => c.postId === id);
     const ifIncludesCU = filterByPost.find(
@@ -42,21 +43,30 @@ export default function FeedCard() {
   };
   const [open, setOpen] = useState(false);
   const locationPath = window.location.pathname;
-  console.log(locationPath, "path of the current page");
+
   const handleOpen = () => {
     setOpen((prev) => !prev);
   };
-  // const filterByFollowing = currentUser.following.map((f) => f.user)
+  //Show posts only from the users I am following
+   const filterByFollowing = posts.filter((f) => {
+     return currentUser.following.find((u) => {
+       return f.userId === u.user 
+     })
+   })
 
-  // console.log(filterByFollowing,"the users that current user is following")
-  // console.log(posts,"all the posts in the app")
-  // const allTheUsers = posts.filter((p) => p.userId)
+  //Add to the home page posts from the current user as well
+  const myPosts = posts.filter((p) => { return p.userId === currentUser._id})
+  const newArray = filterByFollowing.concat(myPosts)
 
-  // console.log(allTheUsers,"all the users that posted")
+  //sort all posts by the date  
+   const byDate = newArray.sort((a,b) => {
+     return new Date(b.createdAt) - new Date(a.createdAt)
+   })
+
   return (
     <>
       {posts ? (
-        posts.map((p, i) => (
+        byDate.map((p, i) => (
           <>
             <Card key={i} className="post-card mb-2" style={{ width: "auto" }}>
               <Card.Header className="user-info ml-2">
