@@ -119,30 +119,40 @@ const filterUserFollowing = () => {
           <p className="text-muted">Posts</p>
         </Col>
       </Row>
-      {params === "me" ? null : filterFollowing(userByID._id) ? (
-        <Button
-          className="unfollow-button"
-          onClick={() => unfollowTheUser(userByID._id)}
-        >
-          <PersonAddDisabledIcon /> unfollow
-        </Button>
-      ) : (
-        <Button
-          className="follow-button"
-          onClick={() => followTheUser(userByID._id)}
-        >
-          <PersonAddIcon /> follow
-        </Button>
-      )}
-      <div className="profile-buttons">
+      <Row className="profile-buttons">
         {params === "me" ? (
           <>
+          <div className="mr-4">
             <PostModal />
+          </div>
+          <div>
             <SettingsModal />
+          </div>
           </>
         ) : null}
-        {params === "me" ? "" : <Button>Message</Button>}
-      </div>
+         {params === "me" ? (
+          ""
+        ) : (
+          <div className="user-profile-btn">
+            <Button className="msg-btn mr-4">Message</Button>
+          {params === "me" ? null : filterFollowing(userByID._id) ? (
+            <Button
+              className="unfollow-button"
+              onClick={() => unfollowTheUser(userByID._id)}
+            >
+              <PersonAddDisabledIcon />
+            </Button>
+          ) : (
+            <Button
+              className="follow-button"
+              onClick={() => followTheUser(userByID._id)}
+            >
+              <PersonAddIcon />
+            </Button>
+          )}
+          </div>
+        )}
+      </Row>
     </div>
   ) : null;
 }

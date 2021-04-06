@@ -7,6 +7,7 @@ import ExploreCard from "../ExploreCard/ExploreCard";
 import ExploreModal from "../ExploreModal/ExploreModal";
 import { Col,Row } from "react-bootstrap";
 import ExploreFilter from "../ExploreFilter/ExploreFilter";
+import ExploreL from "../ExploreCard/ExploreL";
 
 const useStyles = makeStyles({
   list: {
@@ -18,6 +19,7 @@ const useStyles = makeStyles({
 });
 
 export default function ExploreList() {
+    
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -62,17 +64,18 @@ export default function ExploreList() {
             EXPLORE PLACES
           </Button>
           <Drawer
+            className="explore-drawer"
             anchor={anchor}
             open={state[anchor]}
             onClose={closeDrawer(anchor, false)}
           >
              {lat && long === undefined ? null : (
-                 <Row>
-                 <Col lg={9}>
-                 <ExploreCard lat={lat} long={long} />
-                 </Col>
-                 <Col lg={3}>
+                 <Row className="drawer-row">
+                 <Col className="col-exp-filter" lg={2}>
                  <ExploreFilter lat={lat} long={long} />
+                 </Col>
+                 <Col lg={10}>
+                 <ExploreL />
                  </Col>
                  </Row>
                  )}

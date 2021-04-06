@@ -4,6 +4,12 @@
     padding: 10px;
     border-radius: 30px;
 }
+.place-card{
+    border: none !important;
+}
+.place-card .card-header{
+    background-color: white !important;
+}
 .title-acc{
     background-color: rgb(255, 255, 255) !important;
 }
@@ -38,6 +44,9 @@
     display: block !important;
     flex-grow: 1;
     transition: margin 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.icon{
+    width: 31px !important;
 }
 .place-detail{
     list-style: none !important;

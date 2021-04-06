@@ -1,4 +1,4 @@
-import {GET_PLACE_PHOTO,GET_PLACES,GET_PLACES_ERROR,GET_PLACES_LOADING, GET_PLACE_DETAILS} from "../types" 
+import {GET_PLACE_PHOTO,DETAILS_LOADING,GET_PLACES,PHOTO_LOADING,GET_PLACES_ERROR,GET_PLACES_LOADING, GET_PLACE_DETAILS} from "../types" 
 import { placeDetails, placePhoto, places } from "../../utils/explore"
 
 export const getPlaces = (lat,long,type) => {
@@ -23,6 +23,7 @@ export const getPlaces = (lat,long,type) => {
 export const getSinglePlaceDetails = (placeId) => {
     return async (dispatch) => {
         try {
+            dispatch({type:DETAILS_LOADING})
             const singlePlace = await placeDetails(placeId)
             console.log(singlePlace,"single place details")
             dispatch({
@@ -36,7 +37,7 @@ export const getSinglePlaceDetails = (placeId) => {
 }
 export const getPlacesPhoto = (refPhoto) => {
     return async (dispatch) => {
-        dispatch({type:GET_PLACES_LOADING})
+        dispatch({type:PHOTO_LOADING})
         try {
             const place = await placePhoto(refPhoto)
             dispatch({

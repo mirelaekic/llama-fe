@@ -40,7 +40,7 @@ export default function SettingsModal() {
 
   return (
     <>
-      <Button onClick={handleOpen}>Edit profile</Button>
+      <Button onClick={handleOpen}><SettingsIcon /></Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
