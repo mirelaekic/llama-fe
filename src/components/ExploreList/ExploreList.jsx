@@ -6,6 +6,7 @@ import "./ExploreList.css";
 import ExploreCard from "../ExploreCard/ExploreCard";
 import ExploreModal from "../ExploreModal/ExploreModal";
 import { Col,Row } from "react-bootstrap";
+import ExploreFilter from "../ExploreFilter/ExploreFilter";
 
 const useStyles = makeStyles({
   list: {
@@ -71,7 +72,7 @@ export default function ExploreList() {
                  <ExploreCard lat={lat} long={long} />
                  </Col>
                  <Col lg={3}>
-                 <h1>the filter</h1>
+                 <ExploreFilter lat={lat} long={long} />
                  </Col>
                  </Row>
                  )}

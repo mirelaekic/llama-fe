@@ -3,9 +3,10 @@ import backend from "../token";
 
 const LLAMA_API = process.env.REACT_APP_LLAMA_API;
 // GET ALL PLACES
-export const places = async (lat,long) => {
+export const places = async (lat,long, type) => {
   try {
-    const place = await axios.post(`${LLAMA_API}users/places`,{lat,long}, {
+    console.log(type, "if the type is defined")
+    const place = await axios.post(`${LLAMA_API}users/places`,{lat,long, type}, {
       withCredentials: true,
     });
     console.log(place.data,"the places from fetch");

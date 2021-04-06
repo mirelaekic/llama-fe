@@ -62,10 +62,11 @@ export default function FeedCard() {
    const byDate = newArray.sort((a,b) => {
      return new Date(b.createdAt) - new Date(a.createdAt)
    })
-
+   console.log(byDate.length, "the length of array ")
   return (
     <>
       {posts ? (
+        byDate.length === 0 ? <h4 className="noPosts-header">Oh no!😱<br /> Your feed is empty, follow other users to see more on your feed </h4> :
         byDate.map((p, i) => (
           <>
             <Card key={i} className="post-card mb-2" style={{ width: "auto" }}>
@@ -125,7 +126,7 @@ export default function FeedCard() {
               </Card.Header>
               {p.description ? (
                 <Card.Header className="description">
-                  <p className="ml-4">{p.description}</p>
+                  <p className="ml-4 mr-3">{p.description}</p>
                 </Card.Header>
               ) : (
                 ""

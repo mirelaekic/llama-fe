@@ -10,10 +10,6 @@ import {
 } from "../../store/Actions/explore";
 import { GET_PLACES_ERROR } from "../../store/types";
 import { withStyles } from "@material-ui/core/styles";
-// import MuiAccordion from "@material-ui/core/Accordion";
-// import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
-// import Muidiv from "@material-ui/core/div";
-// import Typography from "@material-ui/core/Typography";
 import "./ExploreCard.css";
 import EuroIcon from "@material-ui/icons/Euro";
 import openIcon from "../../icon/openIcon.jpg";
@@ -21,47 +17,6 @@ import closedIcon from "../../icon/closedIcon.jpg";
 import { Button } from "@material-ui/core";
 import ExploreModal from "../ExploreModal/ExploreModal";
 import { Accordion,Card } from "react-bootstrap";
-// const Accordion = withStyles({
-//   root: {
-//     border: "1px solid rgba(0, 0, 0, .125)",
-//     boxShadow: "none",
-//     "&:not(:last-child)": {
-//       borderBottom: 0,
-//     },
-//     "&:before": {
-//       display: "none",
-//     },
-//     "&$expanded": {
-//       margin: "auto",
-//     },
-//   },
-//   expanded: {},
-// })(MuiAccordion);
-
-// const AccordionSummary = withStyles({
-//   root: {
-//     borderBottom: "1px solid rgba(0, 0, 0, .125)",
-//     marginBottom: -1,
-//     minHeight: 56,
-//     "&$expanded": {
-//       minHeight: 56,
-//     },
-//   },
-//   content: {
-//     "&$expanded": {
-//       margin: "12px 0",
-//       fontWeight: "bold",
-//       display: "block",
-//     },
-//   },
-//   expanded: {},
-// })(MuiAccordionSummary);
-
-// const div = withStyles((theme) => ({
-//   root: {
-//     padding: theme.spacing(2),
-//   },
-// }))(Muidiv);
 
 export default function EcploreCard({ lat, long }) {
   const [expanded, setExpanded] = React.useState();
@@ -70,13 +25,13 @@ export default function EcploreCard({ lat, long }) {
     setExpanded(newExpanded ? panel : false);
   };
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (lat && long === undefined) {
-      dispatch({ type: GET_PLACES_ERROR });
-    } else {
-      dispatch(getPlaces(lat, long));
-    }
-  }, []);
+//   useEffect(() => {
+//     if (lat && long === undefined) {
+//       dispatch({ type: GET_PLACES_ERROR });
+//     } else {
+//       dispatch(getPlaces(lat, long));
+//     }
+//   }, []);
   const places = useSelector((state) => state.explore.places.results);
   const photoUrl = useSelector((state) => state.explore.photo);
   const loading = useSelector((state) => state.explore.loading);
@@ -121,7 +76,7 @@ export default function EcploreCard({ lat, long }) {
                       : ""
                     }
                     {detail.opening_hours ?  <li><img className="open-icon" src={detail.opening_hours.open_now ? openIcon : closedIcon} /></li> : null }
-                    <li className="mt-5"> <ExploreModal /> <Button className=" ml-2 fav-btn">add to favourite</Button></li>
+                    <li className="mt-3 action-expl-btn"> <ExploreModal /> <Button className=" ml-2 fav-btn">add to favourite</Button></li>
                   </ul> : null}
                 </div>
               </div>

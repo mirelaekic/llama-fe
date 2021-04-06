@@ -56,6 +56,16 @@ export const users = async () => {
         return null
     }
 }   
+// SEARCH ALL USERS 
+export const userQuery = async (q) => {
+    try {
+        const users = await axios.get(`${LLAMA_API}users/search/${q}`,{ withCredentials:true})
+        return users.data
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+} 
 // GET USER BY ID 
 export const userById = async (id) => {
     try {

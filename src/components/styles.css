@@ -1,6 +1,14 @@
 .login-form {
   display: inline-table;
 }
+.noPosts-header{
+  text-transform: uppercase !important;
+    font-family: 'Alfa Slab One' !important;
+    margin-top: 1rem !important;
+    padding: 3rem;
+    border-radius: 30px;
+    background-color: #f6f4f2;
+}
 .login-logo {
   width: 35%;
   margin-top: 1rem;

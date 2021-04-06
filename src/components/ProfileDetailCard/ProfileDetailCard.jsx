@@ -81,11 +81,11 @@ const filterUserFollowing = () => {
     <div className="profile-details-column">
       {params === "me" ? 
       (currentUser.city || currentUser.country ? <p className="text-muted profile-location">
-        <LocationOnIcon /> {currentUser.city},{currentUser.country}
+        <LocationOnIcon /> {currentUser.city}, {currentUser.country}
       </p> : null)
       : 
       (userByID.city || userByID.country ? <p className="text-muted profile-location">
-        <LocationOnIcon /> {userByID.city},{userByID.country}
+        <LocationOnIcon /> {userByID.city}, {userByID.country}
       </p> : null)}
 
       {params === "me" ? (

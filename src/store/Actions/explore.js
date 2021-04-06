@@ -1,23 +1,16 @@
 import {GET_PLACE_PHOTO,GET_PLACES,GET_PLACES_ERROR,GET_PLACES_LOADING, GET_PLACE_DETAILS} from "../types" 
 import { placeDetails, placePhoto, places } from "../../utils/explore"
 
-export const getPlaces = (lat,long) => {
+export const getPlaces = (lat,long,type) => {
     return async (dispatch) => {
         dispatch({type:GET_PLACES_LOADING})
         try {
-            const place = await places(lat,long)
-            console.log(place,"the place")
+            console.log(type,"the type")
+            const place = await places(lat,long,type)
             dispatch({
                 type:GET_PLACES,
                 payload:place
             })
-            // //  const photoRef = place.results.map((p) => p.photos ? p.photos[0].photo_reference : null)
-            // //  console.log(photoRef,"the photo ref in explore.js______")
-            // //  const photo = photoRef.forEach(element => {
-            // //     dispatch(getPlacesPhoto(element))
-            // //  });
-            // // // const photo = photoRef.forEach(url => dispatch(getPlacesPhoto(url))) 
-            // // console.log(photo, "photoURL for each place")
         } catch (error) {
             console.log(error)
             dispatch({
