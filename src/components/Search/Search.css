@@ -1,0 +1,25 @@
+.search-dropdown{
+    height: 15rem !important;
+    overflow: auto !important;
+    margin-left: 6rem !important;
+    width: 18rem !important;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 1%), 0px 1px 1px 0px rgb(0 0 0 / 1%), 0px 1px 3px 0px rgb(0 0 0 / 65%)  !important;
+}
+.search-dropdown::-webkit-scrollbar{
+    width: 0px !important;
+}
+.search-dropdown .dropdown-item{
+    padding: 0.3rem 1.5rem !important;
+    display: -webkit-inline-box !important;
+    line-height: 33.1px !important;
+    font-weight: 500 !important;
+}
+.search-dropdown .dropdown-item:active{
+    color: #333333 !important;
+    text-decoration: none !important;
+    background-color: rgb(0 0 0 / 8%) !important;
+} 
+.search-dropdown .dropdown-item:hover{
+    background-color: #f1f1f163 !important;
+    
+} 

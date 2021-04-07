@@ -1,5 +1,5 @@
-import {GET_LIKES, LIKE_POST,UNLIKE_POST} from "../types" 
-import {likeForPost,getLikesForPost, getAllLikes} from "../../utils/likes"
+import {GET_LIKES, LIKE_POST,REMOVE_FROM_FAVOURITE,ADD_TO_FAVOURITE,UNLIKE_POST} from "../types" 
+import {likeForPost,getLikesForPost,removeFromFav,addToFav, getAllLikes} from "../../utils/likes"
 
 export const getLikes = () => {
     return async (dispatch) => {
@@ -23,6 +23,32 @@ export const likePost = (id) => {
                 payload:like
             })
             dispatch(getLikes())
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export const addFavPlace = (id) => {
+    return async (dispatch) => {
+        try {
+            const place = await addToFav(id)
+            dispatch({
+                type:ADD_TO_FAVOURITE,
+                payload:place
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export const removeFavPlace = (id) => {
+    return async (dispatch) => {
+        try {
+            const place = await removeFromFav(id)
+            dispatch({
+                type:REMOVE_FROM_FAVOURITE,
+                payload:place
+            })
         } catch (error) {
             console.log(error)
         }

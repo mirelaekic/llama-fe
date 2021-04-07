@@ -55,21 +55,22 @@ export const users = async () => {
         console.log(error)
         return null
     }
-}   
-// SEARCH ALL USERS 
-export const userQuery = async (q) => {
-    try {
-        const users = await axios.get(`${LLAMA_API}users/search/${q}`,{ withCredentials:true})
-        return users.data
-    } catch (error) {
-        console.log(error)
-        return null
-    }
-} 
+}    
 // GET USER BY ID 
 export const userById = async (id) => {
     try {
         const user = await axios.get(`${LLAMA_API}users/${id}`,{ withCredentials:true})
+        return user.data
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+}
+//GET USER BY SEARC 
+export const userBySearch = async (text) => {
+    try {
+        console.log(text,"the text")
+        const user = await axios.post(`${LLAMA_API}users/search`,text,{ withCredentials:true})
         return user.data
     } catch (error) {
         console.log(error)

@@ -10,7 +10,7 @@ import "./ExploreCard.css";
 import EuroIcon from "@material-ui/icons/Euro";
 import openIcon from "../../icon/openIcon.jpg";
 import closedIcon from "../../icon/closedIcon.jpg";
-import { Button } from "@material-ui/core";
+import { Button, IconButton } from "@material-ui/core";
 import ExploreModal from "../ExploreModal/ExploreModal";
 import { Accordion, Card } from "react-bootstrap";
 import PhoneIcon from "@material-ui/icons/Phone";
@@ -21,6 +21,10 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import { addFavPlace, removeFavPlace } from "../../store/Actions/like";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
+import StarIcon from "@material-ui/icons/Star";
+import { getMe } from "../../store/Actions/user";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -73,7 +77,16 @@ export default function ExploreL() {
   const photoUrl = useSelector((state) => state.explore.photo);
   const loading = useSelector((state) => state.explore.loading);
   const detail = useSelector((state) => state.explore.singleResult.result);
-  console.log(photoUrl, "the photo");
+  const favourite = useSelector((state) => state.like.favourite);
+
+  useEffect(() => {
+      dispatch(getMe())
+  },[])
+
+  const filterArr = favourite && detail
+    ? favourite.find((fav) => fav.placeId === detail.place_id)
+    : null;
+
   const classes = useStyles();
   const [value, setValue] = React.useState(detail ? detail.place_id : null);
 
@@ -84,7 +97,22 @@ export default function ExploreL() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const postToFav = (id) => {
+    dispatch(addFavPlace(id));
+  };
+  const removeFromFav = (id) => {
+    dispatch(removeFavPlace(id));
+  };
 
+  console.log(window.location.pathname,"current location")
+  const filteredPlaces = () => {
+      if(window.location.pathname === "/profile/me"){
+          console.log(favourite,"the fav array in function")
+          console.log(places, "the places")
+    } else {
+            return places
+      }
+  }
   return (
     <div className={classes.root}>
       <Tabs
@@ -104,7 +132,11 @@ export default function ExploreL() {
                     p.place_id ? p.place_id : null
                   )
                 }
-                label={<><img className="icon" src={p.icon} /> <p>{p.name}</p></>}
+                label={
+                  <>
+                    <img className="icon" src={p.icon} /> <p>{p.name}</p>
+                  </>
+                }
                 {...a11yProps(p.place_id)}
               />
             ))
@@ -193,9 +225,23 @@ export default function ExploreL() {
                       <li className="mt-3 action-expl-btn">
                         {" "}
                         <ExploreModal />{" "}
-                        <Button className=" ml-2 fav-btn">
-                          add to favourite
-                        </Button>
+                        {filterArr === undefined ? (
+                          <IconButton
+                            className="star-btn"
+                            onClick={() => postToFav(detail.place_id)}
+                            className=" ml-2 fav-btn"
+                          >
+                            <StarBorderIcon />
+                          </IconButton>
+                        ) : (
+                          <IconButton
+                            className="star-btn"
+                            onClick={() => removeFromFav(detail.place_id)}
+                            className=" ml-2 fav-btn"
+                          >
+                            <StarIcon />
+                          </IconButton>
+                        )}
                       </li>
                     </ul>
                   ) : null}

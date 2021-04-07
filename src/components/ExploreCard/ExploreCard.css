@@ -15,6 +15,7 @@
 }
 .action-expl-btn{
     display: flex !important;
+    padding: 0px !important;
 }
 .icon-accordian{
     width: 28px;
@@ -37,6 +38,7 @@
     font-weight: bold !important;
     width: 10rem !important;
     bottom: 0 !important;
+    padding: 0px !important;
     border-radius: 30px !important;
 }
 .MuiAccordionSummary-content {

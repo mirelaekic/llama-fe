@@ -7,12 +7,11 @@ import { Provider } from "react-redux"
 import store from "./store"
 import { CookiesProvider } from "react-cookie"
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 ReactDOM.render(
 <CookiesProvider>
 <Provider store={store}>
-  <React.StrictMode>
     <App />
-  </React.StrictMode>
   </Provider>
   </CookiesProvider>,
   document.getElementById('root')

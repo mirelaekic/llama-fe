@@ -18,10 +18,12 @@ import {
   GET_USERS_ERROR,
   UPDATED_USER_SUCCESS,
   UPDATED_USER_ERROR,
-  UPDATED_USER_LOADING
+  UPDATED_USER_LOADING,
+  GET_FAVOURITE
 } from "../types";
 import {
   login,
+  userBySearch,
   me,
   logout,
   updateProfile,
@@ -96,6 +98,11 @@ export const getMe = () => {
         type: USER_SUCCESS,
         payload: user,
       });
+      console.log(user.favourites,"the fav array")
+      dispatch({
+        type: GET_FAVOURITE,
+        payload:user.favourites
+      })
     } catch (error) {
       dispatch({
         type: USER_ERROR,
@@ -142,6 +149,22 @@ export const getUserById = (id) => {
       console.log(user,"fetched user")
       dispatch({
         type: GET_SINGLE_USER,
+        payload: user,  
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_SINGLE_USER_ERROR,
+      });
+    }
+  };
+};
+export const getUserBySearch = (q) => {
+  return async (dispatch) => {
+    try {
+      const user = await userBySearch(q);
+      console.log(user,"fetched user")
+      dispatch({
+        type: GET_SINGLE_USER,
         payload: user,
       });
     } catch (error) {
@@ -151,7 +174,6 @@ export const getUserById = (id) => {
     }
   };
 };
-
 export const logoutAction = () => {
   return async (dispatch) => {
     try {

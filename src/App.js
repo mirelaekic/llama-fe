@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
@@ -9,9 +9,11 @@ import Register from "./Pages/Register/Register";
 import Profile from "./Pages/Profile/Profile";
 import TestSidebar from "./components/TestSidebar/TestSidebar";
 import HomeNav from "./components/HomeNav/HomeNav";
-import ProfileHeader from "./components/ProfileHeader/ProfileHeader";
 import Explore from "./Pages/Explore/Explore";
+import history from "./history"
+
 function App() {
+
   return (
     <Router>
       <Switch>
@@ -27,7 +29,7 @@ function App() {
               path="/profile/:id"
               render={(props) => <Profile {...props} />}
             />
-            <Route path="/explore"component={Explore} />
+            <Route path="/explore" component={Explore} />
           </header>
         </div>
         <Route component={NotFound} />
