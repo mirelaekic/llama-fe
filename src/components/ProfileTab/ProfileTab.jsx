@@ -10,6 +10,8 @@ import FilteredCard from '../FeedCard/FilteredCard';
 import "../styles.css"
 import ProfileAlbum from '../ProfileAlbum/ProfileAlbum';
 import ProfileFavList from '../ProfileFavList/ProfileFavList';
+import { useDispatch } from 'react-redux';
+import { getFavPlace } from '../../store/Actions/explore';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -70,7 +72,11 @@ export default function ProfileTab(props) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
+  }; 
+  const dispatch = useDispatch();
+  const getFavs = () => {
+    dispatch(getFavPlace())
+  }
   const params = props.props.match.params.id
   return (
     <div className={classes.root}>

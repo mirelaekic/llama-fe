@@ -6,6 +6,9 @@ import {
   GET_PLACES,
   GET_PLACES_ERROR,
   GET_PLACES_LOADING,
+  GET_FAVOURITE,
+  ADD_TO_FAVOURITE,
+  REMOVE_FROM_FAVOURITE,
 } from "../types";
 
 const initialState = {
@@ -15,6 +18,9 @@ const initialState = {
   allPhotos: [],
   photo: {},
   singleResult: {},
+  favourite:[],
+  removeFav:{},
+  addFav:{}
 };
 
 export default function (state = initialState, action) {
@@ -57,6 +63,21 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         places: action.payload,
+      };
+    case GET_FAVOURITE:
+      return {
+        ...state,
+        favourite: action.payload,
+      };
+    case ADD_TO_FAVOURITE:
+      return {
+        ...state,
+        addFav: action.payload,
+      };
+    case REMOVE_FROM_FAVOURITE:
+      return {
+        ...state,
+        removeFav: action.payload,
       };
     default:
       return state;

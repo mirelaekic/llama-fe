@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Backdrop from '@material-ui/core/Backdrop'
 import UserRecommendation from "../../components/UserRecommendation/UserRecommendation";
 import { getAllComments } from "../../store/Actions/comment";
+import { getFavPlace } from "../../store/Actions/explore";
 const useStyles = makeStyles((theme) => ({
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
@@ -21,10 +22,12 @@ const useStyles = makeStyles((theme) => ({
 export default function Home() {
   const dispatch = useDispatch();
   const classes = useStyles();
+
   useEffect(() => {
     dispatch(getMe());
     dispatch(getAllPosts());
     dispatch(getAllComments())
+    dispatch(getFavPlace())
   }, []);
 
   const user = useSelector((state) => state.user.user);

@@ -98,11 +98,6 @@ export const getMe = () => {
         type: USER_SUCCESS,
         payload: user,
       });
-      console.log(user.favourites,"the fav array")
-      dispatch({
-        type: GET_FAVOURITE,
-        payload:user.favourites
-      })
     } catch (error) {
       dispatch({
         type: USER_ERROR,

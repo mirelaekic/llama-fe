@@ -21,10 +21,10 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import { addFavPlace, removeFavPlace } from "../../store/Actions/like";
+import { addFavPlace, getFavPlace, removeFavPlace } from "../../store/Actions/explore";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarIcon from "@material-ui/icons/Star";
-import { getMe } from "../../store/Actions/user";
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -77,23 +77,24 @@ export default function ExploreL() {
   const photoUrl = useSelector((state) => state.explore.photo);
   const loading = useSelector((state) => state.explore.loading);
   const detail = useSelector((state) => state.explore.singleResult.result);
-  const favourite = useSelector((state) => state.like.favourite);
+  const favourite = useSelector((state) => state.explore.favourite);
 
-  useEffect(() => {
-      dispatch(getMe())
-  },[])
+   useEffect(() => {
+       dispatch(getFavPlace())
+   },[])
 
   const filterArr = favourite && detail
     ? favourite.find((fav) => fav.placeId === detail.place_id)
     : null;
 
   const classes = useStyles();
-  const [value, setValue] = React.useState(detail ? detail.place_id : null);
+  const [value, setValue] = React.useState();
 
   const getDetails = (photoRef, placeId) => {
     dispatch(getPlacesPhoto(photoRef));
     dispatch(getSinglePlaceDetails(placeId));
   };
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -104,15 +105,6 @@ export default function ExploreL() {
     dispatch(removeFavPlace(id));
   };
 
-  console.log(window.location.pathname,"current location")
-  const filteredPlaces = () => {
-      if(window.location.pathname === "/profile/me"){
-          console.log(favourite,"the fav array in function")
-          console.log(places, "the places")
-    } else {
-            return places
-      }
-  }
   return (
     <div className={classes.root}>
       <Tabs
@@ -137,13 +129,13 @@ export default function ExploreL() {
                     <img className="icon" src={p.icon} /> <p>{p.name}</p>
                   </>
                 }
-                {...a11yProps(p.place_id)}
+                {...a11yProps(value)}
               />
             ))
           : null}
       </Tabs>
       {detail ? (
-        <TabPanel value={detail.place_id} index={detail.place_id}>
+        <TabPanel value={value} index={value}>
           <Card.Body>
             {loading ? (
               <div class="lds-ellipsis">

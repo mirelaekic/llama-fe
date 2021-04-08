@@ -2,6 +2,7 @@ import axios from "axios";
 import backend from "../token";
 
 const LLAMA_API = process.env.REACT_APP_LLAMA_API;
+
 // GET ALL PLACES
 export const places = async (lat,long, type) => {
   try {
@@ -38,3 +39,54 @@ export const placePhoto = async (refPhoto) => {
       return null;
     }
   };
+
+  //GET ALL FAVOURITES
+export const getFav = async () => {
+  try {
+      const fav = await axios.get(`${LLAMA_API}like/favorite`, {
+          withCredentials:true
+      })  
+      return fav.data
+  } catch (error) {
+      console.log(error)
+      return null
+  }
+}
+  // POST PLACE ID TO FAVOURITE ARRAY
+export const addToFav = async (cityId, photoRef) => {
+  const photo = JSON.stringify({ photoUrl: photoRef });
+  let config =   {
+    method:"post",
+    url: `${LLAMA_API}like/favourite/${cityId}`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    withCredentials:true,
+    data: photo,
+  };
+  try {
+    const fav = await axios(config)
+    return fav.data
+  } catch (error) {
+    
+  }
+  axios(config)
+    .then(function (response) {
+      return JSON.stringify(response.data)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+// REMOVE PLACE ID FROM FAVOURITE ARRAY
+export const removeFromFav = async (cityId) => {
+  try {
+    const fav = await backend.post(`${LLAMA_API}like/removeFav/${cityId}`, {
+      withCredentials: true,
+    });
+    return fav.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};

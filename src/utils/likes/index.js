@@ -41,36 +41,3 @@ export const getAllLikes = async () => {
   }
 };
 
-// POST PLACE ID TO FAVOURITE ARRAY
-export const addToFav = async (cityId, photoRef) => {
-  const photo = JSON.stringify({ photoUrl: photoRef });
-  let config = {
-    method: "post",
-    url: `${LLAMA_API}like/favourite/${cityId}`,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    withCredentials:true,
-    data: photo,
-  };
-  axios(config)
-    .then(function (response) {
-      return JSON.stringify(response.data)
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-};
-// REMOVE PLACE ID FROM FAVOURITE ARRAY
-export const removeFromFav = async (cityId) => {
-  try {
-    const fav = await backend.post(`${LLAMA_API}like/removeFav/${cityId}`, {
-      withCredentials: true,
-    });
-    console.log(fav, "removing id from fav array");
-    return fav.data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-};

@@ -10,6 +10,7 @@ import { getAllPosts } from '../../store/Actions/post';
 import { getAllComments } from '../../store/Actions/comment';
 import Backdrop from '@material-ui/core/Backdrop'
 import { makeStyles } from '@material-ui/core/styles';
+import { getFavPlace } from '../../store/Actions/explore';
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -27,6 +28,7 @@ export default function Profile(props) {
       dispatch(getMe());
       dispatch(getAllPosts())
       dispatch(getAllComments())
+      dispatch(getFavPlace())
     }, []);
 
     const userByID = useSelector((state) => state.user.getUserById)
