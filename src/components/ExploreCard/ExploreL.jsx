@@ -97,8 +97,8 @@ export default function ExploreL() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const postToFav = (id) => {
-    dispatch(addFavPlace(id));
+  const postToFav = (id,photoId) => {
+    dispatch(addFavPlace(id, photoId));
   };
   const removeFromFav = (id) => {
     dispatch(removeFavPlace(id));
@@ -228,7 +228,7 @@ export default function ExploreL() {
                         {filterArr === undefined ? (
                           <IconButton
                             className="star-btn"
-                            onClick={() => postToFav(detail.place_id)}
+                            onClick={() => postToFav(detail.place_id,photoUrl.url)}
                             className=" ml-2 fav-btn"
                           >
                             <StarBorderIcon />

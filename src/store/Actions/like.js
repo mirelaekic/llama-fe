@@ -28,10 +28,10 @@ export const likePost = (id) => {
         }
     }
 }
-export const addFavPlace = (id) => {
+export const addFavPlace = (id,photoUrl) => {
     return async (dispatch) => {
         try {
-            const place = await addToFav(id)
+            const place = await addToFav(id,photoUrl)
             dispatch({
                 type:ADD_TO_FAVOURITE,
                 payload:place
