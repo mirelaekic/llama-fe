@@ -29,8 +29,6 @@ export default function ProfileDetailCard(props) {
     dispatch(unfollowUser(unfollowid));
   };
   const filterFollowing = (id) => {
-    console.log(currentUser.following, "💕💕the array of users I am following")
-    console.log(id,"the id of the user")
     const ifFollowing = currentUser.following.find((user) => user.user === id);
     if(ifFollowing === undefined){
       return false
@@ -122,7 +120,7 @@ const filterUserFollowing = () => {
       <Row className="profile-buttons">
         {params === "me" ? (
           <>
-          <div className="mr-4">
+          <div className="mr-4  ">
             <PostModal />
           </div>
           <div>

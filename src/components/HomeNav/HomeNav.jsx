@@ -24,7 +24,7 @@ export default function HomeNav() {
   const user = useSelector((state) => state.user.user);
   return user ? (
     <Navbar className="top-navbar">
-      <Nav className="mr-auto search-navbar">
+      <Nav className="search-navbar">
         <Form inline>
           <Search />
         </Form>

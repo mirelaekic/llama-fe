@@ -25,7 +25,7 @@ function App() {
             <TestSidebar />
             <Route path="/" exact component={Home} />
             <Route path="/chat" component={Chat} />
-            <Route
+            <Route  
               path="/profile/:id"
               render={(props) => <Profile {...props} />}
             />

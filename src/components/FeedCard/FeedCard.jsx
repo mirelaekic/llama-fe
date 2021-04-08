@@ -62,7 +62,7 @@ export default function FeedCard() {
    const byDate = newArray.sort((a,b) => {
      return new Date(b.createdAt) - new Date(a.createdAt)
    })
-   console.log(byDate.length, "the length of array ")
+
   return (
     <>
       {posts ? (

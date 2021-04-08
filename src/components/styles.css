@@ -283,7 +283,7 @@
   border-radius: 20px;
   padding-top: 7px;
   padding-bottom: 7px;
-  margin-left: 5rem !important;
+   margin-left: 60rem !important;
   width: 20rem;
   padding-left: 31px;
   border: 1px solid #efefef;
@@ -291,7 +291,7 @@
 }
 .input-icon {
   color: grey !important;
-  left: 6.4rem !important;
+  left: 61.4rem !important;
   top: 14px;
   text-align: center;
   position: fixed;
@@ -307,20 +307,26 @@
   margin-top: 34px;
 }
 .homeSuggestionsList {
-  margin-top: 4rem !important;
+  margin-top: 30rem !important;
   border-radius: 20px !important;
   position: fixed;
   background-color: #F6F4F2 !important;
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
-    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
+  0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
   padding: 15px !important;
 }
+.homeSuggestionsList h2{
+  font-family: 'Alfa Slab One', cursive !important;
+  letter-spacing: 2px;
+}
 .trends-list {
-  top: 20rem !important;
+  font-family: 'Alfa Slab One', cursive;
+  letter-spacing: 2px !important;
+  top: 0rem !important;
   margin-top: 5rem !important;
   border-radius: 20px !important;
   position: fixed;
-  background-color: #efefef !important;
+  background-color: #F6F4F2 !important;
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
     0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
   padding: 15px !important;
@@ -336,7 +342,7 @@
   background-color: inherit !important;
   border: none !important;
   display: inline-flex;
-  justify-content: space-between;
+  justify-content: center !important;
   padding: 7px !important;
   width: 19rem;
   margin-bottom: 6px;
@@ -403,7 +409,19 @@
 .suggInfo {
   margin-top: -8px;
 }
-
+.user-recomm-pic{
+  width: 17rem;
+  height: 15rem;
+  border-radius: 20px;
+}
+.pic-list-item{
+  place-content: center;
+}
+.caption-car{
+  width: 13rem;
+  font-size: 17px;
+  background-color: rgba(0, 0, 0, 0.466);
+}
 .followButton {
   background: none;
   border: none;
@@ -415,7 +433,7 @@
 }
 .sidebar {
   border-radius: 40px;
-  margin-left: 4px;
+  margin-left: 18px;
   position: fixed !important;
   background: #F6F4F2 !important;
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),

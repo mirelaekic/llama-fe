@@ -64,10 +64,10 @@ export const getFavPlace = () => {
         }
     }
 }
-export const addFavPlace = (id,photoUrl) => {
+export const addFavPlace = (id,photoUrl,name) => {
     return async (dispatch) => {
         try {
-            const place = await addToFav(id,photoUrl)
+            const place = await addToFav(id,photoUrl,name)
             dispatch({
                 type:ADD_TO_FAVOURITE,
                 payload:place

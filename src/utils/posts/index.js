@@ -9,7 +9,6 @@ export const posts = async () => {
     const posts = await axios.get(`${LLAMA_API}posts`, {
       withCredentials: true,
     });
-    console.log(posts.data,"the posts from fetch");
     return posts.data.reverse();
   } catch (error) {
     console.log(error);
@@ -22,7 +21,6 @@ export const myPosts = async () => {
     const posts = await axios.get(`${LLAMA_API}posts/me`, {
       withCredentials: true,
     });
-    console.log(posts);
     return posts.data;
   } catch (error) {
     console.log(error);
@@ -56,7 +54,6 @@ export const postById = async (id) => {
     const post = await axios.get(`${LLAMA_API}posts/${id}`, {
       withCredentials: true,
     });
-    console.log(post);
     return post.data;
   } catch (error) {
     console.log(error);
@@ -69,7 +66,6 @@ export const editPost = async (id, update) => {
     const posts = await axios.put(`${LLAMA_API}posts/${id}`, update, {
       withCredentials: true,
     });
-    console.log(posts);
     return posts.data;
   } catch (error) {
     console.log(error);
@@ -82,7 +78,6 @@ export const deletePost = async (id) => {
     const posts = await axios.delete(`${LLAMA_API}posts/me/${id}`, {
       withCredentials: true,
     });
-    console.log(posts);
     return posts.data;
   } catch (error) {
     console.log(error);

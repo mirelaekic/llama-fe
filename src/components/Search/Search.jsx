@@ -30,7 +30,7 @@ function Search() {
     setName("")
   } 
   const randomizeArray = filteredUsers.sort(() => 0.5 - Math.random())
-  console.log(filteredUsers, "the filtered users");
+
   return (
     <div className="search">
       <div className="input-icon">

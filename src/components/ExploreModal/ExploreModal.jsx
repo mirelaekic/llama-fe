@@ -54,9 +54,9 @@ export default function ExploreModal() {
         open={open}
         onClose={handleClose}
       >
-        <DialogTitle>Fill the form</DialogTitle>
+        <DialogTitle>The users you are following</DialogTitle>
         <DialogContent>
-          {user.name}
+          
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

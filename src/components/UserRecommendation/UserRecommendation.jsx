@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../styles.css";
-import { ListGroup } from "react-bootstrap";
+import { Carousel, ListGroup } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getSinglePlaceDetails } from "../../store/Actions/explore";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -27,10 +27,7 @@ export default function UserRecommendation() {
   const user = useSelector((state) => state.user.user);
   const allUsers = useSelector((state) => state.user.allUsers);
   const favourites = useSelector((state) => state.explore.favourite);
-  const details = useSelector((state) => state.explore.singleResult.result);
-
-  const [lastElement] = useState(favourites[favourites.length - 1]);
-  const classes = useStyles();
+  const classes = useStyles()
   const filteredAry = allUsers.filter((e) => {
     return e._id !== user._id;
   });
@@ -39,32 +36,32 @@ export default function UserRecommendation() {
       return u.user !== e._id;
     });
   });
-  const dispatch = useDispatch();
-  console.log(lastElement, "the last element");
-  useEffect(() => {
-    dispatch(
-      getSinglePlaceDetails(
-        favourites && lastElement ? lastElement.placeId : null
-      )
-    );
-  }, [lastElement]);
-  console.log(details, "the details");
-  return allUsers && user ? (
+
+  return allUsers && user && favourites ? (
     <div>
       <>
-        {favourites ? (
-          <ListGroup className="trends-list">
-            <h2 className="suggestion-header mb-3">
-              Hi {user.name}, your latest saved:
-            </h2>
-            <ListGroup.Item>
-              <div className="profile-name">
-                <img className="user-recomm-pic" src={lastElement ? lastElement.photoRef : null} />
-              </div>
-              <button className="followButton">Follow</button>
-            </ListGroup.Item>
-          </ListGroup>
-        ) : null}
+        <ListGroup className="trends-list">
+          <h2 className="suggestion-header mb-3">
+            Hi {user.name},<br/> your latest saved:
+          </h2>
+          <ListGroup.Item className="pic-list-item">
+            <Carousel>
+              {favourites.map((f) => (
+                <Carousel.Item interval={2000}>
+                  <img
+                    className="user-recomm-pic"
+                    src={f.photoRef}  
+                  />
+                  <Carousel.Caption>
+                    <p className="caption-car">
+                      {f.placeName}
+                    </p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </ListGroup.Item>
+        </ListGroup>
       </>
       <>
         <ListGroup className="homeSuggestionsList mb-5">
@@ -78,7 +75,6 @@ export default function UserRecommendation() {
                     {user.name} {user.surname}
                   </Link>
                   <br />
-                  {/* <p className="text-muted">followed by</p> */}
                 </div>
               </div>
               <button className="followButton">Follow</button>

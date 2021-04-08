@@ -53,8 +53,8 @@ export const getFav = async () => {
   }
 }
   // POST PLACE ID TO FAVOURITE ARRAY
-export const addToFav = async (cityId, photoRef) => {
-  const photo = JSON.stringify({ photoUrl: photoRef });
+export const addToFav = async (cityId, photoRef,name) => {
+  const data = JSON.stringify({ photoUrl: photoRef,placeName:name});
   let config =   {
     method:"post",
     url: `${LLAMA_API}like/favourite/${cityId}`,
@@ -62,7 +62,7 @@ export const addToFav = async (cityId, photoRef) => {
       "Content-Type": "application/json",
     },
     withCredentials:true,
-    data: photo,
+    data: data,
   };
   try {
     const fav = await axios(config)
