@@ -64,8 +64,8 @@ export default function ProfileFavList() {
   return favourites ? (
     <div className={classes.root}>
       <Paper square elevation={0} className={classes.header}>
-        <Typography>{details ? details.name : null}
-        <IconButton onClick={() => removeFromFav(details.place_id)}><StarIcon /></IconButton></Typography>
+        <Typography>{favourites ? favourites[activeStep].placeName : null}
+        <IconButton onClick={() => removeFromFav(favourites[activeStep].placeId)}><StarIcon /></IconButton></Typography>
       </Paper>
        <img className={classes.img} src={favourites ? favourites[activeStep].photoRef : ""} /> 
       <MobileStepper

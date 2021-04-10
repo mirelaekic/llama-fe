@@ -6,3 +6,30 @@
     width: 15rem !important;
     border-radius: 30px !important;
 }
+.MuiDialog-paperWidthSm {
+    max-width: 30rem !important;
+    width: 27rem !important;
+    height: 24rem !important;
+}
+.MuiDialogContent-root::-webkit-scrollbar {
+    width: 0px !important;
+}
+.explore-search-modal{
+    border-radius: 30px;
+    border: 2px #00000014 solid;
+    padding: 0px;
+    padding-left: 13px;
+    font-size: 18px;
+}
+
+.MuiDialogContent-root {
+    flex: 1 1 auto;
+    padding: 0px 22px !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.MuiDialogTitle-root {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 10px 100px !important;
+}
