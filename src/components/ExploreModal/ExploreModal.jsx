@@ -20,6 +20,9 @@ import StepLabel from "@material-ui/core/StepLabel";
 import Typography from "@material-ui/core/Typography";
 import DateFnsUtils from "@date-io/date-fns";
 import Checkbox from '@material-ui/core/Checkbox';
+import Moment from 'react-moment';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import Tooltip from '@material-ui/core/Tooltip';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -27,6 +30,8 @@ import {
 } from "@material-ui/pickers";
 import "date-fns";
 import { Col, Row } from "react-bootstrap";
+import { IconButton } from "@material-ui/core";
+import CloseIcon from '@material-ui/icons/Close';
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -50,6 +55,14 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   instructions: {
+    backgroundColor: "#00ad00b3",
+    padding: "1rem",
+    marginTop: "4rem",
+    borderRadius: "3rem",
+    textAlign: "center",
+    fontSize: "18px",
+    fontWeight: "bold",
+    color: "white",
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
@@ -61,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function getSteps() {
-  return ["Invite users", "Pick a date", "Overview"];
+  return ["Invite", "Pick a date", "Overview"];
 }
 
 export default function ExploreModal() {
@@ -71,7 +84,6 @@ export default function ExploreModal() {
   const details = useSelector((state) => state.explore.singleResult.result);
   const placeImg = useSelector((state) => state.explore.photo);
   const [checked, setChecked] = React.useState([]);
-  const [invited, setInvited] = React.useState([]);
   const [name, setName] = useState("");
   const [selectedDate, setSelectedDate] = React.useState(new Date());
 
@@ -85,20 +97,25 @@ export default function ExploreModal() {
 
   const handleClose = () => {
     setOpen(false);
-    setChecked(new Map());
   };
-
-  const filteredUsers = allUsers.filter((user) => {
+  const removeMe = allUsers.filter((user) => user._id !== currentUser._id)
+  const filteredUsers = removeMe.filter((user) => {
     return (
       user.name.toLowerCase().includes(name.toLowerCase()) ||
       user.surname.toLowerCase().includes(name.toLowerCase())
     );
   });
+
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if(activeStep === steps.length){
+      handleReset()
+      setOpen(false)
+    } else {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
   };
 
   const handleBack = () => {
@@ -107,10 +124,10 @@ export default function ExploreModal() {
 
   const handleReset = () => {
     setActiveStep(0);
+    setChecked([])
   };
 
   const handleToggle = (value) => () => {
-    console.log(value,"the value of the checked")
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
 
@@ -123,7 +140,12 @@ export default function ExploreModal() {
     setChecked(newChecked);
   };
   console.log(checked,"the checked")
-
+  const filterAdded = allUsers.filter((user) => {
+    return checked ? checked.find((id) => {
+      return user._id === id
+    }) : null
+  })
+  console.log(filterAdded,"the filtered")
   function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
@@ -186,10 +208,27 @@ export default function ExploreModal() {
                 <img className="explore-img" src={placeImg.url} />
               </Col>
               <Col>
+              <div className="place-info">
                 <h6 className="place-title mt-3">{details.name}</h6>
+                <p className="text-muted place-address">{details.formatted_address}</p>
+                </div>
               </Col>
             </Row>
-            <div className="users-time"></div>
+            <Row className="users-time mt-4">
+          <Col className="time">
+            <Moment format="D MMM YYYY">{selectedDate}</Moment> <br/>
+            <Moment format="h:mm a">{selectedDate}</Moment>
+          </Col>
+              <Col>
+              <AvatarGroup className="avatar-group" max={checked.length}>
+                  {filterAdded.map((u,i) => (
+                    <Tooltip arrow title={u.name + " " + u.surname}>
+                      <Avatar key={i} alt={u.name} src={u.imgUrl} />
+                    </Tooltip>
+                  ))}
+              </AvatarGroup>
+              </Col>
+            </Row>
           </div>
         );
       default:
@@ -210,6 +249,9 @@ export default function ExploreModal() {
           onClose={handleClose}
         >
           <DialogTitle>
+          <IconButton className="exit-btn" onClick={handleClose} color="primary">
+          <CloseIcon />
+            </IconButton>
             <Stepper activeStep={activeStep} alternativeLabel>
               {steps.map((label) => (
                 <Step key={label}>
@@ -230,14 +272,11 @@ export default function ExploreModal() {
           <DialogContent>
             <div>
               {activeStep === steps.length ? (
-                <div>
                   <Typography className={classes.instructions}>
                     Invitation sent!{" "}
                   </Typography>
-                  <Button onClick={handleReset}>Reset</Button>
-                </div>
               ) : (
-                <Typography className={classes.instructions}>
+                <Typography>
                   {getStepContent(activeStep)}
                 </Typography>
               )}
@@ -251,11 +290,8 @@ export default function ExploreModal() {
             >
               Back
             </Button>
-            <Button variant="contained" color="primary" onClick={handleNext}>
-              {activeStep === steps.length - 1 ? "Finish" : "Next"}
-            </Button>
-            <Button onClick={handleClose} color="primary">
-              Cancel
+            <Button variant="contained" className="next-btn" color="primary" onClick={handleNext}>
+              {activeStep === steps.length - 1 ? "Send" : "Next"}
             </Button>
           </DialogActions>
         </Dialog>

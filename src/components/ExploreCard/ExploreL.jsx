@@ -229,7 +229,7 @@ export default function ExploreL() {
                           <IconButton
                             className="star-btn"
                             onClick={() => removeFromFav(detail.place_id)}
-                            className=" ml-2 fav-btn"
+                            className=" ml-2 notFav-btn"
                           >
                             <StarIcon />
                           </IconButton>

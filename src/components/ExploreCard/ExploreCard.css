@@ -33,13 +33,22 @@
     position: fixed !important;
 }
 .fav-btn{
-    background-color: rgb(108, 111, 255) !important;
+    background-color: rgba(255, 166, 0, 0.562) !important;
     color: white !important;
     font-weight: bold !important;
     width: 10rem !important;
     bottom: 0 !important;
     padding: 0px !important;
     border-radius: 30px !important;
+}
+.notFav-btn{
+  background-color: orange !important;
+  color: white !important;
+  font-weight: bold !important;
+  width: 10rem !important;
+  bottom: 0 !important;
+  padding: 0px !important;
+  border-radius: 30px !important;
 }
 .MuiAccordionSummary-content {
     margin: 12px 0;
