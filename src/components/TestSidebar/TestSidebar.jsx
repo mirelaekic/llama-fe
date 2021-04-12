@@ -16,7 +16,9 @@ import PlaceIcon from "@material-ui/icons/Place";
 import EmailIcon from "@material-ui/icons/Email";
 import llamaLogo8 from "../../icon/llamaLogo8.jpg";
 import { useHistory } from "react-router-dom";
+import NotificationCenter from 'react-notification-center-component';
 import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
+
 export default function TestSidebar() {
   const history = useHistory();
 

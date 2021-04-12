@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -23,6 +23,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Moment from 'react-moment';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Tooltip from '@material-ui/core/Tooltip';
+import io from "socket.io-client";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -32,6 +33,7 @@ import "date-fns";
 import { Col, Row } from "react-bootstrap";
 import { IconButton } from "@material-ui/core";
 import CloseIcon from '@material-ui/icons/Close';
+import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -76,7 +78,12 @@ const useStyles = makeStyles((theme) => ({
 function getSteps() {
   return ["Invite", "Pick a date", "Overview"];
 }
-
+let socket;
+const CONNECTION_PORT = "http://localhost:9010/";
+const connOpt = {
+  transports: ["websocket"], // socket connectin options
+};
+socket = io(CONNECTION_PORT,connOpt)
 export default function ExploreModal() {
   const classes = useStyles();
   const currentUser = useSelector((state) => state.user.user);
@@ -85,8 +92,13 @@ export default function ExploreModal() {
   const placeImg = useSelector((state) => state.explore.photo);
   const [checked, setChecked] = React.useState([]);
   const [name, setName] = useState("");
+  const [notification,setNotification] = React.useState()
   const [selectedDate, setSelectedDate] = React.useState(new Date());
-
+  // useEffect(() => {
+  //   socket.on("notification", (msg) => setNotification((messages) => messages.concat(msg)));
+  // },[])
+  
+  //console.log(notification,"the notification")
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
@@ -109,8 +121,33 @@ export default function ExploreModal() {
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
 
-  const handleNext = () => {
-    if(activeStep === steps.length){
+  const handleNext = async () => {
+     if(activeStep === steps.length){
+      try {
+        const datatoSend = {
+          sender:currentUser.name + " " + currentUser.surname,
+          place:details.name,
+          time: selectedDate,
+          acceptUrl:"http://localhost:3000/explore",
+          declineUrl:"http://localhost:3000/explore"
+        }
+        let ep = `https://api.ravenhub.io/company/lXZv5nOYzh/subscribers/${checked[0]}/events/3DaRq58DlX`
+        const sendNoti = await axios.post(ep,datatoSend, { "priority" : "Critical" }, {
+          headers: {'Content-type': 'application/json'}
+         });
+         console.log(sendNoti,"the sent")
+      } catch (error) {
+        console.log(error)
+      }
+    //   let notificationContent = {
+    //     sender:currentUser._id,
+    //     place:details.name,
+    //     users:checked,
+    //     time:selectedDate
+    //   }
+    //   console.log(notificationContent, "the content of notif")
+    //   await socket.emit("notification",notificationContent)
+
       handleReset()
       setOpen(false)
     } else {

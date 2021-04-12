@@ -9,9 +9,11 @@ import { Avatar, IconButton, Button, Menu, MenuItem } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../../store/Actions/user";
 import { Link } from "react-router-dom";
-
+import NotificationCenter from 'react-notification-center-component';
+ 
 export default function HomeNav() {
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.user.user);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -30,10 +32,8 @@ export default function HomeNav() {
         </Form>
       </Nav>
       <Nav className="ml-auto">
-        <Nav.Item>
-          <IconButton>
-            <NotificationsIcon />
-          </IconButton>
+        <Nav.Item className="notification-icon">
+        <NotificationCenter className="myCustomClass" appId="lXZv5nOYzh" subscriberId={currentUser._id}/>
         </Nav.Item>
         <Nav.Item className="navbar-user">
           <Button

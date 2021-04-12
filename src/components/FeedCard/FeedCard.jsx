@@ -42,7 +42,6 @@ export default function FeedCard() {
     }
   };
   const [open, setOpen] = useState(false);
-  const locationPath = window.location.pathname;
 
   const handleOpen = () => {
     setOpen((prev) => !prev);
