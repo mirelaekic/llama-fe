@@ -19,6 +19,7 @@ import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Typography from "@material-ui/core/Typography";
 import DateFnsUtils from "@date-io/date-fns";
+import Checkbox from '@material-ui/core/Checkbox';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -69,19 +70,10 @@ export default function ExploreModal() {
   const allUsers = useSelector((state) => state.user.allUsers);
   const details = useSelector((state) => state.explore.singleResult.result);
   const placeImg = useSelector((state) => state.explore.photo);
-  const [checked, setChecked] = React.useState(new Map());
-  const [invited, setInvited] = React.useState()
+  const [checked, setChecked] = React.useState([]);
+  const [invited, setInvited] = React.useState([]);
   const [name, setName] = useState("");
   const [selectedDate, setSelectedDate] = React.useState(new Date());
-  const loopChecked = checked.forEach(function(value, key) {
-    console.log(key,"the KEY",value,"the value")
-    if (value){
-     const filtered = allUsers.filter((u) => u._id === key)
-     console.log(filtered, "the filtered users ")
-    }
-  })
-
-  console.log(loopChecked, "checked users ")
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -93,7 +85,7 @@ export default function ExploreModal() {
 
   const handleClose = () => {
     setOpen(false);
-    setChecked(new Map())
+    setChecked(new Map());
   };
 
   const filteredUsers = allUsers.filter((user) => {
@@ -102,11 +94,6 @@ export default function ExploreModal() {
       user.surname.toLowerCase().includes(name.toLowerCase())
     );
   });
-  const handleChange = (event) => {
-    var isChecked = event.target.checked;
-    var item = event.target.value;
-    setChecked((prevState) => prevState.set(item, isChecked));
-  }
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
 
@@ -122,6 +109,21 @@ export default function ExploreModal() {
     setActiveStep(0);
   };
 
+  const handleToggle = (value) => () => {
+    console.log(value,"the value of the checked")
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
+  };
+  console.log(checked,"the checked")
+
   function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
@@ -130,18 +132,17 @@ export default function ExploreModal() {
             <div className={classes.demo}>
               <List>
                 {filteredUsers.map((user, i) => (
-                  <ListItem>
+                  <ListItem key={user._id}>
                     <ListItemAvatar>
                       <Avatar src={user.imgUrl} />
                     </ListItemAvatar>
                     <ListItemText primary={user.name + " " + user.surname} />
                     <ListItemSecondaryAction>
-                      <input
-                        type="checkbox"
+                      <Checkbox
                         edge="end"
-                        value={user._id}
-                        id={user._id}
-                        onChange={handleChange}
+                        onChange={handleToggle(user._id)}
+                        checked={checked.indexOf(user._id) !== -1}
+                        inputProps={{ "aria-labelledby": user._id }}
                       />
                     </ListItemSecondaryAction>
                   </ListItem>
@@ -182,15 +183,13 @@ export default function ExploreModal() {
           <div className="place-title-img">
             <Row>
               <Col>
-          <img className="explore-img" src={placeImg.url} />
+                <img className="explore-img" src={placeImg.url} />
               </Col>
               <Col>
-          <h6 className="place-title mt-3">{details.name}</h6>
+                <h6 className="place-title mt-3">{details.name}</h6>
               </Col>
             </Row>
-            <div className="users-time">
-          
-            </div>
+            <div className="users-time"></div>
           </div>
         );
       default:
