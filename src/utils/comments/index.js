@@ -2,12 +2,22 @@ import axios from "axios"
 import backend from "../token"
 const LLAMA_API = process.env.REACT_APP_LLAMA_API
 
-// GET COMMENTS BY POST ID  
-export const comments = async (id) => {
+// GET ALL COMMENTS
+export const comments = async () => {
     try {
-        const comments = await backend.get(`${LLAMA_API}comments/${id}`,{ withCredentials:true})
+        const comments = await backend.get(`${LLAMA_API}comments/`,{ withCredentials:true})
         console.log(comments.data)
         return comments.data
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+}
+// GET COMMENTS BY POST ID 
+export const commentsById = async (id) => {
+    try {
+        const comments = await backend.get(`${LLAMA_API}comments/${id}`,{ withCredentials:true})
+        return comments.data.length
     } catch (error) {
         console.log(error)
         return null
@@ -25,12 +35,19 @@ export const comment = async (id) => {
     }
 }
 // POST COMMENT
-export const postComment = async (id,data) => {
+export const postComment = async (id,comm) => { 
     try {
-        console.log(id,"TO POST")
-        const comment = await backend.post(`${LLAMA_API}comments/${id}`,{data},{ withCredentials:true})
-        console.log(comment)
-        return comment.data
+        let data = JSON.stringify({"comment":comm});
+        let config = {
+            withCredentials:true,
+            method:"POST",
+            url:`${LLAMA_API}comments/${id}`,
+            headers: {'Content-Type': 'application/json'},
+            data: data
+        }
+        const addComment = await backend(config)
+        const comment = JSON.stringify(addComment.data)
+        return comment.comment
     } catch (error) {
         console.log(error)
         return null

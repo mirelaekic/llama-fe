@@ -4,13 +4,16 @@ import {
   COMMENT_SUCCESS,
   GET_ALL_COMMENTS,
   ERROR_ALL_COMMENTS,
+  COMMENTS_BY_ID
 } from "../types";
+
 
 const initialState = {
   allComments: [],
+  commentsById:null,
   loading: false,
   error: "",
-  postComment: {},
+  postComment: "",
   deleteComment: {},
 };
 
@@ -19,13 +22,18 @@ export default function (state = initialState, action) {
     case COMMENT_ERROR:
       return {
         ...state,
-        error: action.payload,
+        error: "The comment should have at least 1 char"
       };
     case COMMENT_LOADING:
       return {
         ...state,
         loading: true,
       };
+    case COMMENTS_BY_ID:
+      return {
+        ...state,
+        commentsById:action.payload
+      }
     case COMMENT_SUCCESS:
       return {
         ...state,

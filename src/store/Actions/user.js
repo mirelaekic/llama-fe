@@ -7,25 +7,73 @@ import {
   REGISTER_ERROR,
   USER_ERROR,
   USER_LOADING,
+  FOLLOW_USER,
+  UNFOLLOW_USER,
   USER_SUCCESS,
   LOGOUT_SUCCESS,
   LOGOUT_ERROR,
   GET_SINGLE_USER,
   GET_SINGLE_USER_ERROR,
   GET_USERS,
-  GET_USERS_ERROR
+  GET_USERS_ERROR,
+  UPDATED_USER_SUCCESS,
+  UPDATED_USER_ERROR,
+  UPDATED_USER_LOADING,
+  GET_FAVOURITE
 } from "../types";
 import {
   login,
+  userBySearch,
   me,
   logout,
   updateProfile,
   addPicture,
+  follow,
+  unfollow,
   userById,
   register,
   users
 } from "../../utils/users";
-
+export const changeProfile = (data) => {
+  return async (dispatch) => {
+    dispatch({
+      type:UPDATED_USER_LOADING
+    })
+    console.log(data,"tp be updated")
+    try {
+      await updateProfile(data)
+      dispatch({
+        type:UPDATED_USER_SUCCESS
+      })
+      dispatch(getMe())
+    } catch (error) {
+      console.log(error)
+      dispatch({
+        type:UPDATED_USER_ERROR
+      })
+    }
+  }
+}
+export const changeProfilePicture = (avatar) => {
+  return async (dispatch) => {
+    dispatch({
+      type:UPDATED_USER_LOADING
+    })
+    try {
+      console.log(avatar,"the avatar")
+      await addPicture(avatar)
+      dispatch({
+        type:UPDATED_USER_SUCCESS
+      })
+      dispatch(getMe())
+    } catch (error) {
+      console.log(error)
+      dispatch({
+        type:UPDATED_USER_ERROR
+      })
+    }
+  }
+}
 export const getUsers = () => {
   return async (dispatch) => {
     try {
@@ -57,10 +105,59 @@ export const getMe = () => {
     }
   };
 };
+export const followUser = (id) => {
+  return async (dispatch) => {
+    try {
+      const req = await follow(id)
+      console.log(req,"my array of following")
+      dispatch({
+        type:FOLLOW_USER,
+        payload:req
+      })
+      dispatch(getMe())
+      dispatch(getUserById(id))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+export const unfollowUser = (id) => {
+  return async (dispatch) => {
+    try {
+      const req = await unfollow(id)
+      console.log(req,"getting updated current user")
+      dispatch({
+        type:UNFOLLOW_USER,
+        payload:req.following
+      })
+      dispatch(getMe())
+      dispatch(getUserById(id))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 export const getUserById = (id) => {
   return async (dispatch) => {
     try {
       const user = await userById(id);
+      console.log(user,"fetched user")
+      dispatch({
+        type: GET_SINGLE_USER,
+        payload: user,  
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_SINGLE_USER_ERROR,
+      });
+    }
+  };
+};
+export const getUserBySearch = (q) => {
+  return async (dispatch) => {
+    try {
+      const user = await userBySearch(q);
+      console.log(user,"fetched user")
       dispatch({
         type: GET_SINGLE_USER,
         payload: user,
@@ -72,7 +169,6 @@ export const getUserById = (id) => {
     }
   };
 };
-
 export const logoutAction = () => {
   return async (dispatch) => {
     try {

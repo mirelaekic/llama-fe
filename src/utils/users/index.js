@@ -50,18 +50,27 @@ export const me = async () => {
 export const users = async () => {
     try {
         const users = await axios.get(`${LLAMA_API}users`,{ withCredentials:true})
-        console.log(users,"fetching users")
         return users.data
     } catch (error) {
         console.log(error)
         return null
     }
-}   
+}    
 // GET USER BY ID 
 export const userById = async (id) => {
     try {
         const user = await axios.get(`${LLAMA_API}users/${id}`,{ withCredentials:true})
-        console.log(user)
+        return user.data
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+}
+//GET USER BY SEARC 
+export const userBySearch = async (text) => {
+    try {
+        console.log(text,"the text")
+        const user = await axios.post(`${LLAMA_API}users/search`,text,{ withCredentials:true})
         return user.data
     } catch (error) {
         console.log(error)
@@ -71,7 +80,7 @@ export const userById = async (id) => {
 //UPDATE PROFILE
 export const updateProfile = async (update) => {
     try {
-        const response = await axios.put(`${LLAMA_API}users/me`,update,{ withCredentials:true})
+        const response = await backend.put(`${LLAMA_API}users/me`,update,{ withCredentials:true})
         console.log(response)
         return response.data
     } catch (error) {
@@ -82,7 +91,9 @@ export const updateProfile = async (update) => {
 //ADD PROFILE PICTURE
 export const addPicture = async (avatar) => {
     try {
-        const response = await axios.put(`${LLAMA_API}users/me/profilePic`,avatar,{ withCredentials:true})
+        let formData = new FormData();
+        formData.append("avatar",avatar)
+        const response = await backend.put(`${LLAMA_API}users/me/profilePic`,formData,{ withCredentials:true})
         console.log(response)
         return response.data
     } catch (error) {
@@ -104,7 +115,7 @@ export const deleteProfile = async () => {
 //FOLLOW USER 
 export const follow = async (id) => {
     try {
-        const follow = await axios.post(`${LLAMA_API}users/follow/${id}`,{ withCredentials:true})
+        const follow = await backend.post(`${LLAMA_API}users/follow/${id}`,{ withCredentials:true})
         console.log(follow)
         return follow.data
     } catch (error) {
@@ -115,8 +126,7 @@ export const follow = async (id) => {
 //UNFOLLOW USER
 export const unfollow = async (id) => {
     try {
-        const unfollow = await axios.post(`${LLAMA_API}users/unfollow/${id}`,{ withCredentials:true})
-        console.log(unfollow)
+        const unfollow = await backend.post(`${LLAMA_API}users/unfollow/${id}`,{ withCredentials:true})
         return unfollow.data
     } catch (error) {
         console.log(error)

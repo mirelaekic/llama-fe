@@ -1,16 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 .login-page {
+  padding-top: 5rem;
+  padding-bottom: 7.4rem;
   text-align: -webkit-center;
-  max-width: 100% !important; 
-  background-image:url(../icon/background3.png);
   background-repeat: round;
+  background-image: url(../icon/coverProfile.png);
 }
 .register-page {
     height:auto;
     max-width: 100% !important; 
-    background-image:url(../icon/chatgi.jpg);
     background-repeat: round;
-  }
-.comment-like{
-    padding: 0px !important;
-    align-self: self-start !important;
+}
+.home-column{
+  font-family:  -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", Helvetica, Arial, sans-serif !important;
+  margin-left: 2rem !important;
+  margin-top: 4rem !important;
+}
+.home-header{
+  font-family: 'Alfa Slab One', cursive;
+  text-align: initial;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  font-size: 30px !important;
+}
+.profile-info{
+  margin-top: -6rem !important;
+}
+.profile-username{
+  font-weight: bold !important;
+  font-size: 1.8rem !important;
+  text-align: center !important;
+}
+.profile-detail{
+  text-align: justify !important;
+  margin-bottom: 0px !important;
+}
+.profile-action-button{
+  margin-top: 1rem !important;
+  margin-left: 11rem !important;
+}
+.chat-page{
+  margin-left: 5rem;
+  margin-top: 5rem;
+}
+.explore-title{
+  top: 7rem;
+  max-width: 42rem;
+    position: absolute;
+    left: 6rem;
+    font-family: 'Alfa Slab One';
+} 
+.explore-background{
+  width: 58%;
+    position: absolute;
+    bottom: 5rem;
+    left: 33rem;
 }

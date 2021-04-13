@@ -1,0 +1,29 @@
+.chatContainer{
+    position: fixed;
+    left: 35rem;
+    bottom: 5rem;
+}
+.messageInputs input {
+    width: 27rem;
+    background-color: #f1f1f1;
+    border: 5px solid #f1f1f1;
+    padding: 3px;   
+}
+.messageContainer{
+    margin-bottom: 10px;
+}
+#You{
+    width: max-content;
+    margin-left: 25rem;
+    background-color: #e2e2e2;
+    color: black;
+    padding: 13px;
+    border-radius: 30px;
+}
+#Other{
+    max-width: max-content;
+    background-color: #383838;
+    color: white;
+    padding: 13px;
+    border-radius: 30px;
+}

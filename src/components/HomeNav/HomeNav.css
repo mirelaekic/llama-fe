@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+.top-navbar {
+  z-index: 6 !important;
+  width: -webkit-fill-available;
+  height: 3.5rem !important;
+  position: fixed !important;
+  background-color: white !important;
+}
+.notification-icon{
+    margin-top: 14px !important;
+    margin-left: -34px !important;
+}
+.notification-center-footer{
+    display: none !important;
+}
+.notification-title{
+    text-align: initial;
+    margin-left: 16px;
+    color: black;
+}
+[data-v-5b8e1db6] .small, [data-v-5b8e1db6] small {
+    font-size: 80%;
+    color: #f05151 !important;
+    font-weight: bold;
+}
+.open-feed.activeBell svg[data-v-5b8e1db6] {
+    fill: black !important;
+}
+.notification-center-header{
+    text-align: center;
+    padding: 10px 8px 8px 0;
+    border-bottom: none !important;
+    font-weight: 700;
+}
+.unread .card-body {
+    background: white !important;
+}
+.unread-status[data-v-5b8e1db6] {
+    float: right;
+    color: black;
+}
+.feed-area::-webkit-scrollbar{
+    width: 0px !important;
+}
+.feed-window{
+    height: 20rem;
+}
+.btn-sm {
+    margin-right: 3rem !important;
+    padding: 0.25rem 1.5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    font-weight: 600 !important;
+    border-radius: .2rem;
+    background-color: #f6f4f2 !important;
+    border-color: #e6e6e6 !important;
+}
+.unread-status{
+    display: none;
+}
+.btn-info:focus {
+    box-shadow: 0 0 0 0.2rem rgb(222 222 222 / 50%) !important;
+}
+.btn-info:hover {
+    color: #212529;
+    background-color: #f1edea;
+    border-color: #cacaca;
+}   
+ .border-light{
+    height: auto;
+} 
+[data-v-5b8e1db6] .card-footer {
+    padding: .75rem 1.25rem;
+    background-color: rgb(255 255 255);
+    border-top: 1px solid rgb(0 0 0 / 0%);
+}
+.card-footer{
+    padding: 4px;
+    text-align: initial;
+    margin-left: 26px;
+}
+.feed-window{
+    background: #f6f4f2;
+    border-radius: 21px !important;
+}
+.badge-notify {
+    background: #f05151 !important;
+}
+.feed-area{
+    padding: 1.2rem;
+    background: rgb(246 244 242) !important;
+    border-radius: 16px !important;
+}
+.settings-link{
+    display: none !important;
+}
+.logo-navbar{
+    width: 3rem;
+    margin-left: 2rem !important;
+}
+.navbar-user{
+    display: flex !important;
+}
+.navbar-username{
+    line-height: 2.5 !important;
+    margin-bottom: 0px !important;
+    margin-right: 7px;
+}
+.navbar-avatar{
+    margin-top: 2px !important;
+}
+.logo{
+    font-size:20px !important;
+    font-family: 'Dancing Script', cursive !important;
+}
+
+.profile-link{
+    color: #202020 !important;
+}
+.profile-link:hover{
+    text-decoration: none !important;
+}

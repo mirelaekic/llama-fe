@@ -1,0 +1,23 @@
+.profile-buttons {
+  display: grid;
+  place-content: center !important;
+}
+.profile-buttons button {
+  margin-top: 10px;
+  background-color: #ffffff !important;
+  color: #525252;
+  border: 1px solid rgb(0 0 0 / 20%) !important;
+  font-weight: 600;
+}
+.follow-button {
+  color: #525252 !important;
+  font-weight: bold !important;
+  background-color: rgb(142 42 79) !important;
+}
+.unfollow-button {
+    color: #525252 !important;
+  background-color: white !important;
+}
+.user-description {
+  font-size: 14px !important;
+}

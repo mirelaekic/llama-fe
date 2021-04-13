@@ -1,4 +1,4 @@
-import {POST_LOADING,POSTS_SUCCESS,POST_ERROR,MY_POSTS,UPLOAD_POST,SINGLE_POST} from "../types"
+import {POST_LOADING,POSTS_SUCCESS,POST_ERROR,MY_POSTS,UPLOAD_POST,SINGLE_POST, DELETE_POST} from "../types"
 import {postById,posts,myPosts,publishPost,editPost,deletePost} from "../../utils/posts"
 
 export const getAllPosts = () => {
@@ -17,7 +17,21 @@ export const getAllPosts = () => {
       }
     };
   };
-
+export const removePost = (id) => {
+  return async(dispatch) => {
+    try {
+      await deletePost(id)
+      dispatch({
+        type:DELETE_POST
+      })
+      dispatch(getAllPosts())
+    } catch (error) {
+      dispatch({
+        type: POST_ERROR,
+      });
+    }
+  }
+}
   export const getPostById = (id) => {
     return async (dispatch) => {
       try {

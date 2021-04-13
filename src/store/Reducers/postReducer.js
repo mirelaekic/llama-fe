@@ -5,6 +5,7 @@ import {
   UPLOAD_POST,
   MY_POSTS,
   SINGLE_POST,
+  DELETE_POST
 } from "../types";
 
 const initialState = {
@@ -14,10 +15,16 @@ const initialState = {
   error: "",
   uploadPost: {},
   singlePost: {},
+  delete:""
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case DELETE_POST:
+      return {
+        ...state,
+        delete:"Post deleted!"
+      }
     case POST_ERROR:
       return {
         ...state,

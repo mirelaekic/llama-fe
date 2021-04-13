@@ -7,8 +7,8 @@ import { Redirect } from "react-router-dom";
 import { Container } from "@material-ui/core";
 export default function Login() {
   return (
-    <Container className="login-page">
+    <div className="login-page">
       <LoginCard />
-    </Container>
+    </div>
   );
 }

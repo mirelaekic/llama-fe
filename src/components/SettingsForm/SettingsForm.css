@@ -1,0 +1,30 @@
+.change-avatar-button{
+    display: inline-flex !important;
+    justify-content: space-between !important;
+}
+input[type="file"] {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    font-size: 17px;
+    color: #b8b8b8;
+    z-index: -1;
+  }
+
+.avatar-btn{
+    margin-top: 18px !important;
+}
+.avat-btn{
+    padding: 0px !important;
+    font-size: 0px !important;
+    border-radius: 0px !important;
+    color: #425664 !important;
+}
+.avat-btn:hover{
+    cursor: pointer !important;
+}
+.settings-form-btn{
+    background-color: #425664 !important;
+    font-weight: bold !important;
+    color: white !important;
+}

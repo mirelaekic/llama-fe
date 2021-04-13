@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+.invite-btn{
+    z-index: 999;
+    background-color: orange !important;
+    color: white !important;
+    font-weight: bold !important;
+    width: 15rem !important;
+    border-radius: 30px !important;
+}
+.MuiStepIcon-root.MuiStepIcon-active {
+    color: #ffbc4285 !important;
+}
+.MuiStepIcon-root.MuiStepIcon-completed {
+    color: orange !important;
+}
+.exit-btn{
+    color: orange !important;
+    position: absolute !important;
+    margin-left: 22rem !important;
+    margin-top: -0.6rem !important;
+}
+.MuiPickersDay-daySelected {
+    background-color: orange !important;
+}
+.MuiPickersToolbar-toolbar {
+    background-color: orange !important;
+}
+.MuiPickersClock-pin {
+    background-color: orange !important;
+}
+.MuiPickersClockPointer-noPoint {
+    background-color: orange !important ;
+}
+.MuiPickersClockPointer-thumb {
+    border: 14px solid orange !important; 
+}
+.MuiPickersClockPointer-pointer {
+    background-color: orange !important;
+}
+.exit-btn:hover{
+    background-color: rgb(245 165 0 / 4%) !important;
+}
+.MuiStepIcon-root {
+    color: rgb(206 206 206 / 69%) !important;
+}
+.MuiCheckbox-colorSecondary.Mui-checked {
+    color: orange !important;
+}
+.MuiCheckbox-colorSecondary.Mui-checked:hover {
+    background-color: rgb(245 165 0 / 4%) !important;
+}
+.MuiIconButton-colorSecondary:hover {
+    background-color: rgb(245 165 0 / 4%) !important;
+}
+.next-btn{
+    background-color: orange !important;
+}
+.MuiDialog-paperWidthSm {
+    max-width: 30rem !important;
+    width: 27rem !important;
+    height: 30rem !important;
+}
+.MuiDialogContent-root::-webkit-scrollbar {
+    width: 0px !important;
+}
+.explore-search-modal{
+    border-radius: 30px;
+    border: 2px #00000014 solid;
+    padding: 0px;
+    padding-left: 13px;
+    font-size: 18px;
+    margin-left: 5rem !important;
+}
+.explore-img{
+    width: 12rem;
+    border-radius: 2rem;
+}
+.place-title-img{
+    text-align-last: center !important;
+}
+.place-title{
+    font-family: 'Alfa Slab One' !important;
+}
+.MuiDialogContent-root {
+    flex: 1 1 auto;
+    padding: 0px 22px !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.MuiDialogTitle-root {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: -1px 100px !important;
+}
+.users-time{
+    background-color: orange;
+    padding: 1rem;
+    
+    margin-left: 2rem;
+    color: white;
+    font-weight: bold;
+}
+.border-light{
+    height: 7rem !important;
+}
+.avatar-group{
+    place-content: center !important;
+}
+.place-address{
+    font-size: 13px;
+}
+.place-info{
+    text-align: center;
+}

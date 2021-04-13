@@ -1,0 +1,37 @@
+.explore-button{
+    background-color: orange !important;
+    color: white !important;
+    font-weight: bold !important;
+    width: 22rem !important;
+    position: absolute !important;
+    top: 21rem !important;
+    left: 16rem !important;
+    padding: 12px !important;
+    border-radius: 30px !important;
+  }
+  .MuiDrawer-paperAnchorBottom {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 51rem !important;
+    max-height: 100%;
+}
+.explore-drawer{
+    margin-bottom: -1rem !important;
+}
+.MuiDrawer-paperAnchorBottom::-webkit-scrollbar{
+    width: 0px !important;
+}
+.col-exp-filter{
+    background-color: rgb(0 0 0 / 5%) !important;
+}
+.drawer-row{
+    height: inherit !important;
+}
+.MuiRadio-colorSecondary.Mui-checked {
+    color: orange !important;
+}
+.radiobtn:hover{
+    background-color: rgb(245 142 0 / 9%) !important;
+}

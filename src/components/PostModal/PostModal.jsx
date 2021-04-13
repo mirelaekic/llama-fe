@@ -12,7 +12,7 @@ import ImageIcon from "@material-ui/icons/Image";
 import MoodIcon from "@material-ui/icons/Mood";
 import { useDispatch, useSelector } from "react-redux";
 import {uploadPost, getAllPosts} from "../../store/Actions/post"
-
+import AddBoxIcon from '@material-ui/icons/AddBox';
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "16px 32px 10px",
     backgroundColor: theme.palette.background.paper,
     border: "2px strong #000",
+    borderRadius:"30px",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -32,13 +33,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal() {
+export default function PostModal() {
 
   const user = useSelector((state) => state.user.user);
   const classes = useStyles();
   const dispatch = useDispatch()
   const [open, setOpen] = React.useState(false);
-  const [postImg, setPostImg] = useState()
+  const [postImg, setPostImg] = useState()  
   const [preview, setPreview] = useState()
   const [description, setDescription] = useState("")
   const handleOpen = () => {
@@ -54,14 +55,13 @@ export default function TransitionsModal() {
       setDescription("")
       setPostImg(null)
   }
-  //console.log(postImg,"img")
+
   const url = postImg ? URL.createObjectURL(postImg) : ""
-  //console.log(url,"img url")
   return user ? (
-    <div>
-      <button onClick={handleOpen} className="post-input">
-        <p className="text-muted">What's happening?</p>
-      </button>
+    <>
+      {window.location.pathname === "/" ? <button onClick={handleOpen} className="post-input">
+        <AddBoxIcon />New post
+      </button> : <Button onClick={handleOpen}>Add new post</Button>}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -76,14 +76,13 @@ export default function TransitionsModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h5 id="transition-modal-title">
+            <h5 className="modal-title" id="transition-modal-title">
               <strong>Create a post</strong>
             </h5>
             <hr />
             <div>
               <div className="user-info">
                 <Avatar alt={user.name} src={user.imgUrl} />
-
                 <div className="user ml-2">
                   {user.name} {user.surname}
                 </div>
@@ -102,21 +101,23 @@ export default function TransitionsModal() {
             <div className="action-buttons">
             {url ? <img className="preview-img" src={url} /> : " "}
               <input
+              //className="imgInput"
                 accept="image/png, image/jpeg, image/jpg"
-               //className={classes.input}
+               // className={classes.input}
                 id="icon-button-file"
                 type="file"
                 id="postImg"
                 onChange={(e) => setPostImg(e.target.files[0])}
               />
               <label htmlFor="icon-button-file">
-                {/* <IconButton
+               <IconButton
+                  id="icon-button-file"
                   className="upload-button"
                   aria-label="upload picture"
                   component="span"
                 >
                   <ImageIcon />
-                </IconButton> */}
+                </IconButton> 
               </label>
               <IconButton className="emoji-button" aria-label="add emoji">
                 <MoodIcon />
@@ -142,7 +143,7 @@ export default function TransitionsModal() {
           </div>
         </Fade>
       </Modal>
-    </div>
+    </>
   ) : (
     <CircularProgress />
   );

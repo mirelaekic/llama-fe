@@ -1,9 +1,62 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import { Col, Row, Container } from "react-bootstrap";
+import {  CircularProgress, IconButton } from '@material-ui/core';
+import { useDispatch, useSelector } from "react-redux";
+import ProfileHeader from '../../components/ProfileHeader/ProfileHeader';
+import ProfileTab from '../../components/ProfileTab/ProfileTab';
+import ProfileDetailCard from '../../components/ProfileDetailCard/ProfileDetailCard';
+import { getMe } from '../../store/Actions/user';
+import { getAllPosts } from '../../store/Actions/post';
+import { getAllComments } from '../../store/Actions/comment';
+import Backdrop from '@material-ui/core/Backdrop'
+import { makeStyles } from '@material-ui/core/styles';
+import { getFavPlace } from '../../store/Actions/explore';
 
-export default function Profile() {
-    return (
-        <div>
-            PROFILE PAGE
-        </div>
-    )
-}
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: 'black',
+  },
+}));
+
+export default function Profile(props) {
+  const classes = useStyles();
+    const dispatch = useDispatch()
+    const user = useSelector((state) => state.user.user);
+
+    useEffect(() => {
+      dispatch(getMe());
+      dispatch(getAllPosts())
+      dispatch(getAllComments())
+      dispatch(getFavPlace())
+    }, []);
+
+    const userByID = useSelector((state) => state.user.getUserById)
+    const params = props.match.params.id
+    return user && userByID ? (
+        <Container>
+          <Row>
+            <Col className="home-column" lg={12} md={8}>
+              <ProfileHeader props={props}/>
+              <Row>
+                  <Col lg={4} md={12} sm={12} className="d-xs-none d-sm-none d-md-block d-lg-block mt-3">
+                      <div className="profile-info">
+                        <Row>
+                            <Col ><h2 className="profile-username">{params === "me" ? user.name : userByID.name} {params === "me" ? user.surname : userByID.surname} </h2></Col>
+                            </Row>
+                      </div>
+                    <ProfileDetailCard props={props}/>
+                  </Col>
+                  <Col lg={8} md={12} sm={12}>
+                    <ProfileTab props={props} />
+              </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      ) : (
+        <Backdrop className={classes.backdrop} open={true}>
+        <CircularProgress color="inherit" />
+        </Backdrop>
+      );   
+    }
