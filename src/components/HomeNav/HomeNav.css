@@ -45,6 +45,27 @@
 .feed-window{
     height: 20rem;
 }
+.btn-sm {
+    margin-right: 3rem !important;
+    padding: 0.25rem 1.5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    font-weight: 600 !important;
+    border-radius: .2rem;
+    background-color: #f6f4f2 !important;
+    border-color: #e6e6e6 !important;
+}
+.unread-status{
+    display: none;
+}
+.btn-info:focus {
+    box-shadow: 0 0 0 0.2rem rgb(222 222 222 / 50%) !important;
+}
+.btn-info:hover {
+    color: #212529;
+    background-color: #f1edea;
+    border-color: #cacaca;
+}   
  .border-light{
     height: auto;
 } 

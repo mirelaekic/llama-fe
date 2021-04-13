@@ -101,8 +101,9 @@ export default function PostModal() {
             <div className="action-buttons">
             {url ? <img className="preview-img" src={url} /> : " "}
               <input
+              //className="imgInput"
                 accept="image/png, image/jpeg, image/jpg"
-                //className={classes.input}
+               // className={classes.input}
                 id="icon-button-file"
                 type="file"
                 id="postImg"
@@ -110,6 +111,7 @@ export default function PostModal() {
               />
               <label htmlFor="icon-button-file">
                <IconButton
+                  id="icon-button-file"
                   className="upload-button"
                   aria-label="upload picture"
                   component="span"

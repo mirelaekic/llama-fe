@@ -10,6 +10,8 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import SettingsModal from "../SettingsModal/SettingsModal";
 import PostModal from "../PostModal/PostModal";
 import { getAllPosts } from "../../store/Actions/post";
+import axios from "axios";
+
 export default function ProfileDetailCard(props) {
     useEffect(() => {
       dispatch(getAllPosts());
@@ -23,7 +25,20 @@ export default function ProfileDetailCard(props) {
   const posts = useSelector((state) => state.post.allPosts);
 
   const followTheUser = async (id) => {
-    dispatch(followUser(id));
+    try {
+      dispatch(followUser(id));
+      const datatoSend = {
+        follower:currentUser.name + " " + currentUser.surname,
+      }
+      let ep = `https://api.ravenhub.io/company/lXZv5nOYzh/subscribers/${id}/events/XFOaeYDPAH`
+      const sendNoti = await axios.post(ep,datatoSend, { "priority" : "Critical" }, {
+        headers: {'Content-type': 'application/json'}
+       });
+       console.log(sendNoti,"the sent")
+       return sendNoti
+    } catch (error) {
+      console.log(error)
+    }
   };
   const unfollowTheUser = async (unfollowid) => {
     dispatch(unfollowUser(unfollowid));

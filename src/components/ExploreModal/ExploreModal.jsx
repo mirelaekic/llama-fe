@@ -24,6 +24,7 @@ import Moment from 'react-moment';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Tooltip from '@material-ui/core/Tooltip';
 import io from "socket.io-client";
+import moment from 'moment';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -120,34 +121,27 @@ export default function ExploreModal() {
 
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
-
-  const handleNext = async () => {
+ 
+  const handleNext = () => {
      if(activeStep === steps.length){
       try {
+        const date =  moment().format('LLLL');
         const datatoSend = {
           sender:currentUser.name + " " + currentUser.surname,
           place:details.name,
-          time: selectedDate,
-          acceptUrl:"http://localhost:3000/explore",
-          declineUrl:"http://localhost:3000/explore"
+          time: date,
         }
-        let ep = `https://api.ravenhub.io/company/lXZv5nOYzh/subscribers/${checked[0]}/events/3DaRq58DlX`
-        const sendNoti = await axios.post(ep,datatoSend, { "priority" : "Critical" }, {
-          headers: {'Content-type': 'application/json'}
-         });
-         console.log(sendNoti,"the sent")
+        checked.forEach((u) => {
+          let ep = `https://api.ravenhub.io/company/lXZv5nOYzh/subscribers/${u}/events/3DaRq58DlX`
+          const sendNoti = axios.post(ep,datatoSend, { "priority" : "Critical" }, {
+            headers: {'Content-type': 'application/json'}
+           });
+           console.log(sendNoti,"the sent")
+           return sendNoti
+        })
       } catch (error) {
         console.log(error)
       }
-    //   let notificationContent = {
-    //     sender:currentUser._id,
-    //     place:details.name,
-    //     users:checked,
-    //     time:selectedDate
-    //   }
-    //   console.log(notificationContent, "the content of notif")
-    //   await socket.emit("notification",notificationContent)
-
       handleReset()
       setOpen(false)
     } else {

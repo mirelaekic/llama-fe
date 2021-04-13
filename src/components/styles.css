@@ -319,6 +319,15 @@
   font-family: 'Alfa Slab One', cursive !important;
   letter-spacing: 2px;
 }
+.imgInput{
+  position: absolute !important;
+    top: 34rem !important;
+    left: 31rem !important;
+    z-index: 0 !important;
+    color: white !important;
+    background-color: white !important; 
+}
+
 .trends-list {
   font-family: 'Alfa Slab One', cursive;
   letter-spacing: 2px !important;
