@@ -53,12 +53,12 @@ export default function TestSidebar() {
             </NavIcon>
             <NavText className="sidebar-text">Explore</NavText>
           </NavItem>
-          <NavItem eventKey="chat">
+          {/* <NavItem eventKey="chat">
             <NavIcon>
               <EmailIcon />
             </NavIcon>
             <NavText className="sidebar-text">Messages</NavText>
-          </NavItem>
+          </NavItem> */}
         </SideNav.Nav>
       </SideNav>
     </div>

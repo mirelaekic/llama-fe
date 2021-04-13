@@ -56,7 +56,7 @@
     border-color: #e6e6e6 !important;
 }
 .unread-status{
-    display: none;
+    display: none   ;
 }
 .btn-info:focus {
     box-shadow: 0 0 0 0.2rem rgb(222 222 222 / 50%) !important;
