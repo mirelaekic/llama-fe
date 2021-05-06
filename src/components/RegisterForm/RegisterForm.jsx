@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
   },
+  register:{
+    textAlign:"-webkit-center"
+  },
   login:{
     background: 'linear-gradient(45deg, #AFEBD8 30%, #7DDBF6 90%)',
     border: 0,
@@ -24,11 +27,10 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.15)',
     color: 'white',
     marginTop:"2rem",
-    marginLeft:"8rem",
     height: 40,
     padding: '0 80px',
     fontSize:"0.6rem"
-  }
+  },
 }));
 export default function LoginForm() {
 
@@ -49,7 +51,7 @@ export default function LoginForm() {
 
   return (
     <div>
-      <form className="register-form mt-4">
+      <form className={classes.register}>
       <FormControl className={classes.margin}>
           <InputLabel htmlFor="input-with-icon-adornment">Name</InputLabel>
           <Input
@@ -107,7 +109,9 @@ export default function LoginForm() {
           />
         </FormControl>
       </form>
+      <div className={classes.register}>
       <Button onClick={handleSubmit} className={classes.login}>CREATE ACCOUNT</Button>
     </div>
+      </div>
   );
 }

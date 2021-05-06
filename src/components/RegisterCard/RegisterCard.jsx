@@ -19,8 +19,10 @@ function Alert(props) {
 }
 const useStyles = makeStyles({
   root: {
-    marginTop: "3rem",
-    marginBottom: "5rem",
+    textAlign:"initial",
+    minWidth: 275,
+    maxWidth: 500,
+    backgroundColor:"white",
   },
   bullet: {
     display: "inline-block",
@@ -33,7 +35,7 @@ const useStyles = makeStyles({
   pos: {
     marginTop: 12,
     marginBottom: 12,
-    marginLeft:"9rem",
+    textAlignLast:"center",
     fontSize: "13px",
   },
   error: {
@@ -74,11 +76,7 @@ function RegisterCard() {
     setOpen(false);
   };
   return (
-    <Container>
       <Card className={classes.root}>
-        <Row>
-          <Col className="register-detail col" sm={12} md={6} lg={6}></Col>
-          <Col className="col" xs={12} sm={12} md={6} lg={6}>
             <img className="login-logo-reg" src={llamaLogo8} />
             <CardContent>
               <Typography className={classes.header} variant="h5" gutterBottom>
@@ -113,10 +111,7 @@ function RegisterCard() {
                 Already have an account? <Link to="/login">Sign in here!</Link>
               </Typography>
             </CardContent>
-          </Col>
-        </Row>
       </Card>
-    </Container>
   );
 }
 export default withRouter(RegisterCard);

@@ -79,12 +79,12 @@ const useStyles = makeStyles((theme) => ({
 function getSteps() {
   return ["Invite", "Pick a date", "Overview"];
 }
-let socket;
-const CONNECTION_PORT = "http://localhost:9010/";
-const connOpt = {
-  transports: ["websocket"], // socket connectin options
-};
-socket = io(CONNECTION_PORT,connOpt)
+// let socket;
+// const CONNECTION_PORT = "http://localhost:9010/";
+// const connOpt = {
+//   transports: ["websocket"], // socket connectin options
+// };
+// socket = io(CONNECTION_PORT,connOpt)
 export default function ExploreModal() {
   const classes = useStyles();
   const currentUser = useSelector((state) => state.user.user);

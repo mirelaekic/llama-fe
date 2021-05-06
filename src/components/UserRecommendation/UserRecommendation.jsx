@@ -1,41 +1,41 @@
 import React from "react";
 import "../styles.css";
 import { Carousel, ListGroup } from "react-bootstrap";
-import { makeStyles } from "@material-ui/core/styles";
-import Avatar from "@material-ui/core/Avatar";
+// import { makeStyles } from "@material-ui/core/styles";
+// import Avatar from "@material-ui/core/Avatar";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-  small: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
-  },
-  large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     display: "flex",
+//     "& > *": {
+//       margin: theme.spacing(1),
+//     },
+//   },
+//   small: {
+//     width: theme.spacing(4),
+//     height: theme.spacing(4),
+//   },
+//   large: {
+//     width: theme.spacing(7),
+//     height: theme.spacing(7),
+//   },
+// }));
 
 export default function UserRecommendation() {
   const user = useSelector((state) => state.user.user);
   const allUsers = useSelector((state) => state.user.allUsers);
   const favourites = useSelector((state) => state.explore.favourite);
-  const classes = useStyles()
-  const filteredAry = allUsers.filter((e) => {
-    return e._id !== user._id;
-  });
-  const removeFollowing = filteredAry.filter((e) => {
-    return user.following.filter((u) => {
-      return u.user !== e._id;
-    });
-  });
+  // const classes = useStyles()
+  // const filteredAry = allUsers.filter((e) => {
+  //   return e._id !== user._id;
+  // });
+  // const removeFollowing = filteredAry.filter((e) => {
+  //   return user.following.filter((u) => {
+  //     return u.user !== e._id;
+  //   });
+  // });
 
   return allUsers && user && favourites ? (
     <div>
@@ -63,7 +63,7 @@ export default function UserRecommendation() {
           </ListGroup.Item>
         </ListGroup>
       </>
-      <>
+      {/* <>
         <ListGroup className="homeSuggestionsList mb-5">
           <h2 className="suggestion-header mb-3">Suggestions For You</h2>
           {removeFollowing.map((user, i) => (
@@ -81,7 +81,7 @@ export default function UserRecommendation() {
             </ListGroup.Item>
           ))}
         </ListGroup>
-      </>
+      </> */}
     </div>
   ) : null;
 }

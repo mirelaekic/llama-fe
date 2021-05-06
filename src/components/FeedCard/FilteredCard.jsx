@@ -21,7 +21,6 @@ export default function FilteredCard(params) {
     dispatch(getUsers());
     dispatch(getLikes())
   }, []);
-
   const currentUser = useSelector((state) => state.user.user);
   const comments = useSelector((state) => state.comment.allComments);
   const isLiked = useSelector((state) => state.like.isLiked);
@@ -51,11 +50,15 @@ export default function FilteredCard(params) {
         return usersPosts
       }
     }
-    console.log(filterPosts().length,"filtered Posts")
+
   return (
     <>
       {filterPosts() ? (
-        filterPosts().length === 0 ? <h4 className="noPosts-header">You have no posts😥 <br /> Upload something for the first time!🤩 </h4> :
+        filterPosts().length === 0 ? 
+        <h4 className="noPosts-header">
+          {params.params === "me" ?
+          "You have no posts😥 <br /> Upload something for the first time!🤩" : "This user has no new posts"}
+           </h4>  : 
         filterPosts().map((p, i) => (
           <>
             <Card key={i} className="post-card mb-2" style={{ width: "auto" }}>
