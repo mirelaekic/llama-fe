@@ -48,6 +48,7 @@ export default function Home() {
     </Container>
   ) : (
     <Backdrop className={classes.backdrop} open={true}>
+      <h3>sorry there was an issue</h3>
     <CircularProgress color="inherit" />
     </Backdrop>
   );
